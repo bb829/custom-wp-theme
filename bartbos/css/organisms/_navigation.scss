@@ -1,0 +1,102 @@
+.navigation {
+    z-index: 99999;
+    pointer-events: none;
+
+    &__hamburger {
+        top: rem(-60);
+        right: rem(-60);
+        width: rem(160);
+        height: rem(160);
+    }
+
+    &__toggleBG {
+        background: #000;
+        clip-path: circle(50% at 50% 50%);
+    }
+
+    &__toggleWrapper {
+        left: rem(40);
+        bottom: rem(36);
+        width: rem(36);
+        height: rem(48);
+        row-gap: rem(8);
+        transition: 0.4s ease;
+        transition-property: transform;
+        pointer-events: all;
+        cursor: pointer;
+
+        .navigation--focussed & {
+            transform: translateX(10px);
+        }
+    }
+
+    &__bar {
+        height: rem(3);
+        background: #fff;
+        transition: 0.4s ease;
+        transition-property: transform, opacity;
+
+        &--top {
+            .navigation--focussed & {
+                transform: rotate(45deg)translateY(15.50px);
+            }
+        }
+
+        &--bottom {
+            .navigation--focussed & {
+                transform: rotate(-45deg)translateY(-15.50px);
+            }
+        }
+
+        &--mid {
+            .navigation--focussed & {
+                transform: translateX(6px);               
+                opacity: 0;
+            }
+        }
+    }
+
+    &__list {
+        background: #fff;
+        pointer-events: none;
+        clip-path: circle(0% at 100% 0);
+        transition: 0.6s ease;
+        transition-property: clip-path;
+        row-gap: rem(10);
+
+        .navigation--focussed & {
+            pointer-events: all;
+            clip-path: circle(200% at 100% 0);           
+        }
+    }
+
+    &__wrapper {
+        transition: filter ease 0.4s;
+    }
+
+    &__item {
+        opacity: 0;
+
+        a {
+            color: #000;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__link {
+        font-size: rem(42);
+
+        @include to(md) {
+            font-size: rem(28);
+        }
+    }
+
+    .current-menu-item {
+        a {
+            text-decoration: underline;
+        }
+    }
+}

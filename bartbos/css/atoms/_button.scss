@@ -1,0 +1,44 @@
+.button {
+    padding: rem(12) rem(42);
+
+    @include to(md) {
+        padding: rem(12) rem(24);
+        font-size: rem(16);
+    }
+
+    &--primary {
+        background:#fff;
+        color:#000;
+        border:solid rem(2) #fff;
+    }
+
+    &--secondary {
+        background:#000;
+        color:#fff;
+        border:solid rem(2) #000;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    &--alternative {
+        background:transparent;
+        color:#000;
+        border:solid rem(2) #000;
+
+        &:hover {
+            color: #000;
+        }
+
+        .section--blue &, .section--black & {
+            background:transparent;
+            color:#fff;
+            border:solid rem(2) #fff;   
+            
+            a:hover {
+                color: #fff;
+            }
+        }
+    }
+}

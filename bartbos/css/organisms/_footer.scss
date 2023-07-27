@@ -1,0 +1,18 @@
+.footer {
+    background: #000;
+
+    span {
+        font-size: rem(14);
+        color: #fff;
+
+        a {
+            font-size: rem(14);
+            font-weight: 400;
+            color: #fff; 
+            
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

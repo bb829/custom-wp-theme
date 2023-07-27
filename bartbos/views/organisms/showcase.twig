@@ -1,0 +1,194 @@
+<section data-inviewport="no" class="section {{fields.background_video ? 'section--bgVideo'}} {{fields.background_color ? fields.background_color}} showcase d-flex align-items-center justify-content-center position-relative">
+
+	{% if fields.background_video %}
+
+		<div class="showcase__videoOverlay position-absolute w-100 h-100"></div>
+
+		<video class="w-100 h-100 position-absolute top-0 end-0 bottom-0 start-0 cover object-center grey" src="{{fields.background_video}}" autoplay muted playsinline nocontrols></video>
+
+	{% endif %}
+
+	<div class="container">
+		<div class="row">
+
+			{% if fields.case_layout == '--textleft' or fields.case_layout == '--row' %}
+
+				{% if fields.iframe_url or fields.video_url or fields.image %}
+
+					{% set textleft = fields.case_layout == '--textleft' %}
+
+				{% endif %}
+
+				<div class="showcase__content col-12 {{textleft ? 'col-md-6'}} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
+
+					<div class="swing-in-top-fwd delay-3">
+						{% if fields.content %}
+							<div class="showcase__content">
+								{{fields.content}}
+							</div>
+						{% endif %}
+					</div>
+
+					{% if fields.button_left or fields.button_right %}
+
+						<div class="d-flex mt-4 gap-3 fade-in delay-5">
+
+							{% if fields.button_left.url and fields.button_left.title %}
+
+								{% include 'atoms/button.twig' with {
+									'url': fields.button_left.url,
+									'title': fields.button_left.title,
+									'target': fields.button_left.target,
+									'style': fields.style_button_left
+								}
+							%}
+
+							{% endif %}
+
+							{% if fields.button_right.url and fields.button_right.title %}
+
+								{% include 'atoms/button.twig' with {
+						'url': fields.button_right.url,
+						'title': fields.button_right.title,
+						'target': fields.button_right.target,
+						'style': fields.style_button_right
+					}
+				%}
+
+							{% endif %}
+
+						</div>
+
+					{% endif %}
+
+				</div>
+
+			{% endif %}
+
+			{% if fields.case_type %}
+
+			{% if fields.iframe_url or fields.video_url %}
+
+				{% set row = fields.case_layout == '--row' %}
+
+				<div class="showcase__typeWrapper col-12 {{row  ? 'mt-4': 'col-md-6 mt-4 mt-md-0'}} d-flex justify-content-center position-relative z-4">
+
+					{% if fields.case_type == '--image' %}
+						<div class="scale-in-center delay-1">
+							<img src="{{fields.image.url}}" class="showcase__image cover"/>
+						</div>
+					{% endif %}
+
+						{% if fields.case_type == '--mobile-website' %}
+
+
+							<div class="showcase{{fields.case_type}}-iframe {{fields.background_color ? 'border-white' : 'border-black'}} d-flex fade-in delay-5 {{row ? 'w-50' : 'w-75' }} rounded-20">
+
+								<iframe class="w-100 h-100 rounded-20-inner" src="{{fields.iframe_url}}"></iframe>
+
+							</div>
+
+
+						{% endif %}
+
+						{% if fields.case_type == '--tablet-website' %}
+
+
+							<div class="showcase{{fields.case_type}}-iframe {{fields.background_color ? 'border-white' : 'border-black'}} d-flex fade-in delay-5 {{row ? 'w-50' : 'w-100' }} rounded-20">
+
+								<iframe class="w-100 h-100 rounded-20-inner" src="{{fields.iframe_url}}"></iframe>
+
+							</div>
+
+
+						{% endif %}
+
+						{% if fields.case_type == '--desktop-website' %}
+
+
+
+								<div class="showcase{{fields.case_type}}-video {{fields.background_color ? 'border-white' : 'border-black'}} d-flex fade-in delay-5 {{row ? 'w-100' : 'w-100' }} rounded-20">
+
+									<video class="w-100 h-100 rounded-20-inner cover" src="{{fields.video_url}}" autoplay muted playsinline nocontrols loop></video>
+
+								</div>
+
+				
+
+							{# <div class="col-12 {{row  ?: 'col-md-6'}} d-flex align-items-center justify-content-center position-relative z-4" style="perspective: 1000px;">
+																																		
+																																							<video class="showcase{{fields.case_type}}-iframe fade-in delay-5 rounded-10 cover w-100" style="aspect-ratio: 16 / 9;" src="{{fields.video_url}}"></video>
+																																		
+																																						</div> #}
+						{% endif %}
+
+					{% endif %}
+
+				</div>
+
+			{% endif %}
+
+			{% if fields.case_layout == '--textright' %}
+
+				{% if fields.iframe_url or fields.video_url or fields.image %}
+
+					{% set textright = fields.case_layout == '--textright' %}
+
+				{% endif %}
+
+				<div class="showcase__content col-12 {{textright ? 'col-md-6'}} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
+					<div class="swing-in-top-fwd delay-3">
+
+						{% if fields.title %}
+							<h2 class="showcase__title">{{fields.title}}</h2>
+						{% endif %}
+						{% if fields.content %}
+							<div class="showcase__content">
+								{{fields.content}}
+							</div>
+						{% endif %}
+					</div>
+
+					{# <pre>{{dump(fields)}}</pre> #}
+
+					{% if fields.button_left or fields.button_right %}
+
+						<div class="d-flex mt-3 gap-3 fade-in delay-5">
+
+							{% if fields.button_left.url and fields.button_left.title %}
+
+								{% include 'atoms/button.twig' with {
+						'url': fields.button_left.url,
+						'title': fields.button_left.title,
+						'target': fields.button_left.target,
+						'style': fields.style_button_left
+					}
+				%}
+
+							{% endif %}
+
+							{% if fields.button_right.url and fields.button_right.title %}
+
+								{% include 'atoms/button.twig' with {
+						'url': fields.button_right.url,
+						'title': fields.button_right.title,
+						'target': fields.button_right.target,
+						'style': fields.style_button_right
+					}
+				%}
+
+							{% endif %}
+
+						</div>
+
+					{% endif %}
+
+				</div>
+
+			{% endif %}
+
+		</div>
+
+	</div>
+
+</section>

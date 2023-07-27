@@ -1,0 +1,79 @@
+<section class="section section--first">
+
+	<div class="{{fields.background ? fields.background}} hero d-flex align-items-center justify-content-center fade-in delay-2 pt-3 pt-md-0">
+
+		{% if fields.background_video %}
+
+			<div class="textImage__videoOverlay position-absolute w-100 h-100"></div>
+
+			<video class="w-100 h-100 position-absolute top-0 end-0 bottom-0 start-0 cover object-center grey" src="{{fields.background_video}}" autoplay muted playsinline nocontrols></video>
+
+		{% endif %}
+
+		<div class="container">
+			<div class="row">
+				<div class="col-12 {{fields.animation ? 'col-md-6' }} {{fields.image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center z-4" style="perspective:1000px;">
+					<div class="swing-in-top-fwd delay-4">
+						{% if fields.title %}
+							<h1 class="hero__title">{{fields.title}}</h1>
+						{% endif %}
+						{% if fields.content %}
+							<div class="hero__content">
+								{{fields.content}}
+							</div>
+						{% endif %}
+					</div>
+
+					{# <pre>{{dump(fields)}}</pre> #}
+
+					{% if fields.button_left or fields.button_right %}
+
+						<div class="d-flex mt-4 gap-3 fade-in delay-5">
+
+							{% if fields.button_left.url and fields.button_left.title %}
+
+								{% include 'atoms/button.twig' with {
+						'url': fields.button_left.url,
+						'title': fields.button_left.title,
+						'target': fields.button_left.target,
+						'style': fields.style_button_left
+					}
+				%}
+
+							{% endif %}
+
+							{% if fields.button_right.url and fields.button_right.title %}
+
+								{% include 'atoms/button.twig' with {
+						'url': fields.button_right.url,
+						'title': fields.button_right.title,
+						'target': fields.button_right.target,
+						'style': fields.style_button_right
+					}
+				%}
+
+							{% endif %}
+
+						</div>
+
+					{% endif %}
+
+				</div>
+
+				{% if fields.animation %}
+
+					{% include 'molecules/heroAnimation.twig' %}
+
+				{% endif %}
+
+				{% if not fields.animation and fields.image %}
+					<div class="col-12 col-md-6 d-flex align-items-center justify-content-center scale-in-center delay-4 z-4">
+						<img src="{{fields.image.url}}" class="textImage__image cover"/>
+					</div>
+				{% endif %}
+
+			</div>
+		</div>
+
+	</div>
+</section>

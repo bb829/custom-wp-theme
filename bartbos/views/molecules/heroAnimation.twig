@@ -1,0 +1,597 @@
+{% if fields.animation == 'lady-summer' %}
+
+	<div class="col-12 col-md-6 d-flex align-items-center justify-content-center scale-in-center delay-5 position-relative z-4">
+		<div class="d-flex hero__image w-75 hero__image--top position-absolute scale-in-center delay-5">
+			<div class="w-100 vibrate-1">
+				{% include 'twig-svg/lady_summer.html.twig' %}
+			</div>
+		</div>
+		<div class="d-flex hero__image hero__image--big hero__image--bottom">
+			<div class="w-100 vibrate-1-slow">
+				{% include 'twig-svg/background_splash.html.twig' %}
+			</div>
+		</div>
+	</div>
+
+{% endif %}
+
+{% if fields.animation == 'carrots' %}
+
+	<div class="col-12 col-md-6 d-flex align-items-center justify-content-center scale-in-center delay-5 position-relative z-4">
+		<div class="d-flex w-75 hero__image hero__image--top position-absolute scale-in-center delay-5">
+			<div class="w-100 vibrate-1">
+				{% include 'twig-svg/carrots.html.twig' %}
+			</div>
+		</div>
+		<div class="d-flex hero__image hero__image--big hero__image--bottom">
+			<div class="w-100 vibrate-1-slow">
+				{% include 'twig-svg/background_splash.html.twig' %}
+			</div>
+		</div>
+	</div>
+
+{% endif %}
+
+{% if fields.animation == 'rocket' %}
+
+	<style>
+
+		@media screen and(max-width: 576px) {
+			.larocket {
+				width: 100%;
+				overflow: hidden;
+			}
+		}
+
+		.shatters {
+			position: relative;
+			z-index: 1;
+		}
+
+		.larocket {
+			position: relative;
+			z-index: 2;
+			-webkit-transform: scale(1.2);
+			-moz-transform: scale(1.2);
+			-o-transform: scale(1.2);
+			transform: scale(1.2);
+		}
+
+		.starsfade {
+			animation: starsfade 2.8s ease forwards;
+			animation-delay: 0.2s;
+			opacity: 0;
+		}
+
+		.stripes {
+			position: relative;
+			z-index: 1;
+		}
+
+
+		.stripe-1,
+		.stripe-6,
+		.stripe-9,
+		.stripe-3 {
+			background: #F20751 !important;
+		}
+
+		.flamethrow {
+			animation: flamethrow 1.49s ease forwards;
+		}
+
+		@keyframes flamethrow {
+			0% {
+				transform: scale(2);
+			}
+
+			75% {
+				transform: scale(1.4);
+			}
+
+			100% {
+				transform: scale(1);
+			}
+		}
+
+
+		@keyframes burst {
+			0% {
+				transform: scale(1) rotate(-135deg);
+			}
+
+			50% {
+				transform: scale(0.8) rotate(-135deg);
+			}
+
+			100% {
+				transform: scale(1) rotate(-135deg);
+			}
+		}
+
+		@keyframes starsfade {
+			0% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.rocket-container {
+			animation: jiggle 2s ease infinite;
+		}
+
+		@keyframes jiggle {
+			0% {
+				transform: translateY(0px) translateX(0px);
+			}
+
+			50% {
+				transform: translateY(8px) translateX(-8px);
+
+			}
+
+			100% {
+				transform: translateY(0px)translateX(0px);
+
+			}
+		}
+
+		.space {
+			width: 400px;
+			height: 400px;
+			animation: zoomin ease 1.2s forwards;
+		}
+
+		.rocket {
+			font-size: 200px;
+			color: #fff;
+			z-index: 4;
+		}
+
+
+		@keyframes zoomin {
+			0% {
+				transform: translateY(400px) translateX(-400px);
+				opacity: 0;
+			}
+
+			100% {
+				transform: translateY(0px)translateX(0px);
+				opacity: 1;
+			}
+
+		}
+
+		@keyframes starsfade {
+			0% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.animation-bg {
+			position: absolute;
+			right: 0;
+		}
+
+		.stripes {
+			width: 100%;
+			overflow: hidden;
+			display: block;
+			transform: rotate(40deg);
+
+		}
+
+		.stripes-inner {
+			width: 100%;
+			overflow: hidden;
+			display: block;
+		}
+
+		.stripe-1 {
+			width: 3px;
+			height: 60px;
+			background: #fff;
+			position: absolute;
+			animation: flow 0.6s ease infinite;
+		}
+
+		.stripe-2 {
+			width: 3px;
+			height: 80px;
+			background: #fff;
+			position: absolute;
+			left: 40px;
+			animation: flow 0.8s ease infinite;
+		}
+
+		.stripe-3 {
+			width: 3px;
+			height: 29px;
+			background: #fff;
+			position: absolute;
+			left: 80px;
+			animation: flow 0.4s ease infinite;
+		}
+
+		.stripe-4 {
+			width: 3px;
+			height: 58px;
+			background: #fff;
+			position: absolute;
+			left: 120px;
+			animation: flow 0.5s ease-in-out infinite;
+		}
+
+		.stripe-5 {
+			width: 3px;
+			height: 58px;
+			background: #fff;
+			position: absolute;
+			left: 160px;
+			animation: flow 0.47s ease-in-out infinite;
+		}
+
+		.stripe-6 {
+			width: 3px;
+			height: 58px;
+			background: #fff;
+			position: absolute;
+			left: 180px;
+			animation: flow 0.48s ease-in-out infinite;
+		}
+
+		.stripe-7 {
+			width: 3px;
+			height: 58px;
+			background: #fff;
+			position: absolute;
+			left: 240px;
+			animation: flow 0.77s ease-in-out infinite;
+		}
+
+		.stripe-8 {
+			width: 3px;
+			height: 58px;
+			background: #fff;
+			position: absolute;
+			left: 300px;
+			animation: flow 0.58s ease-in-out infinite;
+		}
+
+		.stripe-9 {
+			width: 3px;
+			height: 58px;
+			background: #fff;
+			position: absolute;
+			left: 360px;
+			animation: flow 0.4s ease-in-out infinite;
+		}
+
+		@keyframes flow {
+			0% {
+				transform: translate(0);
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				transform: translate(0, 320px);
+				opacity: 0;
+			}
+
+		}
+
+		.shatters {
+			position: relative;
+			z-index: 1;
+		}
+
+		.larocket {
+			position: relative;
+			z-index: 2;
+		}
+
+		.starsfade {
+			animation: starsfade 2.8s ease forwards;
+			animation-delay: 0.2s;
+			opacity: 0;
+		}
+
+		.stripes {
+			position: relative;
+			z-index: 1;
+		}
+
+
+		.stripe-1,
+		.stripe-6,
+		.stripe-9,
+		.stripe-3 {
+			background: #F20751 !important;
+		}
+
+		.flamethrow {
+			animation: flamethrow 1.49s ease forwards;
+		}
+
+		@keyframes flamethrow {
+			0% {
+				transform: scale(1.29);
+			}
+
+			75% {
+				transform: scale(1.29);
+			}
+
+			100% {
+				transform: scale(1);
+			}
+		}
+
+		.flame {
+			width: 80px;
+			position: absolute;
+			top: 200px;
+			left: 106.5px;
+			z-index: 2;
+			animation: burst 0.01s ease infinite;
+		}
+
+		@keyframes burst {
+			0% {
+				transform: scale(0.6) rotate(45deg);
+			}
+
+			50% {
+				transform: scale(0.45) rotate(45deg);
+			}
+
+			100% {
+				transform: scale(0.6) rotate(45deg);
+			}
+		}
+
+		@keyframes starsfade {
+			0% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.rocket-container {
+			animation: jiggle 2s ease infinite;
+		}
+
+		@keyframes jiggle {
+			0% {
+				transform: translateY(0px) translateX(0px);
+			}
+
+			50% {
+				transform: translateY(8px) translateX(-8px);
+
+			}
+
+			100% {
+				transform: translateY(0px)translateX(0px);
+
+			}
+		}
+
+		@keyframes zoomin {
+			0% {
+				transform: translateY(400px) translateX(-400px);
+				opacity: 0;
+			}
+
+			100% {
+				transform: translateY(0px)translateX(0px);
+				opacity: 1;
+			}
+
+		}
+
+		@keyframes starsfade {
+			0% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.animation-bg {
+			position: absolute;
+			right: 0;
+		}
+
+		.stripes {
+			width: 400px;
+			height: 400px;
+			overflow: hidden;
+			display: block;
+			transform: rotate(40deg);
+
+		}
+
+		.stripes-inner {
+			width: 100%;
+			height: 360px;
+			overflow: hidden;
+			display: block;
+		}
+
+		.stripe-1 {
+			width: 3px;
+			height: 60px;
+			background: #fff;
+			position: absolute;
+			animation: flow 0.6s ease infinite;
+		}
+
+		.stripe-2 {
+			width: 3px;
+			height: 80px;
+			background: #fff;
+			position: absolute;
+			left: 40px;
+			animation: flow 0.8s ease infinite;
+		}
+
+		.stripe-3 {
+			width: 3px;
+			height: 29px;
+			background: #fff;
+			position: absolute;
+			left: 80px;
+			animation: flow 0.4s ease infinite;
+		}
+
+		.stripe-4 {
+			width: 3px;
+			height: 58px;
+			background: #fff;
+			position: absolute;
+			left: 120px;
+			animation: flow 0.5s ease-in-out infinite;
+		}
+
+		.stripe-5 {
+			width: 3px;
+			height: 58px;
+			background: #fff;
+			position: absolute;
+			left: 160px;
+			animation: flow 0.47s ease-in-out infinite;
+		}
+
+		.stripe-6 {
+			width: 3px;
+			height: 58px;
+			background: #fff;
+			position: absolute;
+			left: 180px;
+			animation: flow 0.48s ease-in-out infinite;
+		}
+
+		.stripe-7 {
+			width: 3px;
+			height: 58px;
+			background: #fff;
+			position: absolute;
+			left: 240px;
+			animation: flow 0.77s ease-in-out infinite;
+		}
+
+		.stripe-8 {
+			width: 3px;
+			height: 58px;
+			background: #fff;
+			position: absolute;
+			left: 300px;
+			animation: flow 0.58s ease-in-out infinite;
+		}
+
+		.stripe-9 {
+			width: 3px;
+			height: 58px;
+			background: #fff;
+			position: absolute;
+			left: 360px;
+			animation: flow 0.4s ease-in-out infinite;
+		}
+
+		@keyframes flow {
+			0% {
+				transform: translate(0);
+				opacity: 0;
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				transform: translate(0, 320px);
+				opacity: 0;
+			}
+
+		}
+	</style>
+
+	<div class="col-12 col-md-6 d-flex justify-content-center position-relative rocket-container larocket">
+
+		<div class="space d-flex align-items-center justify-content-center position-absolute z-4">
+
+			<i class="fa fa-rocket rocket"></i>
+
+			<div class="flame">
+
+				<div class="flamethrow">
+
+					<div class="flamezoom">
+
+						<svg version="1.1" id="Laag_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 177 241" style="enable-background:new 0 0 177 241;" xml:space="preserve">
+							<style type="text/css">
+								.st0 {
+									fill: #E61A53;
+									stroke: #FFFFFF;
+									stroke-width: 10;
+									stroke-miterlimit: 10;
+								}
+							</style>
+							<path id="XMLID_1_" class="st0" d="M83,208c0,0-131-176,0-176S83,208,83,208z"/>
+						</svg>
+
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="stripes starsfade z-2">
+
+			<div class="stripes-inner">
+
+				<div class="stripe-1"></div>
+
+				<div class="stripe-2"></div>
+
+				<div class="stripe-3"></div>
+
+				<div class="stripe-4"></div>
+
+				<div class="stripe-5"></div>
+
+				<div class="stripe-6"></div>
+
+				<div class="stripe-7"></div>
+
+				<div class="stripe-8"></div>
+
+				<div class="stripe-9"></div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+{% endif %}

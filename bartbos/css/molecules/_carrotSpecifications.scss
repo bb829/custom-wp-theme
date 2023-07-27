@@ -1,0 +1,11 @@
+.carrotSpecifications {
+    &__bar {
+        width:100%;
+        height: rem(3);
+        background: #f2f2f2;
+    }
+
+    span {
+        font-size: rem(14);
+    }
+}

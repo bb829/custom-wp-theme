@@ -1,0 +1,39 @@
+.hero {
+    height:auto;
+    min-height: 100vh;
+    transition: background ease 0.4s;
+    transition: opacity 0.4s ease;
+
+    &__title {
+        max-width: rem(750);
+        font-size: rem(48);
+        color: #fff;
+
+        @include to(md) {
+            font-size: rem(36);
+        }
+    }
+
+    &__content {
+        max-width: rem(750);
+        color: #fff;
+    }
+
+    &__image {
+        &--big {
+            width: rem(750);
+        }
+
+        &--top {
+            z-index: 2;
+        }
+
+        &--bottom {
+            z-index: 1;
+        }
+    }
+
+    &__wrapper {
+        height: 100vh;
+    }
+}
