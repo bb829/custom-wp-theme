@@ -17,7 +17,7 @@
         span,
         a:not(.button),
         strong {
-            color: #fff;
+                    color: $primaryColor;
         }
     }
 
@@ -34,22 +34,22 @@
     }
 
     &--blue {
-        background: #035afc;
+        background: $blueBG;
     }
 
     &--black {
-        background: #000;
+        background: $secondaryColor;
     }
 
     &--yellow {
-        background: #FCC715;
+        background: $yellowBG;
     }
 
     &--pink {
-        background: #FFA7C8;
+        background: $pinkBG;
     }
 
     &--lightGrey {
-        background: #f2f2f2;
+        background: $alternativeColor;
     }
 }

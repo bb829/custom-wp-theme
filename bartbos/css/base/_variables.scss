@@ -1,0 +1,38 @@
+$primaryColor: #fff;
+$secondaryColor: #000;
+$alternativeColor: #f2f2f2;
+
+$primaryFontSize: rem(18);
+$secondaryFontSize: rem(14);
+$alternativeFontSize: rem(12);
+$navigationFontSize: rem(28);
+
+$heroFontSize: rem(48);
+
+$h1FontSize: rem(42);
+$h2FontSize: rem(36);
+$h3FontSize: rem(32);
+$h4FontSize: rem(28);
+$h5FontSize: rem(24);
+$h6FontSize: rem(20);
+
+$blueBG: #035afc;
+$yellowBG: #FCC715;
+$pinkBG: #FFA7C8;
+
+
+@include to(md) {
+
+    $primaryFontSize: rem(16);
+    $navigationFontSize: rem(24);
+
+    $heroFontSize: rem(36);
+
+    $h1FontSize: rem(36);
+    $h2FontSize: rem(32);
+    $h3FontSize: rem(28);
+    $h4FontSize: rem(24);
+    $h5FontSize: rem(20);
+    $h6FontSize: rem(18);
+
+}

@@ -5,17 +5,18 @@
 
     &__title {
         max-width: rem(750);
-        font-size: rem(48);
-        color: #fff;
+        font-size: $heroFontSize;
+        color: $primaryColor;
 
         @include to(md) {
-            font-size: rem(36);
+        font-size: $heroFontSize;
         }
     }
 
     &__content {
         max-width: rem(750);
-        color: #fff;
+        color: $primaryColor;
+
     }
 
     &__image {

@@ -1,80 +1,76 @@
-body {
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: $h1FontSize;
+    font-weight: 700;
+}
 
-    h1 {
-        font-family: 'Poppins', sans-serif;
-        font-size: rem(42);
-        font-weight: 700;
-    }
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: $h2FontSize;
+    font-weight: 700;
+}
 
-    h2 {
-        font-family: 'Poppins', sans-serif;
-        font-size: rem(36);
-        font-weight: 700;
-    }
+h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: $h3FontSize;
+    font-weight: 700;
+}
 
-    h3 {
-        font-family: 'Poppins', sans-serif;
-        font-size: rem(32);
-        font-weight: 700;
-    }
+h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: $h4FontSize;
+    font-weight: 700;
+}
 
-    h4 {
-        font-family: 'Poppins', sans-serif;
-        font-size: rem(28);
-        font-weight: 700;
-    }
+h5 {
+    font-family: 'Poppins', sans-serif;
+    font-size: $h5FontSize;
+    font-weight: 700;
+}
 
-    h5 {
-        font-family: 'Poppins', sans-serif;
-        font-size: rem(24);
-        font-weight: 700;
-    }
+h6 {
+    font-family: 'Poppins', sans-serif;
+    font-size: $h6FontSize;
+    font-weight: 700;
+}
 
-    h6 {
-        font-family: 'Poppins', sans-serif;
-        font-size: rem(22);
-        font-weight: 700;
-    }
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: $primaryFontSize;
+    line-height: 1.6em;
 
-    p {
-        font-family: 'Poppins', sans-serif;
-        font-size: rem(18);
-        line-height: 1.6em;
-
-        @include to(md) {
-            font-size: rem(16)
-        }
-
-        a {
-            font-family: 'Poppins', sans-serif;
-            font-size: rem(18);
-            text-decoration: none;
-            font-weight: 600;
-            line-height: 1.6em;
-
-            @include to(md) {
-                font-size: rem(16)
-            }
-        }
-
-        &:last-of-type {
-            margin-bottom: 0;
-        }
+    @include to(md) {
+        font-size: $primaryFontSize;
     }
 
     a {
         font-family: 'Poppins', sans-serif;
-        font-size: rem(18);
+        font-size: $primaryFontSize;
         text-decoration: none;
         font-weight: 600;
+        line-height: 1.6em;
 
         @include to(md) {
-            font-size: rem(16)
-        }
-
-        &:hover {
-            color: inherit;
+            font-size: $primaryFontSize;
         }
     }
 
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+a {
+    font-family: 'Poppins', sans-serif;
+    font-size: $primaryFontSize;
+    text-decoration: none;
+    font-weight: 600;
+
+    @include to(md) {
+        font-size: $primaryFontSize;
+    }
+
+    &:hover {
+        color: inherit;
+    }
 }

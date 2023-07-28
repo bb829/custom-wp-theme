@@ -3,41 +3,42 @@
 
     @include to(md) {
         padding: rem(12) rem(24);
-        font-size: rem(16);
+        font-size: $primaryFontSize;
     }
 
     &--primary {
-        background:#fff;
-        color:#000;
-        border:solid rem(2) #fff;
+        background: $primaryColor;
+        color: $secondaryColor;
+        border: solid rem(2) $primaryColor;
     }
 
     &--secondary {
-        background:#000;
-        color:#fff;
-        border:solid rem(2) #000;
+        background: $secondaryColor;
+        color: $primaryColor;
+        border: solid rem(2) $secondaryColor;
 
         &:hover {
-            color: #fff;
+            color: $primaryColor;
         }
     }
 
     &--alternative {
-        background:transparent;
-        color:#000;
-        border:solid rem(2) #000;
+        background: transparent;
+        color: $secondaryColor;
+        border: solid rem(2) $secondaryColor;
 
         &:hover {
-            color: #000;
+            color: $secondaryColor;
         }
 
-        .section--blue &, .section--black & {
-            background:transparent;
-            color:#fff;
-            border:solid rem(2) #fff;   
-            
+        .section--blue &,
+        .section--black & {
+            background: transparent;
+            color: $primaryColor;
+            border: solid rem(2) $primaryColor;
+
             a:hover {
-                color: #fff;
+                color: $primaryColor;
             }
         }
     }

@@ -9,7 +9,7 @@ const outputPath = 'assets';
 const localDomain = 'http://localhost';
 const entryPoints = {
   'app': jsPath + '/app.js',
-  'style': cssPath + '/style.sass',
+  'style': cssPath + '/style.scss',
 };
 
 module.exports = {

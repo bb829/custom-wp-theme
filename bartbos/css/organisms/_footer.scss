@@ -1,15 +1,15 @@
 .footer {
-    background: #000;
+    background: $secondaryColor;
 
     span {
-        font-size: rem(14);
-        color: #fff;
+        font-size: $alternativeFontSize;
+        color: $primaryColor;
 
         a {
-            font-size: rem(14);
+            font-size: $alternativeFontSize;
             font-weight: 400;
-            color: #fff; 
-            
+            color: $primaryColor;
+
             &:hover {
                 text-decoration: underline;
             }

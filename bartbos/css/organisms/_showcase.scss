@@ -66,7 +66,7 @@
     }
 
     &__videoOverlay {
-        background: #000;
+        background: $secondaryColor;
         opacity: 0.6;
         z-index: 2;
     }

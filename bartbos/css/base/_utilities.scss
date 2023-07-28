@@ -1,8 +1,3 @@
-@function rem($value) {
-  $rem: ($value / 16)+rem;
-  @return $rem;
-}
-
 body, html {
   overflow-x: hidden;
 }
@@ -14,11 +9,11 @@ body, html {
   }
 
   .border-white {
-    border-color: #fff;
+    border-color: $primaryColor;
   }
 
   .border-black {
-    border-color: #000;
+    border-color: $secondaryColor;
   }
 
   .z-4 {

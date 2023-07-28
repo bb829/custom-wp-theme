@@ -1,27 +1,24 @@
 .carrotOverviewCard {
-    border:solid 1px #000;
-    background:#fff;
+    border:solid 1px $secondaryColor;
+    background: $primaryColor;
     padding: rem(20) rem(30);
 
     &__image {
         width: 80px;
         height: 80px;
-        background:#f2f2f2;
+        background: $alternativeColor;
         border-radius: rem(10);
     }
 
     h3 {
-        color: #000;
+        color: $secondaryColor;
     }
 
     &__content {
-        font-size: rem(16);
-        color: #000;
-
         p {
-            font-size: rem(16);
+            font-size: $primaryFontSize;
             text-align: center;
-            color: #000;
+            color: $secondaryColor;
         }
     }
 }
