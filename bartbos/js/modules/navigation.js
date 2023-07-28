@@ -1,11 +1,10 @@
 const toggle = document.querySelector('.navigation__hamburger');
 const navigation = document.querySelector('.navigation');
-const wrapper = document.querySelector('.navigation__wrapper');
+// const wrapper = document.querySelector('.navigation__wrapper');
 const items = document.querySelectorAll('[data-menu-item="true"]');
-const delay = 400;
 
-function addClassWithDelay() {
-
+function toggleFunction() {
+    navigation.classList.toggle('navigation--focussed');
     items.forEach(item => {
 
         setTimeout(() => {        
@@ -17,14 +16,13 @@ function addClassWithDelay() {
 
   toggle.addEventListener('click', () => {
 
-    addClassWithDelay();
-    navigation.classList.toggle('navigation--focussed');
+    toggleFunction();
 
-    // wrapper.classList.remove('blur');
-    // wrapper.classList.add('blur');
+    // // wrapper.classList.remove('blur');
+    // // wrapper.classList.add('blur');
 
-    setTimeout(() => {
-        wrapper.classList.remove('blur')
-    }, 280);
+    // setTimeout(() => {
+    //     wrapper.classList.remove('blur')
+    // }, 280);
 
 });
