@@ -11,7 +11,13 @@
 
     &__toggleBG {
         background: #000;
-        clip-path: circle(50% at 50% 50%);
+        clip-path: circle(8% at 100% 0);
+        transition: 0.6s ease;
+        transition-property: clip-path;
+
+        .navigation--focussed & {
+            clip-path: circle(200% at 100% 0);           
+        }
     }
 
     &__toggleWrapper {
@@ -57,16 +63,11 @@
     }
 
     &__list {
-        background: #fff;
         pointer-events: none;
-        clip-path: circle(0% at 100% 0);
-        transition: 0.6s ease;
-        transition-property: clip-path;
         row-gap: rem(10);
 
         .navigation--focussed & {
-            pointer-events: all;
-            clip-path: circle(200% at 100% 0);           
+            pointer-events: all;         
         }
     }
 
@@ -78,7 +79,7 @@
         opacity: 0;
 
         a {
-            color: #000;
+            color: #fff;
 
             &:hover {
                 text-decoration: underline;
