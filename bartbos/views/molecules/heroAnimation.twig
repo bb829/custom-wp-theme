@@ -35,7 +35,8 @@
 
 {% if fields.animation == 'rocket' %}
 
-	{# Big refactor necesarry from this here #}
+	{# A lot of refactoring necesarry from this point on #}
+
 	<style>
 
 		@media screen and(max-width: 576px) {
@@ -149,10 +150,9 @@
 
 		.rocket {
 			font-size: 200px;
-			        color: var(--primary-color);
+			color: #fff;
 			z-index: 4;
 		}
-
 
 		@keyframes zoomin {
 			0% {
@@ -199,15 +199,14 @@
 		.stripe-1 {
 			width: 3px;
 			height: 60px;
-			background: $primaryColor;
-			position: absolute;
+			background: #fff position: absolute;
 			animation: flow 0.6s ease infinite;
 		}
 
 		.stripe-2 {
 			width: 3px;
 			height: 80px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 40px;
 			animation: flow 0.8s ease infinite;
@@ -216,7 +215,7 @@
 		.stripe-3 {
 			width: 3px;
 			height: 29px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 80px;
 			animation: flow 0.4s ease infinite;
@@ -225,7 +224,7 @@
 		.stripe-4 {
 			width: 3px;
 			height: 58px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 120px;
 			animation: flow 0.5s ease-in-out infinite;
@@ -234,7 +233,7 @@
 		.stripe-5 {
 			width: 3px;
 			height: 58px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 160px;
 			animation: flow 0.47s ease-in-out infinite;
@@ -243,7 +242,7 @@
 		.stripe-6 {
 			width: 3px;
 			height: 58px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 180px;
 			animation: flow 0.48s ease-in-out infinite;
@@ -252,7 +251,7 @@
 		.stripe-7 {
 			width: 3px;
 			height: 58px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 240px;
 			animation: flow 0.77s ease-in-out infinite;
@@ -261,7 +260,7 @@
 		.stripe-8 {
 			width: 3px;
 			height: 58px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 300px;
 			animation: flow 0.58s ease-in-out infinite;
@@ -270,7 +269,7 @@
 		.stripe-9 {
 			width: 3px;
 			height: 58px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 360px;
 			animation: flow 0.4s ease-in-out infinite;
@@ -440,7 +439,7 @@
 		.stripe-1 {
 			width: 3px;
 			height: 60px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			animation: flow 0.6s ease infinite;
 		}
@@ -448,7 +447,7 @@
 		.stripe-2 {
 			width: 3px;
 			height: 80px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 40px;
 			animation: flow 0.8s ease infinite;
@@ -457,7 +456,7 @@
 		.stripe-3 {
 			width: 3px;
 			height: 29px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 80px;
 			animation: flow 0.4s ease infinite;
@@ -466,7 +465,7 @@
 		.stripe-4 {
 			width: 3px;
 			height: 58px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 120px;
 			animation: flow 0.5s ease-in-out infinite;
@@ -475,7 +474,7 @@
 		.stripe-5 {
 			width: 3px;
 			height: 58px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 160px;
 			animation: flow 0.47s ease-in-out infinite;
@@ -484,7 +483,7 @@
 		.stripe-6 {
 			width: 3px;
 			height: 58px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 180px;
 			animation: flow 0.48s ease-in-out infinite;
@@ -493,7 +492,7 @@
 		.stripe-7 {
 			width: 3px;
 			height: 58px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 240px;
 			animation: flow 0.77s ease-in-out infinite;
@@ -502,7 +501,7 @@
 		.stripe-8 {
 			width: 3px;
 			height: 58px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 300px;
 			animation: flow 0.58s ease-in-out infinite;
@@ -511,7 +510,7 @@
 		.stripe-9 {
 			width: 3px;
 			height: 58px;
-			background: $primaryColor;
+			background: #fff;
 			position: absolute;
 			left: 360px;
 			animation: flow 0.4s ease-in-out infinite;
@@ -533,6 +532,7 @@
 			}
 
 		}
+
 	</style>
 
 	<div class="col-12 col-md-6 d-flex justify-content-center position-relative rocket-container larocket">
