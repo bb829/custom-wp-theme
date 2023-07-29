@@ -14,7 +14,7 @@
 			{% if fields.layout == 'text-left' %}
 
 			<div class="col-12 textImage__content {{ fields.image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
-				<div class="swing-in-top-fwd delay-3">
+				<div class="fade-in-left delay-1">
 				
 					{% if fields.title %}
 						<h2 class="textImage__title">{{fields.title}}</h2>
@@ -65,7 +65,7 @@
 						{% endif %}
 
 			{% if fields.image %}
-				<div class="textImage__imageWrapper col-12 col-md-6 d-flex align-items-center justify-content-center scale-in-center delay-1 mt-3 mt-md-0">
+				<div class="textImage__imageWrapper col-12 col-md-6 d-flex align-items-center justify-content-center scale-in-center delay-3 mt-3 mt-md-0">
 					<img src="{{fields.image.url}}" class="textImage__image cover"/>
 				</div>
 			{% endif %}
@@ -73,7 +73,7 @@
 			{% if fields.layout == 'text-right' %}
 
 			<div class="col-12 {{ fields.image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
-				<div class="swing-in-top-fwd delay-3">
+				<div class="fade-in-right delay-1">
 				
 					{% if fields.title %}
 						<h2 class="textImage__title">{{fields.title}}</h2>

@@ -3,42 +3,42 @@
 
     @include to(md) {
         padding: rem(12) rem(24);
-        font-size: $primaryFontSize;
+        color: var(--primary-font-size);;
     }
 
     &--primary {
         background: $primaryColor;
-        color: $secondaryColor;
+        color: var(--secondary-color);
         border: solid rem(2) $primaryColor;
     }
 
     &--secondary {
         background: $secondaryColor;
-        color: $primaryColor;
+        color: var(--primary-color);
         border: solid rem(2) $secondaryColor;
 
         &:hover {
-            color: $primaryColor;
+            color: var(--primary-color);
         }
     }
 
     &--alternative {
         background: transparent;
-        color: $secondaryColor;
+        color: var(--secondary-color);
         border: solid rem(2) $secondaryColor;
 
         &:hover {
-            color: $secondaryColor;
+            color: var(--secondary-color);
         }
 
         .section--blue &,
         .section--black & {
             background: transparent;
-            color: $primaryColor;
+            color: var(--primary-color);
             border: solid rem(2) $primaryColor;
 
             a:hover {
-                color: $primaryColor;
+                color: var(--primary-color);
             }
         }
     }

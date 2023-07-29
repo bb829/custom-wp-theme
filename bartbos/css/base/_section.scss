@@ -17,7 +17,7 @@
         span,
         a:not(.button),
         strong {
-                    color: $primaryColor;
+                    color: var(--primary-color);
         }
     }
 
@@ -34,7 +34,7 @@
     }
 
     &--blue {
-        background: $blueBG;
+        background: var(--blue-bg);
     }
 
     &--black {
@@ -42,14 +42,14 @@
     }
 
     &--yellow {
-        background: $yellowBG;
+        background: var(--yellow-bg);
     }
 
     &--pink {
-        background: $pinkBG;
+        background: var(--pink-bg);
     }
 
     &--lightGrey {
-        background: $alternativeColor;
+        background: var(--grey-bg);
     }
 }

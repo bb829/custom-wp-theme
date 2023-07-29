@@ -6,19 +6,19 @@
     &__image {
         width: 80px;
         height: 80px;
-        background: $alternativeColor;
+        background: var(--grey-bg);
         border-radius: rem(10);
     }
 
     h3 {
-        color: $secondaryColor;
+        color: var(--secondary-color);
     }
 
     &__content {
         p {
-            font-size: $primaryFontSize;
+            color: var(--primary-font-size);;
             text-align: center;
-            color: $secondaryColor;
+            color: var(--secondary-color);
         }
     }
 }

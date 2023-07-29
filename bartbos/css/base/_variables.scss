@@ -1,14 +1,18 @@
+$blueBG: #035afc;
+$yellowBG: #FCC715;
+$pinkBG: #FFA7C8;
+$greyBG: #f2f2f2;
+
 $primaryColor: #fff;
 $secondaryColor: #000;
-$alternativeColor: #f2f2f2;
 
+//font sizes large viewports
 $primaryFontSize: rem(18);
 $secondaryFontSize: rem(14);
 $alternativeFontSize: rem(12);
 $navigationFontSize: rem(28);
 
 $heroFontSize: rem(48);
-
 $h1FontSize: rem(42);
 $h2FontSize: rem(36);
 $h3FontSize: rem(32);
@@ -16,23 +20,56 @@ $h4FontSize: rem(28);
 $h5FontSize: rem(24);
 $h6FontSize: rem(20);
 
-$blueBG: #035afc;
-$yellowBG: #FCC715;
-$pinkBG: #FFA7C8;
+//font sizes medium viewports
+$primaryFontSizeAlt: rem(16);
+$secondaryFontSizeAlt: rem(12);
+$navigationFontSizeAlt: rem(24);
 
+$heroFontSizeAlt: rem(42);
+$h1FontSizeAlt: rem(36);
+$h2FontSizeAlt: rem(32);
+$h3FontSizeAlt: rem(28);
+$h4FontSizeAlt: rem(24);
+$h5FontSizeAlt: rem(20);
+$h6FontSizeAlt: rem(18);
+
+:root {
+    --blue-bg: #{$blueBG};
+    --yellow-bg: #{$yellowBG};
+    --pink-bg: #{$pinkBG};
+    --grey-bg: #{$greyBG};
+
+    --primary-color: #{$primaryColor};
+    --secondary-color: #{$secondaryColor};
+
+    --primary-font-size: #{$primaryFontSize};
+    --secondary-font-size: #{$secondaryFontSize};
+    --alternative-font-size: #{$alternativeFontSize};
+    --navigation-font-size: #{$navigationFontSize};
+
+    --hero-font-size: #{$heroFontSize};
+
+    --h1-font-size: #{$h1FontSize};
+    --h2-font-size: #{$h2FontSize};
+    --h3-font-size: #{$h3FontSize};
+    --h4-font-size: #{$h4FontSize};
+    --h5-font-size: #{$h5FontSize};
+    --h6-font-size: #{$h6FontSize};
+}
 
 @include to(md) {
+    :root {
+        --primary-font-size: #{$primaryFontSizeAlt};
+        --secondary-font-size: #{$secondaryFontSizeAlt};
+        --navigation-font-size: #{$navigationFontSizeAlt};
 
-    $primaryFontSize: rem(16);
-    $navigationFontSize: rem(24);
+        --hero-font-size: #{$heroFontSizeAlt};
 
-    $heroFontSize: rem(36);
-
-    $h1FontSize: rem(36);
-    $h2FontSize: rem(32);
-    $h3FontSize: rem(28);
-    $h4FontSize: rem(24);
-    $h5FontSize: rem(20);
-    $h6FontSize: rem(18);
-
+        --h1-font-size: #{$h1FontSizeAlt};
+        --h2-font-size: #{$h2FontSizeAlt};
+        --h3-font-size: #{$h3FontSizeAlt};
+        --h4-font-size: #{$h4FontSizeAlt};
+        --h5-font-size: #{$h5FontSizeAlt};
+        --h6-font-size: #{$h6FontSizeAlt};
+    }
 }

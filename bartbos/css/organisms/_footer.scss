@@ -3,12 +3,12 @@
 
     span {
         font-size: $alternativeFontSize;
-        color: $primaryColor;
+        color: var(--primary-color);
 
         a {
             font-size: $alternativeFontSize;
             font-weight: 400;
-            color: $primaryColor;
+            color: var(--primary-color);
 
             &:hover {
                 text-decoration: underline;
