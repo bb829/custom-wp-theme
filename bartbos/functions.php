@@ -1,21 +1,13 @@
 <?php
-require_once 'controller/enqueue.php';
-require_once 'controller/controller-post.php';
-require_once 'controller/controller-blocks.php';
-require_once 'controller/controller-post-type.php';
-require_once 'controller/controller-taxonomy.php';
+require_once 'autoload.php';
 
-require 'autoload.php';
+include 'controller/enqueue.php';
+include 'controller/controller-navigation.php';
+include 'controller/controller-post.php';
+include 'controller/controller-blocks.php';
+include 'controller/controller-fields.php';
+include 'controller/controller-post-type.php';
+include 'controller/controller-taxonomy.php';
 
 add_theme_support('post-thumbnails');
 add_theme_support('menus');
-
-add_action('acf/init', 'register_my_menus');
-function register_my_menus()
-{
-    register_nav_menus(
-        array(
-            'primary-menu' => __('Primary Menu')
-        )
-    );
-}

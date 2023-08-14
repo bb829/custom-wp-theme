@@ -1,7 +1,7 @@
 .textImage {
 
     &__content {
-        max-width: rem(750);
+        max-width: px(750);
         z-index: 4;
 
         @include to(md) {
@@ -22,13 +22,13 @@
     }
 
     &__image {
-        width: rem(600);
-        height: rem(600);
+        width: px(600);
+        height: px(600);
         clip-path: circle(50% at 50% 50%);
 
         @include to(md) {
-            width: rem(300);
-            height: rem(300);
+            width: px(300);
+            height: px(300);
         }
     }
 

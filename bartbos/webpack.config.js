@@ -27,7 +27,6 @@ module.exports = {
       files: [ outputPath + '/*.css' ],
       injectCss: true,
     }, { reload: false, }),
-
   ],
   module: {
     rules: [
@@ -51,10 +50,6 @@ module.exports = {
             },
           },
         ],
-      },
-      {
-        test: /\.(jpg|jpeg|png|gif|woff|woff2|eot|ttf|svg)$/i,
-        use: 'url-loader?limit=1024',
       },
       {
         test: /\.(?:js|mjs|cjs)$/,

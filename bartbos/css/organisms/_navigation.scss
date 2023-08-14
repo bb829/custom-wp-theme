@@ -3,10 +3,10 @@
     pointer-events: none;
 
     &__hamburger {
-        top: rem(-60);
-        right: rem(-60);
-        width: rem(160);
-        height: rem(160);
+        top: px(-60);
+        right: px(-60);
+        width: px(160);
+        height: px(160);
     }
 
     &__toggleBG {
@@ -21,11 +21,11 @@
     }
 
     &__toggleWrapper {
-        left: rem(40);
-        bottom: rem(36);
-        width: rem(36);
-        height: rem(48);
-        row-gap: rem(8);
+        left: px(40);
+        bottom: px(36);
+        width: px(36);
+        height: px(48);
+        row-gap: px(8);
         transition: 0.4s ease;
         transition-property: transform;
         pointer-events: all;
@@ -37,7 +37,7 @@
     }
 
     &__bar {
-        height: rem(3);
+        height: px(3);
         background: $primaryColor;
         transition: 0.4s ease;
         transition-property: transform, opacity;
@@ -64,7 +64,7 @@
 
     &__list {
         pointer-events: none;
-        row-gap: rem(10);
+        row-gap: px(10);
 
         .navigation--focussed & {
             pointer-events: all;
@@ -89,10 +89,6 @@
 
     &__link {
         font-size: var(--navigation-font-size);
-
-        @include to(md) {
-            font-size: var(--navigation-font-size);
-        }
     }
 
     .current-menu-item {

@@ -1,23 +1,21 @@
 .hero {
-    height:auto;
+    height: auto;
     min-height: 100vh;
     transition: opacity 0.4s ease;
 
     &__title {
-        max-width: rem(750);
+        max-width: px(750);
         font-size: var(--hero-font-size);
         color: var(--primary-color);
     }
 
     &__content {
-        max-width: rem(750);
-        color: var(--primary-color);
-
+        max-width: px(750);
     }
 
     &__image {
         &--big {
-            width: rem(750);
+            width: px(750);
         }
 
         &--top {
@@ -32,4 +30,9 @@
     &__wrapper {
         height: 100vh;
     }
+
+    h1 {
+        font-size: var(--hero-font-size);
+    }
+
 }

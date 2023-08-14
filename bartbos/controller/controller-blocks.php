@@ -17,7 +17,7 @@ function register_blocks()
 
     acf_register_block(
         array(
-            'name' => 'text_and_image',
+            'name' => 'text-and-image',
             'title' => __('Text and Image'),
             'render_callback' => 'textimage_init',
             'category' => 'formatting',
@@ -37,7 +37,7 @@ function register_blocks()
 
     acf_register_block(
         array(
-            'name' => 'cpt_overview',
+            'name' => 'cpt-overview',
             'title' => __('CPT overview'),
             'render_callback' => 'cpt_init',
             'category' => 'formatting',
@@ -50,6 +50,16 @@ function register_blocks()
             'name' => 'form',
             'title' => __('Form'),
             'render_callback' => 'form_init',
+            'category' => 'formatting',
+            'icon' => 'carrot'
+        )
+    );
+
+    acf_register_block(
+        array(
+            'name' => 'banner',
+            'title' => __('Banner'),
+            'render_callback' => 'banner_init',
             'category' => 'formatting',
             'icon' => 'carrot'
         )
@@ -90,7 +100,7 @@ function cpt_init($block, $content = '', $is_preview = false)
     $args = array(
         'post_type' => 'carrots',
         'posts_per_page' => -1,
-        'post__in' => get_field('carrots'),
+        'post__in' => get_field('cpt'),
         'orderby' => 'post__in'
     );
     
@@ -108,4 +118,13 @@ function form_init($block, $content = '', $is_preview = false)
     $context['fields'] = get_fields();
     $context['is_preview'] = $is_preview;
     Timber::render('organisms/form.twig', $context);
+}
+
+function banner_init($block, $content = '', $is_preview = false)
+{
+    $context = Timber::context();
+    $context['block'] = $block;
+    $context['fields'] = get_fields();
+    $context['is_preview'] = $is_preview;
+    Timber::render('organisms/banner.twig', $context);
 }

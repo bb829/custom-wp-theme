@@ -7,31 +7,31 @@ $primaryColor: #fff;
 $secondaryColor: #000;
 
 //font sizes large viewports
-$primaryFontSize: rem(18);
-$secondaryFontSize: rem(14);
-$alternativeFontSize: rem(12);
-$navigationFontSize: rem(28);
+$primaryFontSize: px(18);
+$secondaryFontSize: px(14);
+$alternativeFontSize: px(12);
+$navigationFontSize: px(32);
 
-$heroFontSize: rem(48);
-$h1FontSize: rem(42);
-$h2FontSize: rem(36);
-$h3FontSize: rem(32);
-$h4FontSize: rem(28);
-$h5FontSize: rem(24);
-$h6FontSize: rem(20);
+$heroFontSize: px(48);
+$h1FontSize: px(42);
+$h2FontSize: px(36);
+$h3FontSize: px(32);
+$h4FontSize: px(28);
+$h5FontSize: px(24);
+$h6FontSize: px(20);
 
 //font sizes medium viewports
-$primaryFontSizeAlt: rem(16);
-$secondaryFontSizeAlt: rem(12);
-$navigationFontSizeAlt: rem(24);
+$primaryFontSizeAlt: px(16);
+$secondaryFontSizeAlt: px(12);
+$navigationFontSizeAlt: px(32);
 
-$heroFontSizeAlt: rem(42);
-$h1FontSizeAlt: rem(36);
-$h2FontSizeAlt: rem(32);
-$h3FontSizeAlt: rem(28);
-$h4FontSizeAlt: rem(24);
-$h5FontSizeAlt: rem(20);
-$h6FontSizeAlt: rem(18);
+$heroFontSizeAlt: px(42);
+$h1FontSizeAlt: px(36);
+$h2FontSizeAlt: px(32);
+$h3FontSizeAlt: px(28);
+$h4FontSizeAlt: px(24);
+$h5FontSizeAlt: px(20);
+$h6FontSizeAlt: px(18);
 
 :root {
     --blue-bg: #{$blueBG};

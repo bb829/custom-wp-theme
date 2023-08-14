@@ -1,13 +1,13 @@
 .carrotOverviewCard {
     border:solid 1px $secondaryColor;
     background: $primaryColor;
-    padding: rem(20) rem(30);
+    padding: px(20) px(30);
 
     &__image {
         width: 80px;
         height: 80px;
         background: var(--grey-bg);
-        border-radius: rem(10);
+        border-radius: px(10);
     }
 
     h3 {

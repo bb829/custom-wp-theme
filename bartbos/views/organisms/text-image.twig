@@ -1,127 +1,140 @@
-<section data-inviewport="no" class="section {{fields.background_video ? 'section--bgVideo'}} {{fields.background ? fields.background}} textImage d-flex align-items-center justify-content-center position-relative">
+<section data-inviewport="no" class="section {{fields.background_video ? 'section--bgVideo'}} {{fields.font_color ? fields.font_color}} textImage d-flex align-items-center justify-content-center position-relative" style="background: {{fields.background_color}}">
 
-{% if fields.background_video %}
+	{% if fields.background_video %}
 
-	<div class="textImage__videoOverlay position-absolute w-100 h-100"></div>
+		<div class="textImage__videoOverlay position-absolute w-100 h-100"></div>
 
-	<video class="w-100 h-100 position-absolute top-0 end-0 bottom-0 start-0 cover object-center grey" src="{{fields.background_video}}" autoplay muted playsinline nocontrols></video>
+		<video class="w-100 h-100 position-absolute top-0 end-0 bottom-0 start-0 cover object-center grey" src="{{fields.background_video}}" autoplay muted playsinline nocontrols></video>
 
-{% endif %}
+	{% endif %}
 
 	<div class="container">
 		<div class="row">
 
 			{% if fields.layout == 'text-left' %}
 
-			<div class="col-12 textImage__content {{ fields.image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
-				<div class="fade-in-left delay-1">
-				
-					{% if fields.title %}
-						<h2 class="textImage__title">{{fields.title}}</h2>
-					{% endif %}
-					{% if fields.content %}
-						<div class="textImage__content">
-							{{fields.content}}
-						</div>
-					{% endif %}
-				</div>
+				<div class="col-12 textImage__content {{ fields.image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
+					<div class="fade-in-left delay-1">
 
-				{# <pre>{{dump(fields)}}</pre> #}
+						{% if fields.title %}
 
-				{% if fields.button_left or fields.button_right %}
-
-					<div class="d-flex mt-3 gap-3 fade-in delay-5">
-
-						{% if fields.button_left.url and fields.button_left.title %}
-
-							{% include 'atoms/button.twig' with {
-									'url': fields.button_left.url,
-									'title': fields.button_left.title,
-									'target': fields.button_left.target,
-									'style': fields.style_button_left
-								}
-							%}
+							<h2 class="textImage__title">{{fields.title}}</h2>
 
 						{% endif %}
 
-						{% if fields.button_right.url and fields.button_right.title %}
+						{% if fields.content %}
 
-							{% include 'atoms/button.twig' with {
-						'url': fields.button_right.url,
-						'title': fields.button_right.title,
-						'target': fields.button_right.target,
-						'style': fields.style_button_right
-					}
-				%}
+							<div class="textImage__content">
+								{{fields.content}}
+							</div>
 
 						{% endif %}
 
 					</div>
 
-				{% endif %}
+					{# <pre>{{dump(fields)}}</pre> #}
 
-			</div>
+					{% if fields.buttons.button_left or fields.buttons.button_right %}
 
-						{% endif %}
+						<div class="d-flex mt-3 gap-3 fade-in delay-5">
+
+							{% if fields.buttons.button_left.url and fields.buttons.button_left.title %}
+
+								{% include 'atoms/button.twig' with {
+									'url': fields.buttons.button_left.url,
+									'title': fields.buttons.button_left.title,
+									'target': fields.buttons.button_left.target,
+									'style': fields.buttons.button_left_style
+								}
+							%}
+
+							{% endif %}
+
+							{% if fields.buttons.button_right.url and fields.buttons.button_right.title %}
+
+								{% include 'atoms/button.twig' with {
+						'url': fields.buttons.button_right.url,
+						'title': fields.buttons.button_right.title,
+						'target': fields.buttons.button_right.target,
+						'style': fields.buttons.button_right_style
+					}
+				%}
+
+							{% endif %}
+
+						</div>
+
+					{% endif %}
+
+				</div>
+
+			{% endif %}
 
 			{% if fields.image %}
+
 				<div class="textImage__imageWrapper col-12 col-md-6 d-flex align-items-center justify-content-center scale-in-center delay-3 mt-3 mt-md-0">
 					<img src="{{fields.image.url}}" class="textImage__image cover"/>
 				</div>
+
 			{% endif %}
 
 			{% if fields.layout == 'text-right' %}
 
-			<div class="col-12 {{ fields.image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
-				<div class="fade-in-right delay-1">
-				
-					{% if fields.title %}
-						<h2 class="textImage__title">{{fields.title}}</h2>
-					{% endif %}
-					{% if fields.content %}
-						<div class="textImage__content">
-							{{fields.content}}
-						</div>
-					{% endif %}
-				</div>
+				<div class="col-12 {{ fields.image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
+					<div class="fade-in-right delay-1">
 
-				{# <pre>{{dump(fields)}}</pre> #}
+						{% if fields.title %}
 
-				{% if fields.button_left or fields.button_right %}
-
-					<div class="d-flex mt-4 gap-3 fade-in delay-5">
-
-						{% if fields.button_left.url and fields.button_left.title %}
-
-							{% include 'atoms/button.twig' with {
-						'url': fields.button_left.url,
-						'title': fields.button_left.title,
-						'target': fields.button_left.target,
-						'style': fields.style_button_left
-					}
-				%}
+							<h2 class="textImage__title">{{fields.title}}</h2>
 
 						{% endif %}
 
-						{% if fields.button_right.url and fields.button_right.title %}
+						{% if fields.content %}
 
-							{% include 'atoms/button.twig' with {
-						'url': fields.button_right.url,
-						'title': fields.button_right.title,
-						'target': fields.button_right.target,
-						'style': fields.style_button_right
-					}
-				%}
-
+							<div class="textImage__content">
+								{{fields.content}}
+							</div>
+							
 						{% endif %}
-
 					</div>
 
-				{% endif %}
+					{# <pre>{{dump(fields)}}</pre> #}
 
-			</div>
+					{% if fields.buttons.button_left or fields.buttons.button_right %}
 
-						{% endif %}
+						<div class="d-flex mt-4 gap-3 fade-in delay-5">
+
+							{% if fields.buttons.button_left.url and fields.buttons.button_left.title %}
+
+								{% include 'atoms/button.twig' with {
+						'url': fields.buttons.button_left.url,
+						'title': fields.buttons.button_left.title,
+						'target': fields.buttons.button_left.target,
+						'style': fields.buttons.button_left_style
+					}
+				%}
+
+							{% endif %}
+
+							{% if fields.buttons.button_right.url and fields.buttons.button_right.title %}
+
+								{% include 'atoms/button.twig' with {
+						'url': fields.buttons.button_right.url,
+						'title': fields.buttons.button_right.title,
+						'target': fields.buttons.button_right.target,
+						'style': fields.buttons.button_right_style
+					}
+				%}
+
+							{% endif %}
+
+						</div>
+
+					{% endif %}
+
+				</div>
+
+			{% endif %}
 		</div>
 	</div>
 </section>

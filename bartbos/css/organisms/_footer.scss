@@ -2,11 +2,11 @@
     background: $secondaryColor;
 
     span {
-        font-size: $alternativeFontSize;
+        font-size: var(--alternative-font-size);
         color: var(--primary-color);
 
         a {
-            font-size: $alternativeFontSize;
+            font-size: var(--alternative-font-size);
             font-weight: 400;
             color: var(--primary-color);
 

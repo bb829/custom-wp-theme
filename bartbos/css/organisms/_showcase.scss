@@ -11,7 +11,7 @@
     }
 
     &--mobile-website {
-        width: rem(400);
+        width: px(400);
         z-index: 2;
         pointer-events: none;
 
@@ -32,21 +32,21 @@
     &--desktop-website-video {
         aspect-ratio: 16 / 9;
         border-style: solid;
-        border-width: rem(5);
+        border-width: px(5);
         z-index: 1;
     }
 
     &--tablet-website-iframe {
         aspect-ratio: 3 / 4;
         border-style: solid;
-        border-width: rem(5);
+        border-width: px(5);
         z-index: 1;
     }
 
     &--mobile-website-iframe {
         aspect-ratio: 9 / 16;
         border-style: solid;
-        border-width: rem(5);
+        border-width: px(5);
         z-index: 1;
     }
 
@@ -57,7 +57,7 @@
     }
 
     &__content {
-        max-width: rem(750);
+        max-width: px(750);
         z-index: 2;
 
         @include to(md) {
@@ -72,8 +72,8 @@
     }
 
     &__image {
-        width: rem(600);
-        height: rem(600);
+        width: px(600);
+        height: px(600);
         clip-path: circle(50% at 50% 50%);
     }
 

@@ -1,4 +1,4 @@
-@function rem($value) {
+@function px($value) {
   $rem: ($value / 16)+rem;
   @return $rem;
 }
@@ -39,25 +39,25 @@ html {
 }
 
 .object-center {
-  object-position: center 65%;
+  object-position: center 50%;
 }
 
 .rounded-10 {
-  border-radius: rem(10);
+  border-radius: px(10);
 }
 
 .rounded-40-inner {
-  border-radius: rem(34);
+  border-radius: px(34);
 }
 
 .rounded-20 {
-  border-radius: rem(20);
+  border-radius: px(20);
 }
 
 .rounded-20-inner {
-  border-radius: rem(15);
+  border-radius: px(15);
 }
 
 .rounded-40 {
-  border-radius: rem(40);
+  border-radius: px(40);
 }
