@@ -1,4 +1,7 @@
 <?php
+$theme = wp_get_theme();
+define('THEME_VERSION', $theme->Version);
+
 require_once 'autoload.php';
 
 include 'controller/enqueue.php';
