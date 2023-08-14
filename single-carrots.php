@@ -1,6 +1,5 @@
 <?php
-
-get_header();
+header();
 
 $context['post'] = new Timber\Post();
 $context['fields'] = get_fields();
