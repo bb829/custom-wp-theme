@@ -1,5 +1,4 @@
 <?php
-
 get_header();
 
 $context['post'] = new Timber\Post();
