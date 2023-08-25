@@ -30,7 +30,7 @@ spl_autoload_register(function($cls) {
     // the StoutLogic\AcfBuilder namespace.
     $path = dirname(__FILE__).
             DIRECTORY_SEPARATOR.
-            'src'.
+            'controller/stoutlogic'.
             str_replace('\\', DIRECTORY_SEPARATOR, $classWithoutBaseNamespace).
             '.php';
 

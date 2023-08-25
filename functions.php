@@ -4,13 +4,13 @@ define('THEME_VERSION', $theme->Version);
 
 require_once 'autoload.php';
 
-include 'controller/enqueue.php';
-include 'controller/controller-navigation.php';
-include 'controller/controller-post.php';
-include 'controller/controller-blocks.php';
-include 'controller/controller-fields.php';
-include 'controller/controller-post-type.php';
-include 'controller/controller-taxonomy.php';
+include 'controller/scripts.php';
+include 'controller/navigation.php';
+include 'controller/posts.php';
+include 'controller/blocks.php';
+include 'controller/fields.php';
+include 'controller/post-types.php';
+include 'controller/taxonomies.php';
 
 add_theme_support('post-thumbnails');
 add_theme_support('menus');

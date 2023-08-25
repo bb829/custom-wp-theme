@@ -38,19 +38,6 @@ module.exports = {
         ],
       },
       {
-        test: /\.sass$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              sassOptions: { indentedSyntax: true },
-            },
-          },
-        ],
-      },
-      {
         test: /\.(?:js|mjs|cjs)$/,
         exclude: /node_modules/,
         use: {
