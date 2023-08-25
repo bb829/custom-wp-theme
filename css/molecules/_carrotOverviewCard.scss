@@ -1,6 +1,6 @@
 .carrotOverviewCard {
-    border:solid 1px $secondaryColor;
-    background: $primaryColor;
+    border:solid 1px var(--secondary-color);
+    background: var(--primary-color);
     padding: px(20) px(30);
 
     &__image {

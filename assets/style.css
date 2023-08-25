@@ -10794,7 +10794,7 @@ html {
   :root {
     --primary-font-size: 1rem;
     --secondary-font-size: 0.75rem;
-    --navigation-font-size: 2rem;
+    --navigation-font-size: 1.75rem;
     --hero-font-size: 2.625rem;
     --h1-font-size: 2.25rem;
     --h2-font-size: 2rem;
@@ -11221,7 +11221,7 @@ a:hover {
   background: var(--blue-bg);
 }
 .section--black {
-  background: #000;
+  background: var(--secondary-color);
 }
 .section--yellow {
   background: var(--yellow-bg);
@@ -11272,7 +11272,7 @@ a:hover {
   }
 }
 .textImage__videoOverlay {
-  background: #000;
+  background: var(--secondary-color);
   opacity: 0.6;
   z-index: 2;
 }
@@ -11282,15 +11282,10 @@ a:hover {
   }
 }
 .textImage__image {
-  width: 37.5rem;
-  height: 37.5rem;
+  width: 100%;
+  height: auto;
   clip-path: circle(50% at 50% 50%);
-}
-@media (max-width: 991px) {
-  .textImage__image {
-    width: 18.75rem;
-    height: 18.75rem;
-  }
+  aspect-ratio: 1;
 }
 .textImage__wrapper {
   height: 100vh;
@@ -11352,7 +11347,7 @@ a:hover {
   }
 }
 .showcase__videoOverlay {
-  background: #000;
+  background: var(--secondary-color);
   opacity: 0.6;
   z-index: 2;
 }
@@ -11366,8 +11361,8 @@ a:hover {
 }
 
 .carrotOverviewCard {
-  border: solid 1px #000;
-  background: #fff;
+  border: solid 1px var(--secondary-color);
+  background: var(--primary-color);
   padding: 1.25rem 1.875rem;
 }
 .carrotOverviewCard__image {
@@ -11391,7 +11386,7 @@ a:hover {
   background: var(--grey-bg);
 }
 .carrotSpecifications span {
-  font-size: 0.75rem;
+  font-size: var(--alternative-font-size);
 }
 
 .navigation {
@@ -11399,16 +11394,27 @@ a:hover {
   pointer-events: none;
 }
 .navigation__hamburger {
+  transform: translateX(10px) translateY(-10px);
   top: -3.75rem;
   right: -3.75rem;
   width: 10rem;
   height: 10rem;
 }
+@media (min-width: 992px) {
+  .navigation__hamburger {
+    transform: inherit;
+  }
+}
 .navigation__toggleBG {
-  background: #000;
-  clip-path: circle(110px at 100% 0);
+  background: var(--secondary-color);
+  clip-path: circle(110px at 104% -1%);
   transition: 0.6s ease;
   transition-property: clip-path;
+}
+@media (min-width: 992px) {
+  .navigation__toggleBG {
+    clip-path: circle(110px at 100% 0);
+  }
 }
 .navigation--focussed .navigation__toggleBG {
   clip-path: circle(200% at 100% 0);
@@ -11429,7 +11435,7 @@ a:hover {
 }
 .navigation__bar {
   height: 0.1875rem;
-  background: #fff;
+  background: var(--primary-color);
   transition: 0.4s ease;
   transition-property: transform, opacity;
 }
@@ -11470,7 +11476,7 @@ a:hover {
 }
 
 .footer {
-  background: #000;
+  background: var(--secondary-color);
 }
 .footer span {
   font-size: var(--alternative-font-size);
@@ -11495,14 +11501,14 @@ a:hover {
   }
 }
 .button--primary {
-  background: #fff;
+  background: var(--primary-color);
   color: var(--secondary-color);
-  border: solid 0.125rem #fff;
+  border: solid 0.125rem var(--primary-color);
 }
 .button--secondary {
-  background: #000;
+  background: var(--secondary-color);
   color: var(--primary-color);
-  border: solid 0.125rem #000;
+  border: solid 0.125rem var(--secondary-color);
 }
 .button--secondary:hover {
   color: var(--primary-color);
@@ -11510,7 +11516,7 @@ a:hover {
 .button--alternative {
   background: transparent;
   color: var(--secondary-color);
-  border: solid 0.125rem #000;
+  border: solid 0.125rem var(--secondary-color);
 }
 .button--alternative:hover {
   color: var(--secondary-color);
@@ -11518,7 +11524,7 @@ a:hover {
 .section--dark .button--alternative {
   background: transparent;
   color: var(--primary-color);
-  border: solid 0.125rem #fff;
+  border: solid 0.125rem var(--primary-color);
 }
 .section--dark .button--alternative a:hover {
   color: var(--primary-color);

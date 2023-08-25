@@ -6,6 +6,6 @@
     }
 
     span {
-        font-size: $alternativeFontSize;
+        font-size: var(--alternative-font-size);
     }
 }

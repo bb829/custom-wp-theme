@@ -3,17 +3,26 @@
     pointer-events: none;
 
     &__hamburger {
+        transform: translateX(10px)translateY(-10px);
         top: px(-60);
         right: px(-60);
         width: px(160);
         height: px(160);
+
+        @include from(md) {
+            transform: inherit;
+        }
     }
 
     &__toggleBG {
-        background: $secondaryColor;
-        clip-path: circle(110px at 100% 0);
+        background: var(--secondary-color);
+        clip-path: circle(110px at 104% -1%);
         transition: 0.6s ease;
         transition-property: clip-path;
+
+        @include from(md) {
+            clip-path: circle(110px at 100% 0);
+        }
 
         .navigation--focussed & {
             clip-path: circle(200% at 100% 0);
@@ -38,7 +47,7 @@
 
     &__bar {
         height: px(3);
-        background: $primaryColor;
+        background: var(--primary-color);
         transition: 0.4s ease;
         transition-property: transform, opacity;
 

@@ -36,7 +36,7 @@
     }
 
     &--black {
-        background: $secondaryColor;
+        background: var(--secondary-color);
     }
 
     &--yellow {
