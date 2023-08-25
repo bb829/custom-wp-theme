@@ -1,5 +1,7 @@
 # A work-in-progress WordPress theme as part of a personal project
 
+<a href="https://wptheme.bartbos.com/">Demo</a>
+<br><br>
 <h2>Short term roadmap</h2>
 <ul>
 <li>
