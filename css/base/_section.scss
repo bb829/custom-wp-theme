@@ -5,6 +5,14 @@
     transition: background ease 0.4s;
     transition: opacity 0.4s ease;
 
+    &--hero {
+        padding: 0;
+    }
+
+    &--video {
+        padding: 0;
+    }
+
     &--dark {
         h1,
         h2,

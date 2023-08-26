@@ -138,7 +138,8 @@ $universal_content
             'required' => 0,
             'choices' => [
                 'text-left' => 'Text left, image right',
-                'text-right' => 'Text right, image left'
+                'text-right' => 'Text right, image left',
+                'row' => 'Row layout'
             ],
             'wrapper' => [
                 'width' => '50%',
@@ -361,11 +362,18 @@ $universal_content
         'allow_null' => 1,
     ])
     ->endRepeater()
+    ->addRange('border_radius', [
+        'label' => 'Border radius (px)',
+        'min' => '0',
+        'max' => '100',
+    ])
+    ->conditional('asset_type', '==', '--image')
+        ->or('asset_type', '==', '--video')
     ->addSelect('image_shape', [
         'label' => 'Shape',
         'required' => 0,
         'choices' => [
-            'circle' => 'Circle'
+            'circle' => 'Circle',
         ],
         'wrapper' => [
             'width' => '100%',
@@ -424,7 +432,11 @@ $universal_content
     ])
     ->conditional('asset_type', '!=', '--html')
     ->endGroup()
-    ->addGroup('buttons')
+    ->addGroup('buttons', [
+        'wrapper' => [
+            'width' => '100%'
+        ]
+    ])
     ->addLink('button_left', [
         'wrapper' => [
             'width' => '50%',
@@ -467,7 +479,40 @@ $universal_content
         ],
         'return_format' => 'value',
     ])
+    ->addSelect('incoming_animation', [
+        'label' => 'Incoming animation',
+        'required' => 0,
+        'choices' => [
+            'fade-in' => 'Fade in',
+            'fade-in-top' => 'Fade in top',
+            'fade-in-right' => 'Fade in right',
+            'fade-in-bottom' => 'Fade in bottom',
+            'fade-in-left' => 'Fade in left',
+            'scale-in-center' => 'Scale in center'
 
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'allow_null' => 1
+    ])
+    ->addSelect('animation_delay', [
+        'label' => 'Animation delay',
+        'required' => 0,
+        'choices' => [
+            'delay-2' => '400ms',
+            'delay-3' => '600ms',
+            'delay-4' => '800ms',
+            'delay-5' => '1000ms',
+            'delay-6' => '1500ms',
+            'delay-7' => '2000ms',
+            'delay-8' => '2500ms',
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'allow_null' => 1
+    ])
     ->endGroup()
     ->setLocation('block', '==', 'acf/universal-content');
 

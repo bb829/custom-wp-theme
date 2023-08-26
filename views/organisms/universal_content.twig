@@ -1,6 +1,8 @@
-<section {{ fields.block_options.is_hero ?: 'data-inviewport="no"' }} class="section {{fields.style_options.font_color ? fields.style_options.font_color}} {{fields.block_options.is_hero ? 'section--hero'}} overflow-hidden" style="{% if fields.layout_options.margin %}{{fields.layout_options.margin_settings.m_top ? 'margin-top:' ~ fields.layout_options.margin_settings.m_top ~ 'px;'}} {{fields.layout_options.margin_settings.m_right ? 'margin-right:' ~ fields.layout_options.margin_settings.m_right ~ 'px;'}} {{fields.layout_options.margin_settings.m_bottom ? 'margin-bottom:' ~ fields.layout_options.margin_settings.m_bottom ~ 'px;'}} {{fields.layout_options.margin_settings.m_left ? 'margin-left:' ~ fields.layout_options.margin_settings.m_left ~ 'px;'}}{% endif %} {% if fields.layout_options.padding %} {{fields.layout_options.padding_settings.p_top ? 'padding-top:' ~ fields.layout_options.padding_settings.p_top ~ 'px;'}} {{fields.layout_options.padding_settings.p_right ? 'padding-right:' ~ fields.layout_options.padding_settings.p_right ~ 'px;'}} {{fields.layout_options.padding_settings.p_bottom ? 'padding-bottom:' ~ fields.layout_options.padding_settings.p_bottom ~ 'px;'}} {{fields.layout_options.padding_settings.p_left ? 'padding-left:' ~ fields.layout_options.padding_settings.p_left ~ 'px;'}} {% endif %} {{fields.style_options.background_color ? 'background:' ~ fields.style_options.background_color ~ ''}}">
+{% set row = fields.layout_options.layout == 'row' %}
 
-	<div class="universalContent {{fields.block_options.incoming_animation ? fields.block_options.incoming_animation}} delay-1 d-flex align-items-center justify-content-center">
+<section {{ fields.block_options.is_hero ?: 'data-inviewport="no"' }} class="section {{fields.style_options.font_color ? fields.style_options.font_color}} {{fields.block_options.is_hero ? 'section--hero'}} {{fields.style_options.background_video ? 'section--video'}} overflow-hidden" style="{% if fields.layout_options.margin %}{{fields.layout_options.margin_settings.m_top ? 'margin-top:' ~ fields.layout_options.margin_settings.m_top ~ 'px;'}} {{fields.layout_options.margin_settings.m_right ? 'margin-right:' ~ fields.layout_options.margin_settings.m_right ~ 'px;'}} {{fields.layout_options.margin_settings.m_bottom ? 'margin-bottom:' ~ fields.layout_options.margin_settings.m_bottom ~ 'px;'}} {{fields.layout_options.margin_settings.m_left ? 'margin-left:' ~ fields.layout_options.margin_settings.m_left ~ 'px;'}}{% endif %} {% if fields.layout_options.padding %} {{fields.layout_options.padding_settings.p_top ? 'padding-top:' ~ fields.layout_options.padding_settings.p_top ~ 'px;'}} {{fields.layout_options.padding_settings.p_right ? 'padding-right:' ~ fields.layout_options.padding_settings.p_right ~ 'px;'}} {{fields.layout_options.padding_settings.p_bottom ? 'padding-bottom:' ~ fields.layout_options.padding_settings.p_bottom ~ 'px;'}} {{fields.layout_options.padding_settings.p_left ? 'padding-left:' ~ fields.layout_options.padding_settings.p_left ~ 'px;'}} {% endif %} {{fields.style_options.background_color ? 'background:' ~ fields.style_options.background_color ~ ''}}">
+
+	<div class="universalContent {{fields.block_options.incoming_animation ? fields.block_options.incoming_animation}} delay-1 d-flex align-items-center justify-content-center position-relative">
 
 		{% if fields.style_options.background_video %}
 
@@ -13,25 +15,25 @@
 
 			<div class="row">
 
-				{% if fields.layout_options.layout == 'text-left' %}
+				{% if fields.layout_options.layout == 'row' %}
 
-				<div class="col-12 {{fields.media.asset_type ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center z-4 {% if fields.layout_options.row_layout == 'text-top' %} order-m-1 {% endif %} {% if fields.layout_options.row_layout == 'text-bottom' %} order-m-2 {% endif %}">
+					<div class="col-12 d-flex flex-column align-items-start justify-content-center z-4 {% if fields.layout_options.row_layout == 'text-top' %} order-1 {% endif %} {% if fields.layout_options.row_layout == 'text-bottom' %} order-2 {% endif %}">
 
-					{% if fields.content.text %}
+						{% if fields.content.text %}
 
-						<div class="universalContent__content {{ fields.content.incoming_animation ? fields.content.incoming_animation }} {{ fields.content.animation_delay ? fields.content.animation_delay }}">
-							{{fields.content.text}}
-						</div>
+							<div class="universalContent__content {{ fields.content.incoming_animation ? fields.content.incoming_animation }} {{ fields.content.animation_delay ? fields.content.animation_delay }}">
+								{{fields.content.text}}
+							</div>
 
-					{% endif %}
+						{% endif %}
 
-					{% if fields.buttons.button_left or fields.buttons.button_right %}
+						{% if fields.buttons.button_left or fields.buttons.button_right %}
 
-						<div class="d-flex mt-4 gap-3 fade-in delay-6">
+							<div class="d-flex mt-4 gap-3 {{ fields.buttons.incoming_animation ? fields.buttons.incoming_animation }} {{ fields.buttons.animation_delay ? fields.buttons.animation_delay }}">
 
-							{% if fields.buttons.button_left.url and fields.buttons.button_left.title %}
+								{% if fields.buttons.button_left.url and fields.buttons.button_left.title %}
 
-								{% include 'atoms/button.twig' with {
+									{% include 'atoms/button.twig' with {
 										'url': fields.buttons.button_left.url,
 										'title': fields.buttons.button_left.title,
 										'target': fields.button_left.target,
@@ -39,11 +41,11 @@
 									}
 								%}
 
-							{% endif %}
+								{% endif %}
 
-							{% if fields.buttons.button_right.url and fields.buttons.button_right.title %}
+								{% if fields.buttons.button_right.url and fields.buttons.button_right.title %}
 
-								{% include 'atoms/button.twig' with {
+									{% include 'atoms/button.twig' with {
 										'url': fields.buttons.button_right.url,
 										'title': fields.buttons.button_right.title,
 										'target': fields.buttons.button_right.target,
@@ -51,30 +53,79 @@
 									}
 								%}
 
-							{% endif %}
+								{% endif %}
 
-						</div>
+							</div>
 
-					{% endif %}
+						{% endif %}
 
-				</div>
+					</div>
+
+				{% endif %}
+
+
+				{% if fields.layout_options.layout == 'text-left' %}
+
+					<div class="col-12 {{fields.media.asset_type ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center z-4 {% if fields.layout_options.row_layout == 'text-top' %} order-m-1 {% endif %} {% if fields.layout_options.row_layout == 'text-bottom' %} order-m-2 {% endif %}">
+
+						{% if fields.content.text %}
+
+							<div class="universalContent__content {{ fields.content.incoming_animation ? fields.content.incoming_animation }} {{ fields.content.animation_delay ? fields.content.animation_delay }}">
+								{{fields.content.text}}
+							</div>
+
+						{% endif %}
+
+						{% if fields.buttons.button_left or fields.buttons.button_right %}
+
+							<div class="d-flex mt-4 gap-3 {{ fields.buttons.incoming_animation ? fields.buttons.incoming_animation }} {{ fields.buttons.animation_delay ? fields.buttons.animation_delay }}">
+
+								{% if fields.buttons.button_left.url and fields.buttons.button_left.title %}
+
+									{% include 'atoms/button.twig' with {
+										'url': fields.buttons.button_left.url,
+										'title': fields.buttons.button_left.title,
+										'target': fields.button_left.target,
+										'style': fields.buttons.button_left_style
+									}
+								%}
+
+								{% endif %}
+
+								{% if fields.buttons.button_right.url and fields.buttons.button_right.title %}
+
+									{% include 'atoms/button.twig' with {
+										'url': fields.buttons.button_right.url,
+										'title': fields.buttons.button_right.title,
+										'target': fields.buttons.button_right.target,
+										'style': fields.buttons.button_right_style
+									}
+								%}
+
+								{% endif %}
+
+							</div>
+
+						{% endif %}
+
+					</div>
 
 				{% endif %}
 
 				{% if fields.media.asset_type %}
 
-					<div data-module="custom-height" class="col-12 col-md-6 d-flex align-items-center justify-content-center position-relative {% if fields.layout_options.row_layout == 'text-top' %} order-m-2 mt-4 mt-md-0 {% endif %} {% if fields.layout_options.row_layout == 'text-bottom' %} order-m-1 mb-4 mb-md-0 {% endif %}">
+					<div data-module="custom-height" class="col-12 {{ row ?: 'col-md-6' }} d-flex align-items-center justify-content-center position-relative {% if fields.layout_options.row_layout == 'text-top' %} {{ row ? 'order-2 mt-4' : 'order-m-2 mt-4 mt-md-0' }} {% endif %} {% if fields.layout_options.row_layout == 'text-bottom' %} {{ row ? 'order-1 mb-4' : 'order-m-1 mb-4 mb-md-0' }} {% endif %} z-4">
 
 						{% if fields.media.image %}
 
-							<img src="{{fields.media.image.url}}" class="{{fields.media.image_shape ? fields.media.image_shape }} {{fields.media.incoming_animation ? fields.media.incoming_animation }} {{fields.media.animation_delay ? fields.media.animation_delay }} {{fields.media.filter}} cover w-100 h-auto"/>
+							<img src="{{fields.media.image.url}}" class="{{fields.media.image_shape ? fields.media.image_shape }} {{fields.media.incoming_animation ? fields.media.incoming_animation }} {{fields.media.animation_delay ? fields.media.animation_delay }} {{fields.media.filter}} cover w-100 h-auto" {{fields.media.border_radius ? 'style="border-radius:' ~ fields.media.border_radius ~ 'px"' }}/>
 
 						{% endif %}
 
 
 						{% if fields.media.video %}
 
-							<video src="{{fields.media.video}}" class="{{fields.media.image_shape ? fields.media.image_shape }} {{fields.media.incoming_animation ? fields.media.incoming_animation }} {{fields.media.animation_delay ? fields.media.animation_delay }} {{fields.media.filter}} universalContent__video cover w-100 h-auto" {{fields.media.video_options.mute ? 'muted'}} {{fields.media.video_options.loop ? 'loop'}} {{fields.media.video_options.autoplay ? 'autoplay'}} {{fields.media.video_options.controls ? 'controls'}} playsinline></video>
+							<video src="{{fields.media.video}}" class="{{fields.media.image_shape ? fields.media.image_shape }} {{fields.media.incoming_animation ? fields.media.incoming_animation }} {{fields.media.animation_delay ? fields.media.animation_delay }} {{fields.media.filter}} universalContent__video cover w-100 h-auto" {{fields.media.video_options.mute ? 'muted'}} {{fields.media.video_options.loop ? 'loop'}} {{fields.media.video_options.autoplay ? 'autoplay'}} {{fields.media.video_options.controls ? 'controls'}} playsinline {{fields.media.border_radius ? 'style="border-radius:' ~ fields.media.border_radius ~ 'px"' }}></video>
 
 						{% endif %}
 
@@ -96,23 +147,23 @@
 
 				{% if fields.layout_options.layout == 'text-right' %}
 
-				<div class="col-12 {{fields.media.asset_type ? 'col-md-6 mt-4 mt-md-0' }} d-flex flex-column align-items-start justify-content-center z-4 {% if fields.layout_options.row_layout == 'text-top' %} order-m-1 {% endif %} {% if fields.layout_options.row_layout == 'text-bottom' %} order-m-2 {% endif %}">
+					<div class="col-12 {{fields.media.asset_type ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center z-4 {% if fields.layout_options.row_layout == 'text-top' %} order-m-1 {% endif %} {% if fields.layout_options.row_layout == 'text-bottom' %} order-m-2 {% endif %}">
 
-					{% if fields.content.text %}
+						{% if fields.content.text %}
 
-						<div class="universalContent__content {{ fields.content.incoming_animation ? fields.content.incoming_animation }} {{ fields.content.animation_delay ? fields.content.animation_delay }}">
-							{{fields.content.text}}
-						</div>
+							<div class="universalContent__content {{ fields.content.incoming_animation ? fields.content.incoming_animation }} {{ fields.content.animation_delay ? fields.content.animation_delay }}">
+								{{fields.content.text}}
+							</div>
 
-					{% endif %}
+						{% endif %}
 
-					{% if fields.buttons.button_left or fields.buttons.button_right %}
+						{% if fields.buttons.button_left or fields.buttons.button_right %}
 
-						<div class="d-flex mt-4 gap-3 fade-in delay-6">
+							<div class="d-flex mt-4 gap-3 {{ fields.buttons.incoming_animation ? fields.buttons.incoming_animation }} {{ fields.buttons.animation_delay ? fields.buttons.animation_delay }}">
 
-							{% if fields.buttons.button_left.url and fields.buttons.button_left.title %}
+								{% if fields.buttons.button_left.url and fields.buttons.button_left.title %}
 
-								{% include 'atoms/button.twig' with {
+									{% include 'atoms/button.twig' with {
 										'url': fields.buttons.button_left.url,
 										'title': fields.buttons.button_left.title,
 										'target': fields.button_left.target,
@@ -120,11 +171,11 @@
 									}
 								%}
 
-							{% endif %}
+								{% endif %}
 
-							{% if fields.buttons.button_right.url and fields.buttons.button_right.title %}
+								{% if fields.buttons.button_right.url and fields.buttons.button_right.title %}
 
-								{% include 'atoms/button.twig' with {
+									{% include 'atoms/button.twig' with {
 										'url': fields.buttons.button_right.url,
 										'title': fields.buttons.button_right.title,
 										'target': fields.buttons.button_right.target,
@@ -132,13 +183,13 @@
 									}
 								%}
 
-							{% endif %}
+								{% endif %}
 
-						</div>
+							</div>
 
-					{% endif %}
+						{% endif %}
 
-				</div>
+					</div>
 
 				{% endif %}
 
