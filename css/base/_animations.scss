@@ -1,4 +1,4 @@
-.section--focussed, .section--first, nav {
+.section--hero, .section--focussed, nav {
 
   .fade-in-top {
     -webkit-animation: fade-in-top 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
@@ -74,6 +74,18 @@
   
   .delay-5 {
     animation-delay: 1s;
+  }
+
+  .delay-6 {
+    animation-delay: 1.5s;
+  }
+
+  .delay-7 {
+    animation-delay: 2s;
+  }
+
+  .delay-8 {
+    animation-delay: 2.5s;
   }
 
 }

@@ -22,14 +22,10 @@
     }
 
     &__image {
-        width: px(600);
-        height: px(600);
+        width: 100%;
+        height: auto;
         clip-path: circle(50% at 50% 50%);
-
-        @include to(md) {
-            width: px(300);
-            height: px(300);
-        }
+        aspect-ratio: 1;
     }
 
     &__wrapper {

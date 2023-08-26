@@ -1,0 +1,23 @@
+.universalContent {
+    height: auto;
+    min-height: 100vh;
+    transition: opacity 0.4s ease;
+
+    &__content {
+        max-width: px(750);
+    }
+
+    &__wrapper {
+        height: 100vh;
+    }
+
+    &__video {
+        max-height: 100vh;
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+    }
+
+}

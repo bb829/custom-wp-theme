@@ -8,6 +8,11 @@ html {
   overflow-x: hidden;
 }
 
+.circle {
+  clip-path: circle(50% at 50% 50%);
+  aspect-ratio: 1;
+}
+
 .blur {
   filter: blur(10px);
 }
@@ -20,17 +25,28 @@ html {
   border-color: var(--secondary-color);
 }
 
+.z-1 {
+  z-index: 1;
+}
+
+.z-2 {
+  z-index: 2;
+}
+
+.z-3 {
+  z-index: 3;
+}
+
 .z-4 {
   z-index: 4;
 }
 
-.z-9 {
-  z-index: 9;
+.z-bowser {
+  z-index: 99999;
 }
 
-.grey {
+.gray {
   -webkit-filter: grayscale(100%);
-  /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
 }
 
@@ -60,4 +76,13 @@ html {
 
 .rounded-40 {
   border-radius: px(40);
+}
+
+@include to(md) {
+  .order-m-1 {
+    order: 1;
+  }
+  .order-m-2 {
+    order: 2;
+  }
 }

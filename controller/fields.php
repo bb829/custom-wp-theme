@@ -10,27 +10,165 @@ add_action('acf/init', function () use ($banner) {
     acf_add_local_field_group($banner->build());
 });
 
-$hero = new StoutLogic\AcfBuilder\FieldsBuilder('hero');
-$hero
-    ->addAccordion('hero', [
-        'label' => 'Hero',
-        'layout' => 'block'
+$universal_content = new StoutLogic\AcfBuilder\FieldsBuilder('universal_content');
+$universal_content
+    ->addAccordion('universal_content', [
+        'label' => 'Universal content',
+        'layout' => 'block',
+        'wrapper' => [
+            'width' => '100%'
+        ]
     ])
-    ->addSelect('animation', [
-        'label' => 'Animation',
+    ->addGroup('block_options')
+    ->addTrueFalse('is_hero', [
+        'label' => 'Is hero?',
+        'wrapper' => [
+            'width' => '50%'
+        ]
+    ])
+    ->addSelect('incoming_animation', [
+        'label' => 'Incoming animation',
         'required' => 0,
         'choices' => [
-            'lady-summer' => 'Lady Summer',
-            'carrots' => 'Carrots',
-            'rocket' => 'Rocket'
+            'fade-in' => 'Fade in',
+            'fade-in-top' => 'Fade in top',
+            'fade-in-right' => 'Fade in right',
+            'fade-in-bottom' => 'Fade in bottom',
+            'fade-in-left' => 'Fade in left'
         ],
         'wrapper' => [
             'width' => '50%',
         ],
         'allow_null' => 1,
-        'multiple' => 0,
-        'return_format' => 'value',
-        'placeholder' => '',
+    ])
+    ->endGroup()
+    ->addGroup('layout_options')
+        ->addTrueFalse('padding', [
+            'label' => 'Custom padding?',
+            'wrapper' => [
+                'width' => '50%'
+            ]
+        ])
+        ->addTrueFalse('margin', [
+            'label' => 'Custom margin?',
+            'wrapper' => [
+                'width' => '50%'
+            ]
+        ])
+        ->addGroup('padding_settings', [
+            'wrapper' => [
+                'width' => '100%'
+            ]
+        ])
+        ->conditional('padding', '==', '1')
+        ->addNumber('p_top', [
+            'label' => 'Padding top',
+            'wrapper' => [
+              'width' => '25%'
+            ],
+            'min' => '0',
+            'max' => '100'
+        ])
+        ->addNumber('p_right', [
+            'label' => 'Padding right',
+            'wrapper' => [
+                'width' => '25%'
+            ],
+            'min' => '0',
+            'max' => '100'
+        ])
+        ->addNumber('p_bottom', [
+            'label' => 'Padding bottom',
+            'wrapper' => [
+                'width' => '25%'
+            ],
+            'min' => '0',
+            'max' => '100'
+        ])
+        ->addNumber('p_left', [
+            'label' => 'Padding left',
+            'wrapper' => [
+                'width' => '25%'
+            ],
+            'min' => '0',
+            'max' => '100'
+        ])
+        ->endGroup()
+        ->addGroup('margin_settings', [
+            'wrapper' => [
+                'width' => '100%'
+            ]
+        ])
+        ->conditional('margin', '==', '1')
+        ->addNumber('m_top', [
+            'label' => 'Margin top',
+            'wrapper' => [
+              'width' => '25%'
+            ],
+            'min' => '0',
+            'max' => '100'
+        ])
+        ->addNumber('m_right', [
+            'label' => 'Margin right',
+            'wrapper' => [
+                'width' => '25%'
+            ],
+            'min' => '0',
+            'max' => '100'
+        ])
+        ->addNumber('m_bottom', [
+            'label' => 'Margin bottom',
+            'wrapper' => [
+                'width' => '25%'
+            ],
+            'min' => '0',
+            'max' => '100'
+        ])
+        ->addNumber('m_left', [
+            'label' => 'Margin left',
+            'wrapper' => [
+                'width' => '25%'
+            ],
+            'min' => '0',
+            'max' => '100'
+        ])
+        ->endGroup()
+        ->addSelect('layout', [
+            'label' => 'Layout',
+            'required' => 0,
+            'choices' => [
+                'text-left' => 'Text left, image right',
+                'text-right' => 'Text right, image left'
+            ],
+            'wrapper' => [
+                'width' => '50%',
+            ],
+            'allow_null' => 0,
+        ])
+        ->addSelect('row_layout', [
+            'label' => 'Mobile layout',
+            'required' => 0,
+            'choices' => [
+                'text-top' => 'Text top, media bottom',
+                'text-bottom' => 'Text bottom, media top',
+            ],
+            'wrapper' => [
+                'width' => '50%',
+            ],
+            'allow_null' => 0,
+        ])
+    ->endGroup()
+    ->addGroup('style_options')
+    ->addColorPicker('background_color', [
+        'label' => 'Background color',
+        'required' => 0,
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'conditional_logic' => [],
+        'enable_opacity' => 0,
+        'return_format' => 'string',
+        'default_value' => '',
     ])
     ->addSelect('font_color', [
         'label' => 'Font color',
@@ -47,25 +185,245 @@ $hero
         ],
         'return_format' => 'value',
     ])
-    ->addColorPicker('background_color', [
-        'label' => 'Background color',
-        'required' => 0,
-        'wrapper' => [
-            'width' => '50%',
-        ],
-        'conditional_logic' => [],
-        'enable_opacity' => 0,
-        'return_format' => 'string',
-        'default_value' => '',
-    ])
     ->addText('background_video', [
         'label' => 'Background video',
         'required' => 0,
         'wrapper' => [
-            'width' => '50%'
+            'width' => '100%'
         ],
     ])
-    ->addWysiwyg('content')
+    ->endGroup()
+    ->addGroup('content', [
+        'wrapper' => [
+            'width' => '60%'
+        ]
+    ])
+    ->addWysiwyg('text')
+    ->addSelect('incoming_animation', [
+        'label' => 'Incoming animation',
+        'required' => 0,
+        'choices' => [
+            'fade-in' => 'Fade in',
+            'fade-in-top' => 'Fade in top',
+            'fade-in-right' => 'Fade in right',
+            'fade-in-bottom' => 'Fade in bottom',
+            'fade-in-left' => 'Fade in left',
+            'scale-in-center' => 'Scale in center'
+
+        ],
+        'allow_null' => 1,
+    ])
+    ->addSelect('animation_delay', [
+        'label' => 'Animation delay',
+        'required' => 0,
+        'choices' => [
+            'delay-2' => '400ms',
+            'delay-3' => '600ms',
+            'delay-4' => '800ms',
+            'delay-5' => '1000ms',
+            'delay-6' => '1500ms',
+            'delay-7' => '2000ms',
+            'delay-8' => '2500ms',
+        ],
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'allow_null' => 1,
+    ])
+    ->endGroup()
+    ->addGroup('media', [
+        'wrapper' => [
+            'width' => '40%'
+        ]
+    ])
+    ->addSelect('asset_type', [
+        'label' => 'Media type',
+        'required' => 0,
+        'choices' => [
+            '--html' => 'HTML',
+            '--image' => 'Image',
+            '--video' => 'Video',
+        ],
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'allow_null' => 1,
+        'multiple' => 0,
+        'return_format' => 'value',
+        'placeholder' => '',
+    ])
+    ->addImage('image', [
+        'label' => 'Image',
+        'wrapper' => [
+            'width' => '100%'
+        ]
+    ])
+    ->conditional('asset_type', '==', '--image')
+    ->addUrl('video', [
+        'label' => 'Video',
+        'wrapper' => [
+            'width' => '100%'
+        ]
+    ])
+    ->conditional('asset_type', '==', '--video')
+    ->addGroup('video_options', [
+        'label' => 'Video options'
+    ])
+    ->conditional('asset_type', '==', '--video')
+    ->addTrueFalse('autoplay', [
+        'label' => 'Autoplay',
+        'wrapper' => [
+            'width' => '50%'
+        ]
+    ])
+    ->addTrueFalse('mute', [
+        'label' => 'Mute',
+        'wrapper' => [
+            'width' => '50%'
+        ]
+    ])
+    ->addTrueFalse('loop', [
+        'label' => 'Loop',
+        'wrapper' => [
+            'width' => '50%'
+        ]
+    ])
+    ->addTrueFalse('controls', [
+        'label' => 'Controls',
+        'wrapper' => [
+            'width' => '50%'
+        ]
+    ])
+    ->endGroup()
+    ->addRepeater('html', [
+         'label' => 'Multi layered html',
+         'required' => 0,
+         'wrapper' => [
+           'width' => '100%'
+         ],
+        'max' => 3,
+        'layout' => 'block',
+        'button_label' => '',
+    ])
+     ->conditional('asset_type', '==', '--html')
+    ->addTextarea('html_code', [
+        'label' => 'Layer'
+    ])
+    ->addRange('layer_width', [
+        'label' => 'Width (%)',
+        'min' => '0',
+        'max' => '100',
+    ])
+    // ->addSelect('animation', [
+    //     'label' => 'Animation',
+    //     'required' => 0,
+    //     'choices' => [
+    //         'vibrate-1' => 'Vibrate',
+    //         'vibrate-1-reverse' => 'Vibrate reverse',
+    //     ],
+    //     'wrapper' => [
+    //         'width' => '100%',
+    //     ],
+    //     'allow_null' => 1,
+    // ])
+    ->addSelect('incoming_animation', [
+        'label' => 'Incoming animation',
+        'required' => 0,
+        'choices' => [
+            'fade-in' => 'Fade in',
+            'fade-in-top' => 'Fade in top',
+            'fade-in-right' => 'Fade in right',
+            'fade-in-bottom' => 'Fade in bottom',
+            'fade-in-left' => 'Fade in left',
+            'scale-in-center' => 'Scale in center'
+
+        ],
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'allow_null' => 1,
+    ])
+    ->addSelect('animation_delay', [
+        'label' => 'Animation delay',
+        'required' => 0,
+        'choices' => [
+            'delay-2' => '400ms',
+            'delay-3' => '600ms',
+            'delay-4' => '800ms',
+            'delay-5' => '1000ms',
+            'delay-6' => '1500ms',
+            'delay-7' => '2000ms',
+            'delay-8' => '2500ms',
+        ],
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'allow_null' => 1,
+    ])
+    ->endRepeater()
+    ->addSelect('image_shape', [
+        'label' => 'Shape',
+        'required' => 0,
+        'choices' => [
+            'circle' => 'Circle'
+        ],
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'allow_null' => 1,
+    ])
+    ->conditional('asset_type', '==', '--image')
+        ->or('asset_type', '==', '--video')
+    ->addSelect('filter', [
+        'label' => 'CSS filter',
+        'required' => 0,
+        'choices' => [
+            'gray' => 'Grayscale'
+        ],
+        'wrapper' => [
+            'width' => '100%',
+          ],
+          'allow_null' => 1,
+     ])
+     ->conditional('asset_type', '==', '--image')
+        ->or('asset_type', '==', '--video')
+    ->addSelect('incoming_animation', [
+        'label' => 'Incoming animation',
+        'required' => 0,
+        'choices' => [
+            'fade-in' => 'Fade in',
+            'fade-in-top' => 'Fade in top',
+            'fade-in-right' => 'Fade in right',
+            'fade-in-bottom' => 'Fade in bottom',
+            'fade-in-left' => 'Fade in left',
+            'scale-in-center' => 'Scale in center'
+
+        ],
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'allow_null' => 1,
+    ])
+    ->conditional('asset_type', '!=', '--html')
+    ->addSelect('animation_delay', [
+        'label' => 'Animation delay',
+        'required' => 0,
+        'choices' => [
+            'delay-2' => '400ms',
+            'delay-3' => '600ms',
+            'delay-4' => '800ms',
+            'delay-5' => '1000ms',
+            'delay-6' => '1500ms',
+            'delay-7' => '2000ms',
+            'delay-8' => '2500ms',
+        ],
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'allow_null' => 1,
+    ])
+    ->conditional('asset_type', '!=', '--html')
+    ->endGroup()
     ->addGroup('buttons')
     ->addLink('button_left', [
         'wrapper' => [
@@ -111,10 +469,10 @@ $hero
     ])
 
     ->endGroup()
-    ->setLocation('block', '==', 'acf/hero');
+    ->setLocation('block', '==', 'acf/universal-content');
 
-add_action('acf/init', function () use ($hero) {
-    acf_add_local_field_group($hero->build());
+add_action('acf/init', function () use ($universal_content) {
+    acf_add_local_field_group($universal_content->build());
 });
 
 $textImage = new StoutLogic\AcfBuilder\FieldsBuilder('text_and_image');

@@ -1,0 +1,149 @@
+<section {{ fields.block_options.is_hero ?: 'data-inviewport="no"' }} class="section {{fields.style_options.font_color ? fields.style_options.font_color}} {{fields.block_options.is_hero ? 'section--hero'}} overflow-hidden" style="{% if fields.layout_options.margin %}{{fields.layout_options.margin_settings.m_top ? 'margin-top:' ~ fields.layout_options.margin_settings.m_top ~ 'px;'}} {{fields.layout_options.margin_settings.m_right ? 'margin-right:' ~ fields.layout_options.margin_settings.m_right ~ 'px;'}} {{fields.layout_options.margin_settings.m_bottom ? 'margin-bottom:' ~ fields.layout_options.margin_settings.m_bottom ~ 'px;'}} {{fields.layout_options.margin_settings.m_left ? 'margin-left:' ~ fields.layout_options.margin_settings.m_left ~ 'px;'}}{% endif %} {% if fields.layout_options.padding %} {{fields.layout_options.padding_settings.p_top ? 'padding-top:' ~ fields.layout_options.padding_settings.p_top ~ 'px;'}} {{fields.layout_options.padding_settings.p_right ? 'padding-right:' ~ fields.layout_options.padding_settings.p_right ~ 'px;'}} {{fields.layout_options.padding_settings.p_bottom ? 'padding-bottom:' ~ fields.layout_options.padding_settings.p_bottom ~ 'px;'}} {{fields.layout_options.padding_settings.p_left ? 'padding-left:' ~ fields.layout_options.padding_settings.p_left ~ 'px;'}} {% endif %} {{fields.style_options.background_color ? 'background:' ~ fields.style_options.background_color ~ ''}}">
+
+	<div class="universalContent {{fields.block_options.incoming_animation ? fields.block_options.incoming_animation}} delay-1 d-flex align-items-center justify-content-center">
+
+		{% if fields.style_options.background_video %}
+
+			<div class="textImage__videoOverlay position-absolute w-100 h-100 top-0 bottom-0 left-0 right-0"></div>
+			<video class="w-100 h-100 position-absolute top-0 end-0 bottom-0 start-0 cover object-center grey" src="{{fields.style_options.background_video}}" autoplay muted playsinline nocontrols loop></video>
+
+		{% endif %}
+
+		<div class="container">
+
+			<div class="row">
+
+				{% if fields.layout_options.layout == 'text-left' %}
+
+				<div class="col-12 {{fields.media.asset_type ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center z-4 {% if fields.layout_options.row_layout == 'text-top' %} order-m-1 {% endif %} {% if fields.layout_options.row_layout == 'text-bottom' %} order-m-2 {% endif %}">
+
+					{% if fields.content.text %}
+
+						<div class="universalContent__content {{ fields.content.incoming_animation ? fields.content.incoming_animation }} {{ fields.content.animation_delay ? fields.content.animation_delay }}">
+							{{fields.content.text}}
+						</div>
+
+					{% endif %}
+
+					{% if fields.buttons.button_left or fields.buttons.button_right %}
+
+						<div class="d-flex mt-4 gap-3 fade-in delay-6">
+
+							{% if fields.buttons.button_left.url and fields.buttons.button_left.title %}
+
+								{% include 'atoms/button.twig' with {
+										'url': fields.buttons.button_left.url,
+										'title': fields.buttons.button_left.title,
+										'target': fields.button_left.target,
+										'style': fields.buttons.button_left_style
+									}
+								%}
+
+							{% endif %}
+
+							{% if fields.buttons.button_right.url and fields.buttons.button_right.title %}
+
+								{% include 'atoms/button.twig' with {
+										'url': fields.buttons.button_right.url,
+										'title': fields.buttons.button_right.title,
+										'target': fields.buttons.button_right.target,
+										'style': fields.buttons.button_right_style
+									}
+								%}
+
+							{% endif %}
+
+						</div>
+
+					{% endif %}
+
+				</div>
+
+				{% endif %}
+
+				{% if fields.media.asset_type %}
+
+					<div data-module="custom-height" class="col-12 col-md-6 d-flex align-items-center justify-content-center position-relative {% if fields.layout_options.row_layout == 'text-top' %} order-m-2 mt-4 mt-md-0 {% endif %} {% if fields.layout_options.row_layout == 'text-bottom' %} order-m-1 mb-4 mb-md-0 {% endif %}">
+
+						{% if fields.media.image %}
+
+							<img src="{{fields.media.image.url}}" class="{{fields.media.image_shape ? fields.media.image_shape }} {{fields.media.incoming_animation ? fields.media.incoming_animation }} {{fields.media.animation_delay ? fields.media.animation_delay }} {{fields.media.filter}} cover w-100 h-auto"/>
+
+						{% endif %}
+
+
+						{% if fields.media.video %}
+
+							<video src="{{fields.media.video}}" class="{{fields.media.image_shape ? fields.media.image_shape }} {{fields.media.incoming_animation ? fields.media.incoming_animation }} {{fields.media.animation_delay ? fields.media.animation_delay }} {{fields.media.filter}} universalContent__video cover w-100 h-auto" {{fields.media.video_options.mute ? 'muted'}} {{fields.media.video_options.loop ? 'loop'}} {{fields.media.video_options.autoplay ? 'autoplay'}} {{fields.media.video_options.controls ? 'controls'}} playsinline></video>
+
+						{% endif %}
+
+						{% if fields.media.html %}
+
+							{% for html in fields.media.html %}
+
+								{% set first = loop.index == 1 %}
+
+								<div {{first ?: 'data-js-bind="child"'}} class="z-{{loop.index}} {{first ? 'position-relative' : 'position-absolute'}} {{html.incoming_animation ? html.incoming_animation}} {{html.animation_delay ? html.animation_delay}} {{html.animation ? html.animation}} h-auto" {{html.layer_width ? 'style="width:' ~ html.layer_width ~ '%"' : 'style="width: 100%;"'}}>{{html.html_code}}</div>
+
+							{% endfor %}
+
+						{% endif %}
+
+					</div>
+
+				{% endif %}
+
+				{% if fields.layout_options.layout == 'text-right' %}
+
+				<div class="col-12 {{fields.media.asset_type ? 'col-md-6 mt-4 mt-md-0' }} d-flex flex-column align-items-start justify-content-center z-4 {% if fields.layout_options.row_layout == 'text-top' %} order-m-1 {% endif %} {% if fields.layout_options.row_layout == 'text-bottom' %} order-m-2 {% endif %}">
+
+					{% if fields.content.text %}
+
+						<div class="universalContent__content {{ fields.content.incoming_animation ? fields.content.incoming_animation }} {{ fields.content.animation_delay ? fields.content.animation_delay }}">
+							{{fields.content.text}}
+						</div>
+
+					{% endif %}
+
+					{% if fields.buttons.button_left or fields.buttons.button_right %}
+
+						<div class="d-flex mt-4 gap-3 fade-in delay-6">
+
+							{% if fields.buttons.button_left.url and fields.buttons.button_left.title %}
+
+								{% include 'atoms/button.twig' with {
+										'url': fields.buttons.button_left.url,
+										'title': fields.buttons.button_left.title,
+										'target': fields.button_left.target,
+										'style': fields.buttons.button_left_style
+									}
+								%}
+
+							{% endif %}
+
+							{% if fields.buttons.button_right.url and fields.buttons.button_right.title %}
+
+								{% include 'atoms/button.twig' with {
+										'url': fields.buttons.button_right.url,
+										'title': fields.buttons.button_right.title,
+										'target': fields.buttons.button_right.target,
+										'style': fields.buttons.button_right_style
+									}
+								%}
+
+							{% endif %}
+
+						</div>
+
+					{% endif %}
+
+				</div>
+
+				{% endif %}
+
+
+			</div>
+		</div>
+	</div>
+</section>

@@ -6,10 +6,10 @@ function register_blocks()
 
     acf_register_block(
         array(
-            'name' => 'hero',
-            'title' => __('Hero'),
-            'description' => __('Every websites needs a hero.'),
-            'render_callback' => 'hero_init',
+            'name' => 'universal-content',
+            'title' => __('Universal content'),
+            'description' => __('Every websites needs universal content.'),
+            'render_callback' => 'uc_init',
             'category' => 'formatting',
             'icon' => 'admin-comments',
         )
@@ -66,13 +66,13 @@ function register_blocks()
     );
 }
 
-function hero_init($block, $content = '', $is_preview = false)
+function uc_init($block, $content = '', $is_preview = false)
 {
     $context = Timber::context();
     $context['block'] = $block;
     $context['fields'] = get_fields();
     $context['is_preview'] = $is_preview;
-    Timber::render('organisms/hero.twig', $context);
+    Timber::render('organisms/universal_content.twig', $context);
 }
 
 function textimage_init($block, $content = '', $is_preview = false)

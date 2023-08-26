@@ -19,10 +19,6 @@
         }
     }
 
-    &--first {
-        padding: 0;
-    }
-
     &[data-inviewport="no"] {
         opacity: 0;
     }
@@ -49,5 +45,14 @@
 
     &--lightGrey {
         background: var(--grey-bg);
+    }
+
+
+    &--hero {
+
+        h1 {
+            font-size: var(--hero-font-size);
+        }
+
     }
 }
