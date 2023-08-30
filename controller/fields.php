@@ -190,8 +190,14 @@ $universal_content
         'label' => 'Background video',
         'required' => 0,
         'wrapper' => [
-            'width' => '100%'
+            'width' => '70%'
         ],
+    ])
+    ->addTrueFalse('video_overlay', [
+        'label' => 'Background video overlay',
+        'wrapper' => [
+            'width' => '30%'
+        ]
     ])
     ->endGroup()
     ->addGroup('content', [
