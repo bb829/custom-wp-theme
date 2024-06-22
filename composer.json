@@ -1,0 +1,6 @@
+{
+    "require": {
+        "timber/timber": "^2.2",
+        "stoutlogic/acf-builder": "^1.12"
+    }
+}

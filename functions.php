@@ -2,7 +2,8 @@
 $theme = wp_get_theme();
 define('THEME_VERSION', $theme->Version);
 
-require_once 'autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
+Timber\Timber::init();
 
 include 'controller/scripts.php';
 include 'controller/navigation.php';

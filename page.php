@@ -1,8 +1,8 @@
 <?php
 get_header();
 
-$context['post'] = new Timber\Post();
-$context['menu'] = new \Timber\Menu( 'primary-menu' );
+$context['post'] = Timber::get_post();
+$context['menu'] = Timber::get_menu('primary-menu');
 $templates = array( 'page.twig' );
 Timber::render( $templates, $context );
 
