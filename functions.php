@@ -12,6 +12,7 @@ include 'controller/blocks.php';
 include 'controller/fields.php';
 include 'controller/post-types.php';
 include 'controller/taxonomies.php';
+include 'viewmodels/cpt-top-list.php';
 
 add_theme_support('post-thumbnails');
 add_theme_support('menus');

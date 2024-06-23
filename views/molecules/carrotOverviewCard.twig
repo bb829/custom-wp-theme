@@ -2,13 +2,14 @@
 
 <div class="col-12 col-md-4 {{mid ? 'my-3 my-md-0'}}">
 
+
 	<div class="carrotOverviewCard w-100 h-100 d-flex align-items-center flex-column gap-2">
 
-		{% if carrot.thumbnail.src %}
+		{% if carrot.thumbnail %}
 
 			<div class="carrotOverviewCard__image p-3 d-flex align-items-center justify-content-center">
 
-				<img src="{{carrot.thumbnail.src}}" width="40"/>
+				<img src="{{carrot.thumbnail}}" width="40"/>
 
 			</div>
 
@@ -42,8 +43,8 @@
 		{% endif %}
 
 		{% include 'atoms/button.twig' with {
-			'url': '#',
-			'title': 'CPT Detail coming soon',
+			'url': carrot.permalink,
+			'title': 'See details',
 			'style': 'button--secondary'
 	} %}
 

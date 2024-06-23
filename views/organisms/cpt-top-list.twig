@@ -24,11 +24,11 @@
 
 			<div class="row mt-4">
 
-					{% for carrot in posts %}
+				{% for carrot in viewmodel.fetchPosts %}
 
-						{% include 'molecules/carrotOverviewCard.twig' %}
+					{% include 'molecules/carrotOverviewCard.twig' %}
 
-					{% endfor %}
+				{% endfor %}
 
 			</div>
 
@@ -40,7 +40,7 @@
 
 				{% include 'atoms/button.twig' with {
 		'url': '#',
-		'title': 'CPT overview coming soon',
+		'title': 'Browse full catalog',
 		'style': 'button--alternative',
 		'classes': 'd-inline-flex'
 		}
@@ -53,3 +53,4 @@
 	</div>
 
 </section>
+

@@ -103,12 +103,13 @@ function cpt_init($block, $content = '', $is_preview = false)
         'post__in' => get_field('cpt'),
         'orderby' => 'post__in'
     );
-    
+
     $context['posts'] = Timber::get_posts( $args );
     $context['block'] = $block;
     $context['fields'] = get_fields();
     $context['is_preview'] = $is_preview;
-    Timber::render('organisms/carrot_overview.twig', $context);
+    $context['viewmodel'] = new CptTopListViewModel();
+    Timber::render('organisms/cpt-top-list.twig', $context);
 }
 
 function form_init($block, $content = '', $is_preview = false)
