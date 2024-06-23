@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+        {% include 'organisms/navigation.twig' %}
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        {% include 'organisms/footer.twig' %}
+    </footer>
+</body>
+</html>

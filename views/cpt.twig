@@ -1,5 +1,23 @@
+{% extends 'base.twig' %}
+
 {% block content %}
 
-    {{post.content}}
+    <div class="singleCPT">
+
+    <div class="container">
+
+    <div class="row">
+
+        <div class="singleCPT__header">
+
+            <h1>{{ post.title }}</h1>
+
+            <p>{{post.excerpt}}</p>
+
+    </div>
+
+    </div>
+
+    </div>
 
 {% endblock %}

@@ -418,3 +418,14 @@ $cptOverview
 add_action('acf/init', function () use ($cptOverview) {
     acf_add_local_field_group($cptOverview->build());
 });
+
+$theme_options = new StoutLogic\AcfBuilder\FieldsBuilder('theme_options');
+$theme_options
+    ->addText('site_logo', [
+        'label' => 'Site Logo',
+    ])
+    ->setLocation('options_page', '==', 'theme-options');
+
+add_action('acf/init', function() use ($theme_options) {
+    acf_add_local_field_group($theme_options->build());
+});

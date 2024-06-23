@@ -7,8 +7,8 @@ function register_carrots() {
         'menu_icon'          => 'dashicons-carrot',
         'show_in_rest'       => true,
         'query_var'          => true,
-        'rewrite'            => [ 'slug' => 'carrot' ],
-        'has_archive'        => false,
+        'rewrite'            => [ 'slug' => 'carrots' ],
+        'has_archive'        => true,
         'hierarchical'       => false,
         'supports' => array('title', 'editor', 'thumbnail')
     );

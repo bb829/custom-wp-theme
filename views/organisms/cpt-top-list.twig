@@ -24,7 +24,7 @@
 
 			<div class="row mt-4">
 
-				{% for carrot in viewmodel.fetchPosts %}
+				{% for cpt in viewmodel.fetchPosts %}
 
 					{% include 'molecules/carrotOverviewCard.twig' %}
 
@@ -39,7 +39,7 @@
 			<div class="text-center mt-5">
 
 				{% include 'atoms/button.twig' with {
-		'url': '#',
+		'url': '/carrots/',
 		'title': 'Browse full catalog',
 		'style': 'button--alternative',
 		'classes': 'd-inline-flex'

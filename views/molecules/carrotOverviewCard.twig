@@ -2,29 +2,25 @@
 
 <div class="col-12 col-md-4 {{mid ? 'my-3 my-md-0'}}">
 
-
 	<div class="carrotOverviewCard w-100 h-100 d-flex align-items-center flex-column gap-2">
 
-		{% if carrot.thumbnail %}
+		{% if cpt.thumbnail %}
 
 			<div class="carrotOverviewCard__image p-3 d-flex align-items-center justify-content-center">
 
-				<img src="{{carrot.thumbnail}}" width="40"/>
+				<img src="{{cpt.thumbnail}}" width="40"/>
 
 			</div>
 
 		{% endif %}
 
-		{% if carrot.post_title %}
+		{% if cpt.post_title or cpt.title %}
 
-			<h3 class="text-center m-0">{{carrot.post_title ? carrot.post_title}}</h3>
+			<h3 class="text-center m-0">{{cpt.post_title ? cpt.post_title : cpt.title}}</h3>
 
 		{% endif %}
-
-
-		{# Include specifications array for specification molecule, specifications are not correctly included in the specification array group #}
 		
-		{% for specification in carrot.specifications %}
+		{% for specification in cpt.specifications %}
 
 			{% include 'molecules/carrotSpecifications.twig' with {
 				'specification': specification
@@ -32,27 +28,21 @@
 
 		{% endfor %}
 
-		{% if carrot.content %}
+		{% if cpt.content %}
 
 			<div class="carrotOverviewCard__content text-align-center">
 
-				{{carrot.content|striptags('<p><br>')|truncate(28)}}
+				{{cpt.content|striptags('<p><br>')|truncate(28)}}
 
 			</div>
 
 		{% endif %}
 
 		{% include 'atoms/button.twig' with {
-			'url': carrot.permalink,
+			'url': cpt.permalink,
 			'title': 'See details',
 			'style': 'button--secondary'
 	} %}
-
-		{# {% include 'atoms/button.twig' with {
-			'url': carrot.link,
-			'title': 'See carrot',
-			'style': 'button--secondary'
-	} %} #}
 
 	</div>
 
