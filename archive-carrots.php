@@ -6,8 +6,10 @@ if (is_front_page()) {
 get_header($header_template);
 
 $carrots_query = new WP_Query(array('post_type' => 'carrots'));
+
 $context['posts'] = new Timber\PostQuery($carrots_query);
 $context['menu'] = Timber::get_menu('primary-menu');
+$context['theme_options'] = get_fields('option');
 $context['viewmodel'] = new CptTopListViewModel();
 
 $templates = array( 'archive-carrots.twig' );

@@ -12,5 +12,6 @@ return array(
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'StoutLogic\\AcfBuilder\\' => array($vendorDir . '/stoutlogic/acf-builder/src'),
+    'ScssPhp\\ScssPhp\\' => array($vendorDir . '/scssphp/scssphp/src'),
     'Doctrine\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib/Doctrine/Inflector'),
 );

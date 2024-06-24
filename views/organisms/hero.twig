@@ -38,25 +38,26 @@
 
 							{% if fields.buttons.button_left.url and fields.buttons.button_left.title %}
 
-								{% include 'atoms/button.twig' with {
-										'url': fields.buttons.button_left.url,
-										'title': fields.buttons.button_left.title,
-										'target': fields.button_left.target,
-										'style': fields.buttons.button_left_style
-									}
-								%}
+				{% include 'atoms/button.twig' with {
+		'url': fields.buttons.button_left.url,
+		'title': fields.buttons.button_left.title,
+		'classes': fields.buttons.button_left_style,
+		'target': fields.buttons.button_left.target
+		}
+	%}
 
 							{% endif %}
 
 							{% if fields.buttons.button_right.url and fields.buttons.button_right.title %}
 
-								{% include 'atoms/button.twig' with {
-										'url': fields.buttons.button_right.url,
-										'title': fields.buttons.button_right.title,
-										'target': fields.buttons.button_right.target,
-										'style': fields.buttons.button_right_style
-									}
-								%}
+
+				{% include 'atoms/button.twig' with {
+		'url': fields.buttons.button_right.url,
+		'title': fields.buttons.button_right.title,
+		'classes': fields.buttons.button_right_style,
+		'target': fields.buttons.button_right.target
+		}
+	%}
 
 							{% endif %}
 

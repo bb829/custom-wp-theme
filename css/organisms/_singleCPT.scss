@@ -1,5 +1,14 @@
 .singleCPT {
-    &__header {
-
+    &--primaryBG {
+        background: var(--primary-color);
     }
+
+    &--secondaryBG {
+        background: var(--secondary-color);
+    }
+
+    &--tertiaryBG {
+        background: var(--tertiary-color);
+    }
+
 }

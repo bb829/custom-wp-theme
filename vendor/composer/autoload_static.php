@@ -30,6 +30,7 @@ class ComposerStaticInitb58d03b5bca9ab8b1b0c00eb21cba5de
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'StoutLogic\\AcfBuilder\\' => 22,
+            'ScssPhp\\ScssPhp\\' => 16,
         ),
         'D' => 
         array (
@@ -61,6 +62,10 @@ class ComposerStaticInitb58d03b5bca9ab8b1b0c00eb21cba5de
         'StoutLogic\\AcfBuilder\\' => 
         array (
             0 => __DIR__ . '/..' . '/stoutlogic/acf-builder/src',
+        ),
+        'ScssPhp\\ScssPhp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/scssphp/scssphp/src',
         ),
         'Doctrine\\Inflector\\' => 
         array (

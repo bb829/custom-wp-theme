@@ -22,6 +22,16 @@
         }
     }
 
+    &--tertiary {
+        background: var(--tertiary-color);
+        color: var(--primary-color);
+        border: solid px(2) var(--tertiary-color);
+
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
+
     &--alternative {
         background: transparent;
         color: var(--secondary-color);

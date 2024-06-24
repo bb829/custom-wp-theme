@@ -2,6 +2,7 @@
     "require": {
         "timber/timber": "^2.2",
         "stoutlogic/acf-builder": "^1.12",
-        "tgmpa/tgm-plugin-activation": "^2.6"
+        "tgmpa/tgm-plugin-activation": "^2.6",
+        "scssphp/scssphp": "^1.12"
     }
 }

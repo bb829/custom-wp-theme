@@ -14,9 +14,11 @@ include 'controller/post-types.php';
 include 'controller/taxonomies.php';
 include 'controller/plugins.php';
 include 'controller/theme-options.php';
+include 'controller/scss.php';
 
 include 'viewmodels/cpt-top-list.php';
 include 'viewmodels/cpt-archive.php';
+include 'viewmodels/cpt-single.php';
 
 add_theme_support('post-thumbnails');
 add_theme_support('menus');

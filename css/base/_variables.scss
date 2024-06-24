@@ -3,16 +3,13 @@ $yellowBG: #FCC715;
 $pinkBG: #FFA7C8;
 $greyBG: #f2f2f2;
 
-$primaryColor: #fff;
-$secondaryColor: #000;
-
 //font sizes large viewports
 $primaryFontSize: px(18);
 $secondaryFontSize: px(14);
 $alternativeFontSize: px(12);
 $navigationFontSize: px(32);
 
-$heroFontSize: px(48);
+$heroFontSize: px(64);
 $h1FontSize: px(42);
 $h2FontSize: px(36);
 $h3FontSize: px(32);
@@ -38,9 +35,6 @@ $h6FontSizeAlt: px(18);
     --yellow-bg: #{$yellowBG};
     --pink-bg: #{$pinkBG};
     --grey-bg: #{$greyBG};
-
-    --primary-color: #{$primaryColor};
-    --secondary-color: #{$secondaryColor};
 
     --primary-font-size: #{$primaryFontSize};
     --secondary-font-size: #{$secondaryFontSize};

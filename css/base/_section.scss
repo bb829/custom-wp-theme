@@ -31,6 +31,18 @@
         opacity: 1;
     }
 
+    &--primaryBG {
+        background: var(--primary-color);
+    }
+
+    &--secondaryBG {
+        background: var(--secondary-color);
+    }
+
+    &--tertiaryBG {
+        background: var(--tertiary-color);
+    }
+
     &--blue {
         background: var(--blue-bg);
     }

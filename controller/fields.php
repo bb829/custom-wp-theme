@@ -419,13 +419,112 @@ add_action('acf/init', function () use ($cptOverview) {
     acf_add_local_field_group($cptOverview->build());
 });
 
-$theme_options = new StoutLogic\AcfBuilder\FieldsBuilder('theme_options');
-$theme_options
+$themeOptions = new StoutLogic\AcfBuilder\FieldsBuilder('theme_options');
+$themeOptions
+    ->addTab('general', [
+        'placement' => 'left',
+        'label' => 'General'
+    ])
     ->addText('site_logo', [
         'label' => 'Site Logo',
     ])
+    ->addGroup('site_colors', [
+        'label' => 'Site colors',
+        'layout' => 'block',
+    ])
+    ->addColorPicker('primary_color', [
+        'label' => 'Primary color',
+        'wrapper' => array (
+            'width' => '33%', // Adjust the width as necessary
+        ),
+    ])
+    ->addColorPicker('secondary_color', [
+        'label' => 'Secondary color',
+        'wrapper' => array (
+            'width' => '33%', // Adjust the width as necessary
+        ),
+    ])
+    ->addColorPicker('tertiary_color', [
+        'label' => 'Tertiary color',
+        'wrapper' => array (
+            'width' => '33%', // Adjust the width as necessary
+        ),
+    ])
+    ->endGroup()
+    ->addTab('cpt_detail', [
+        'placement' => 'left',
+        'label' => 'CTP Detail'
+    ])
+    ->addGroup('cpt_header', [
+        'label' => 'CPT Header',
+        'layout' => 'block',
+    ])
+    // THESE OPTIONS SHOULD BE ADDED TO CPT ITSELF
+    ->addTrueFalse('show_options', [
+        'label' => 'Show options',
+        'wrapper' => [
+            'width' => '100%',
+        ]
+    ])
+    ->addSelect('header_background_color', [
+        'label' => 'Header background color',
+        'choices' => [
+            'singleCPT--primaryBG' => 'Primary Color',
+            'singleCPT--secondaryBG' => 'Secondary Color',
+            'singleCPT--tertiaryBG' => 'Tertiary Color'
+        ],
+        'default_value' => [
+            'button--primary' => 'Primary'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
+    ->addColorPicker('header_image_background_color', [
+        'label' => 'Header image background color',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+    ])
+        // THESE OPTIONS SHOULD BE ADDED TO CPT ITSELF
+    ->addRepeater('buttons', [
+        'label' => 'Buttons',
+        'layout' => 'block',
+        'button_label' => 'Add button',
+        'min' => 0,
+        'max' => 2,
+        'wrapper' => [
+            'width' => '100%',
+        ]
+    ])
+    ->addLink('button', [
+        'label' => 'Header button',
+        'wrapper' => [
+            'width' => '50%',
+        ]
+    ])
+    ->addSelect('button_style', [
+        'label' => 'Button style',
+        'choices' => [
+            'button--primary' => 'Primary',
+            'button--secondary' => 'Secondary',
+            'button--tertiary' => 'Tertiary',
+            'button--alternative' => 'Alternative'
+        ],
+        'default_value' => [
+            'button--primary' => 'Primary'
+        ],
+        'return_format' => 'value',
+        'wrapper' => [
+            'width' => '50%',
+        ]
+    ])
+    ->endRepeater()
+    ->endGroup()
+
     ->setLocation('options_page', '==', 'theme-options');
 
-add_action('acf/init', function() use ($theme_options) {
-    acf_add_local_field_group($theme_options->build());
+add_action('acf/init', function() use ($themeOptions) {
+    acf_add_local_field_group($themeOptions->build());
 });

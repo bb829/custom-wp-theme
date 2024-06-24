@@ -38,11 +38,12 @@
 
 		{% endif %}
 
-		{% include 'atoms/button.twig' with {
-			'url': cpt.permalink,
-			'title': 'See details',
-			'style': 'button--secondary'
-	} %}
+				{% include 'atoms/button.twig' with {
+		'url': cpt.permalink,
+		'title': 'See CPT',
+		'classes': 'button--secondary d-inline-flex'
+		}
+	%}
 
 	</div>
 
