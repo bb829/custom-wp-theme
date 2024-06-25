@@ -1,0 +1,54 @@
+{% block content %}
+	<section class="singleCPT__header ">
+
+		<div class="p-4 {{ theme_options.cpt_header.header_background_color ? theme_options.cpt_header.header_background_color }}">
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-3">
+						<div class="singleCPT__header__thumbnail rounded p-4" {{ theme_options.cpt_header.header_image_background_color ? 'style="background-color:' ~ theme_options.cpt_header.header_image_background_color ~ ';"' }}>
+							<img src="{{viewmodel.fetchPost.thumbnail}}" alt="{{viewmodel.fetchPost.title}}" class="img-fluid">
+						</div>
+					</div>
+
+					<div class="col-9">
+						<div class="d-flex justify-content-center flex-column h-100">
+							<div class="d-flex flex-column">
+								<h1>{{ viewmodel.fetchPost.title }}</h1>
+								{{cpt_options.header_content}}
+							</div>
+
+							{% if cpt_options.buttons %}
+
+								<div class="d-flex column-gap-3 mt-4">
+									{% for button in cpt_options.buttons %}
+										{% include 'atoms/button.twig' with {
+                    'url': button.button.url, 
+                    'title': button.button.title, 
+                    'classes': button.button_style, 
+                    'target': button.button.blank, 
+                    'alt': button.button.alt
+                    
+                    } 
+                    
+                    %}
+									{% endfor %}
+
+								</div>
+                                
+							{% endif %}
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+{% endblock %}
+

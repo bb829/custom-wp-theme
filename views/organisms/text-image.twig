@@ -1,31 +1,42 @@
-<section data-inviewport="no" class="section {{fields.background_video ? 'section--bgVideo'}} {{fields.font_color ? fields.font_color}} textImage d-flex align-items-center justify-content-center position-relative" style="background: {{fields.background_color}}">
+{% set title = fields.title ? fields.title : item.title %}
+{% set content = fields.content ? fields.content : item.content %}
+{% set buttonLeft = fields.buttons.button_left ? fields.buttons.button_left : item.buttons.button_left %}
+{% set buttonRight = fields.buttons.button_right ? fields.buttons.button_right : item.buttons.button_right %}
+{% set backgroundVideo = fields.background_video ? fields.background_video : item.background_video %}
+{% set image = fields.image ? fields.image : item.image %}
+{% set layout = fields.layout ? fields.layout : item.layout %}
+{% set font_color = fields.font_color ? fields.font_color : item.font_color %}
+{% set background_color = fields.background_color ? fields.background_color : item.background_color %}
 
-	{% if fields.background_video %}
+
+<section data-inviewport="no" class="section {{backgroundVideo ? 'section--bgVideo'}} {{font_color ? font_color}} textImage d-flex align-items-center justify-content-center position-relative" style="background: {{background_color}}">
+
+	{% if backgroundVideo %}
 
 		<div class="textImage__videoOverlay position-absolute w-100 h-100"></div>
 
-		<video class="w-100 h-100 position-absolute top-0 end-0 bottom-0 start-0 cover object-center grey" src="{{fields.background_video}}" autoplay muted playsinline nocontrols></video>
+		<video class="w-100 h-100 position-absolute top-0 end-0 bottom-0 start-0 cover object-center grey" src="{{backgroundVideo}}" autoplay muted playsinline nocontrols></video>
 
 	{% endif %}
 
 	<div class="container">
 		<div class="row">
 
-			{% if fields.layout == 'text-left' %}
+			{% if layout == 'text-left' %}
 
-				<div class="col-12 textImage__content {{ fields.image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
+				<div class="col-12 textImage__content {{ image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
 					<div class="fade-in-left delay-1">
 
-						{% if fields.title %}
+						{% if title %}
 
-							<h2 class="textImage__title">{{fields.title}}</h2>
+							<h2 class="textImage__title">{{title}}</h2>
 
 						{% endif %}
 
-						{% if fields.content %}
+						{% if content %}
 
 							<div class="textImage__content">
-								{{fields.content}}
+								{{content}}
 							</div>
 
 						{% endif %}
@@ -34,30 +45,30 @@
 
 					{# <pre>{{dump(fields)}}</pre> #}
 
-					{% if fields.buttons.button_left or fields.buttons.button_right %}
+					{% if buttonLeft or buttonRight %}
 
 						<div class="d-flex mt-3 gap-3 fade-in delay-5">
 
-							{% if fields.buttons.button_left.url and fields.buttons.button_left.title %}
+							{% if buttonLeft.url and buttonRight.title %}
 
 				{% include 'atoms/button.twig' with {
-		'url': fields.buttons.button_left.url,
-		'title': fields.buttons.button_left.title,
-		'target': fields.buttons.button_left.target,
-		'classes': fields.buttons.button_left_style
+		'url': buttonLeft.url,
+		'title': buttonLeft.title,
+		'target': buttonLeft.target,
+		'classes': buttonLeft_style
 		}
 	%}
 
 
 							{% endif %}
 
-							{% if fields.buttons.button_right.url and fields.buttons.button_right.title %}
+							{% if buttonRight.url and buttonRight.title %}
 
 				{% include 'atoms/button.twig' with {
-		'url': fields.buttons.button_right.url,
-		'title': fields.buttons.button_right.title,
-		'target': fields.buttons.button_right.target,
-		'classes': fields.buttons.button_right_style
+		'url': buttonRight.url,
+		'title': buttonRight.title,
+		'target': buttonRight.target,
+		'classes': buttonRight.button_right_style
 		}
 	%}
 
@@ -71,29 +82,29 @@
 
 			{% endif %}
 
-			{% if fields.image %}
+			{% if image %}
 
 				<div class="textImage__imageWrapper col-12 col-md-6 d-flex align-items-center justify-content-center scale-in-center delay-3 mt-3 mt-md-0">
-					<img src="{{fields.image.url}}" class="textImage__image cover"/>
+					<img src="{{image.url}}" class="textImage__image cover"/>
 				</div>
 
 			{% endif %}
 
-			{% if fields.layout == 'text-right' %}
+			{% if layout == 'text-right' %}
 
-				<div class="col-12 {{ fields.image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
+				<div class="col-12 {{ image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
 					<div class="fade-in-right delay-1">
 
-						{% if fields.title %}
+						{% if title %}
 
-							<h2 class="textImage__title">{{fields.title}}</h2>
+							<h2 class="textImage__title">{{title}}</h2>
 
 						{% endif %}
 
-						{% if fields.content %}
+						{% if content %}
 
 							<div class="textImage__content">
-								{{fields.content}}
+								{{content}}
 							</div>
 							
 						{% endif %}
@@ -101,28 +112,28 @@
 
 					{# <pre>{{dump(fields)}}</pre> #}
 
-					{% if fields.buttons.button_left or fields.buttons.button_right %}
+					{% if buttonLeft or buttonRight %}
 
 						<div class="d-flex mt-4 gap-3 fade-in delay-5">
 
-							{% if fields.buttons.button_left.url and fields.buttons.button_left.title %}
+							{% if buttonLeft.url and buttonRight.title %}
 
 								{% include 'atoms/button.twig' with {
-						'url': fields.buttons.button_left.url,
-						'title': fields.buttons.button_left.title,
-						'target': fields.buttons.button_left.target,
+						'url': buttonLeft.url,
+						'title': buttonLeft.title,
+						'target': buttonLeft.target,
 						'style': fields.buttons.button_left_style
 					}
 				%}
 
 							{% endif %}
 
-							{% if fields.buttons.button_right.url and fields.buttons.button_right.title %}
+							{% if buttonRight.url and buttonRight.title %}
 
 								{% include 'atoms/button.twig' with {
-						'url': fields.buttons.button_right.url,
-						'title': fields.buttons.button_right.title,
-						'target': fields.buttons.button_right.target,
+						'url': buttonRight.url,
+						'title': buttonRight.title,
+						'target': buttonRight.target,
 						'style': fields.buttons.button_right_style
 					}
 				%}

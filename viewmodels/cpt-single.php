@@ -13,7 +13,8 @@ class CptSingleViewModel {
             'id' => get_the_ID(),
             'title' => get_the_title(),
             'content' => get_the_content(),
-            'permalink' => get_permalink()
+            'permalink' => get_permalink(),
+            'excerpt' => get_the_excerpt()
         ];
     }
 
