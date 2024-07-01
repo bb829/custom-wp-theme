@@ -20,12 +20,11 @@
 
 		</div>
 
-		{% if fields.cpt %}
+		{% if fields.cpt_select %}
 
 			<div class="row mt-4">
 
 				{% for cpt in viewmodel.fetchPosts %}
-
 					{% include 'molecules/carrotOverviewCard.twig' %}
 
 				{% endfor %}
@@ -39,7 +38,7 @@
 			<div class="text-center mt-5">
 
 				{% include 'atoms/button.twig' with {
-		'url': '/carrots/',
+		'url': viewmodel.fetchPosts[0].archive_link,
 		'title': 'Browse full catalog',
 		'classes': 'button--alternative d-inline-flex'
 		}

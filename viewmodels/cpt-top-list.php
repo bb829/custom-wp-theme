@@ -1,23 +1,26 @@
 <?php
 
-class CptTopListViewModel {
+class CptTopListViewModel
+{
 
     public $post;
-    public function __construct() {
+    public function __construct()
+    {
         $this->post = $this->post = get_post(get_the_ID());
     }
 
-    public function fetchPosts() {
+    public function fetchPosts()
+    {
         $args = [
-            'post_type' => 'carrots',
+            'post_type' => 'any',
+            'post__in' => get_field('cpt_select'),
+            'orderby' => 'post__in',
             'posts_per_page' => -1,
-            'post__in' => get_field('cpt', $this->post->ID),
-            'orderby' => 'post__in'    
         ];
-    
+
         $query = new WP_Query($args);
         $posts = [];
-    
+
         if ($query->have_posts()) {
             while ($query->have_posts()) {
                 $query->the_post();
@@ -26,14 +29,16 @@ class CptTopListViewModel {
                     'id' => get_the_ID(),
                     'title' => get_the_title(),
                     'content' => get_the_content(),
-                    'permalink' => get_permalink()
+                    'permalink' => get_permalink(),
+                    'archive_link' => get_post_type_archive_link(get_post_type())
                 ];
             }
         }
-    
-        wp_reset_postdata(); 
-    
+
+        wp_reset_postdata();
+
         return $posts;
+
     }
 }
 

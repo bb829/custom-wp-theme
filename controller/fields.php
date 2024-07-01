@@ -1,4 +1,5 @@
 <?php
+
 $banner = new StoutLogic\AcfBuilder\FieldsBuilder('banner');
 $banner
     ->addAccordion('banner')
@@ -407,9 +408,8 @@ $cptOverview
         ],
     ])
     ->addWysiwyg('content')
-    ->addRelationship('cpt', [
-        'label' => 'CPT',
-        'post_type' => 'carrots',
+    ->addRelationship('cpt_select', [
+        'label' => 'Select CPT',
         'max' => 3,
         'return_format' => 'id'
     ])
@@ -453,7 +453,7 @@ $themeOptions
     ->endGroup()
     ->addTab('cpt_detail', [
         'placement' => 'left',
-        'label' => 'CTP Detail'
+        'label' => 'CPT Detail'
     ])
     ->addGroup('cpt_header', [
         'label' => 'CPT Header',
@@ -481,181 +481,84 @@ $themeOptions
         ],
     ])
     ->endGroup()
+    ->addTab('cpt_settings', [
+        'placement' => 'left',
+        'label' => 'Custom post types',
+    ])
+    ->addRepeater('cpt', [
+        'label' => 'CPT',
+        'layout' => 'block',
+        'button_label' => 'Add CPT',
+        'min' => 0,
+        'max' => 5,
+        'wrapper' => [
+            'width' => '100%',
+        ]
+    ])
+    ->addText('cpt_name', [
+        'label' => 'CPT name',
+        'wrapper' => [
+            'width' => '50%',
+        ]
+    ])
+    ->addText('cpt_label', [
+        'label' => 'CPT label',
+        'wrapper' => [
+            'width' => '50%',
+        ]
+    ])
+    ->addRepeater('taxonomies', [
+        'label' => 'Taxonomies',
+        'layout' => 'block',
+        'button_label' => 'Add Taxonomy',
+        'min' => 0,
+        'max' => 5,
+        'wrapper' => [
+            'width' => '100%',
+        ]
+    ])
+    ->addText('taxonomy_name', [
+        'label' => 'Taxonomy name',
+        'wrapper' => [
+            'width' => '50%',
+        ]
+    ])
+    ->addText('taxonomy_label', [
+        'label' => 'Taxonomy label',
+        'wrapper' => [
+            'width' => '50%',
+        ]
+    ])
+    ->endRepeater()
+    ->endRepeater()
+    ->addTab('CPT_archive', [
+        'placement' => 'left',
+        'label' => 'CPT Archive',
+        'layout' => 'block'
+    ]);
+    $args = array(
+    '_builtin' => false // Exclude built-in post types
+);
 
+// CHECK TIMING OF EXECUTION, get_post_types() is not working now
+
+$custom_post_types = get_post_types($args, 'names', 'and');
+
+    foreach ($custom_post_types as $cpt) {
+        $themeOptions
+            ->addGroup($cpt . '_archive', [
+                'label' => $cpt . 'Archive',
+                'layout' => 'block'
+            ])
+            ->addWysiwyg('intro', [
+                'label' => 'Intro',
+                'required' => 1
+            ])
+            ->endGroup();
+    }
+    $themeOptions
     ->setLocation('options_page', '==', 'theme-options');
 
 add_action('acf/init', function () use ($themeOptions) {
     acf_add_local_field_group($themeOptions->build());
-});
-
-
-$cptOptions = new StoutLogic\AcfBuilder\FieldsBuilder('cpt_options');
-$cptOptions
-    ->addTab('cpt_header', [
-        'label' => 'CPT Header',
-        'layout' => 'block'
-    ])
-    ->addTrueFalse('show_options', [
-        'label' => 'Show options',
-        'wrapper' => [
-            'width' => '25%',
-        ]
-    ])
-    ->addWysiwyg('header_content', [
-        'label' => 'Header content',
-        'wrapper' => [
-            'width' => '100%',
-        ]
-    ])
-    ->addRepeater('options', [
-        'label' => 'CPT options',
-        'layout' => 'block',
-        'button_label' => 'Add option',
-        'min' => 0,
-        'max' => 5,
-        'wrapper' => [
-            'width' => '75%',
-        ],
-        'conditional_logic' => [
-            [
-                [
-                    'field' => 'show_options',
-                    'operator' => '==',
-                    'value' => '1',
-                ],
-            ],
-        ],
-    ])
-    ->addImage('option_image', [
-        'label' => 'Option image',
-        'wrapper' => [
-            'width' => '50%',
-        ]
-    ])
-    ->addText('option_name', [
-        'label' => 'Option name',
-        'wrapper' => [
-            'width' => '50%',
-        ]
-    ])
-    ->endRepeater()
-    ->addRepeater('buttons', [
-        'label' => 'Buttons',
-        'layout' => 'block',
-        'button_label' => 'Add button',
-        'min' => 0,
-        'max' => 2,
-        'wrapper' => [
-            'width' => '100%',
-        ]
-    ])
-    ->addLink('button', [
-        'label' => 'Header button',
-        'wrapper' => [
-            'width' => '50%',
-        ]
-    ])
-    ->addSelect('button_style', [
-        'label' => 'Button style',
-        'choices' => [
-            'button--primary' => 'Primary',
-            'button--secondary' => 'Secondary',
-            'button--tertiary' => 'Tertiary',
-            'button--alternative' => 'Alternative'
-        ],
-        'default_value' => [
-            'button--primary' => 'Primary'
-        ],
-        'return_format' => 'value',
-        'wrapper' => [
-            'width' => '50%',
-        ]
-    ])
-    ->endRepeater()
-    ->addTab('cpt_content', [
-        'label' => 'CPT Content',
-        'layout' => 'block'
-    ])
-    ->addRepeater('content', [
-        'label' => 'CPT content',
-        'layout' => 'block',
-        'button_label' => 'Add content',
-        'min' => 0,
-        'max' => 5,
-        'wrapper' => [
-            'width' => '100%',
-        ]
-    ])
-    ->addWysiwyg('text', [
-        'label' => 'Text',
-        'wrapper' => [
-            'width' => '60%',
-        ]
-    ])
-    ->addImage('image', [
-        'label' => 'Image',
-        'wrapper' => [
-            'width' => '40%',
-        ]
-    ])
-    ->addLink('button_left', [
-        'label' => 'Button left',
-        'wrapper' => [
-            'width' => '50%',
-        ]
-    ])
-    ->addSelect('button_left_style', [
-        'label' => 'Button left style',
-        'choices' => [
-            'button--primary' => 'Primary',
-            'button--secondary' => 'Secondary',
-            'button--tertiary' => 'Tertiary',
-            'button--alternative' => 'Alternative'
-        ],
-        'default_value' => [
-            'button--primary' => 'Primary'
-        ],
-        'return_format' => 'value',
-        'wrapper' => [
-            'width' => '50%',
-        ]
-    ])
-    ->addLink('button_right', [
-        'label' => 'Button right',
-        'wrapper' => [
-            'width' => '50%',
-        ]
-    ])
-    ->addSelect('button_right_style', [
-        'label' => 'Button right style',
-        'choices' => [
-            'button--primary' => 'Primary',
-            'button--secondary' => 'Secondary',
-            'button--tertiary' => 'Tertiary',
-            'button--alternative' => 'Alternative'
-        ],
-        'default_value' => [
-            'button--secondary' => 'Secondary'
-        ],
-        'return_format' => 'value',
-        'wrapper' => [
-            'width' => '50%',
-        ]
-    ])
-    ->addSelect('layout', [
-        'label' => 'Layout',
-        'required' => 0,
-        'choices' => [
-            'text-left' => 'Text left, image right',
-            'text-right' => 'Text right, image left',
-        ],
-        'wrapper' => [
-            'width' => '100%',
-        ],
-        'allow_null' => 0,
-    ])
-    ->endRepeater()
-    ->setLocation('post_type', '==', 'carrots');
-add_action('acf/init', function () use ($cptOptions) {
-    acf_add_local_field_group($cptOptions->build());
 });

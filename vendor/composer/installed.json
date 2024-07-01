@@ -140,7 +140,7 @@
                     "bin-links": false
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "ScssPhp\\ScssPhp\\": "src/"
@@ -564,7 +564,7 @@
             },
             "time": "2016-05-19T15:46:51+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "class-tgm-plugin-activation.php"

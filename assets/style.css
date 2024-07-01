@@ -12504,8 +12504,8 @@ a:hover {
 }
 
 .carrotOverviewCard {
-  border: solid 1px var(--secondary-color);
-  background: var(--primary-color);
+  border: solid 1px var(--primary-color);
+  background: var(--secondary-color);
   padding: 1.25rem 1.875rem;
 }
 .carrotOverviewCard__image {
@@ -12515,12 +12515,12 @@ a:hover {
   border-radius: 0.625rem;
 }
 .carrotOverviewCard h3, .carrotOverviewCard .h3 {
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 .carrotOverviewCard__content p {
   color: var(--primary-font-size);
   text-align: center;
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .carrotSpecifications__bar {
@@ -12549,7 +12549,7 @@ a:hover {
   }
 }
 .navigation__toggleBG {
-  background: var(--secondary-color);
+  background: var(--primary-color);
   clip-path: circle(110px at 104% -1%);
   transition: 0.6s ease;
   transition-property: clip-path;
@@ -12578,7 +12578,7 @@ a:hover {
 }
 .navigation__bar {
   height: 0.1875rem;
-  background: var(--primary-color);
+  background: var(--secondary-color);
   transition: 0.4s ease;
   transition-property: transform, opacity;
 }
@@ -12606,7 +12606,7 @@ a:hover {
   opacity: 0;
 }
 .navigation__item a {
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 .navigation__item a:hover {
   text-decoration: underline;
@@ -12646,6 +12646,7 @@ a:hover {
 
 .button {
   padding: 0.75rem 2.625rem;
+  transition: all ease 0.2s;
 }
 @media (max-width: 991px) {
   .button {
@@ -12658,13 +12659,18 @@ a:hover {
   color: var(--secondary-color);
   border: solid 0.125rem var(--primary-color);
 }
+.button--primary:hover {
+  background: transparent;
+  color: var(--primary-color);
+}
 .button--secondary {
   background: var(--secondary-color);
   color: var(--primary-color);
   border: solid 0.125rem var(--secondary-color);
 }
 .button--secondary:hover {
-  color: var(--primary-color);
+  background: transparent;
+  color: var(--secondary-color);
 }
 .button--tertiary {
   background: var(--tertiary-color);
@@ -12676,17 +12682,17 @@ a:hover {
 }
 .button--alternative {
   background: transparent;
-  color: var(--secondary-color);
-  border: solid 0.125rem var(--secondary-color);
-}
-.button--alternative:hover {
-  color: var(--secondary-color);
-}
-.section--dark .button--alternative {
-  background: transparent;
   color: var(--primary-color);
   border: solid 0.125rem var(--primary-color);
 }
-.section--dark .button--alternative a:hover {
+.button--alternative:hover {
   color: var(--primary-color);
+}
+.section--dark .button--alternative {
+  background: transparent;
+  color: var(--secondary-color);
+  border: solid 0.125rem var(--secondary-color);
+}
+.section--dark .button--alternative a:hover {
+  color: var(--secondary-color);
 }

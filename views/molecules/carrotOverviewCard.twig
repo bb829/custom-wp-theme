@@ -1,6 +1,5 @@
 {% set mid = loop.index == 2 %}
-
-<div class="col-12 col-md-4 {{mid ? 'my-3 my-md-0'}}">
+<div class="col-12 col-md-4 {{mid ? 'my-4 my-md-0'}} {{loop.index > 3 ? 'mt-4'}}">
 
 	<div class="carrotOverviewCard w-100 h-100 d-flex align-items-center flex-column gap-2">
 
@@ -41,7 +40,7 @@
 				{% include 'atoms/button.twig' with {
 		'url': cpt.permalink,
 		'title': 'See CPT',
-		'classes': 'button--secondary d-inline-flex'
+		'classes': 'button--primary d-inline-flex'
 		}
 	%}
 

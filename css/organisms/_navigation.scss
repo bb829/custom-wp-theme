@@ -15,7 +15,7 @@
     }
 
     &__toggleBG {
-        background: var(--secondary-color);
+        background: var(--primary-color);
         clip-path: circle(110px at 104% -1%);
         transition: 0.6s ease;
         transition-property: clip-path;
@@ -47,7 +47,7 @@
 
     &__bar {
         height: px(3);
-        background: var(--primary-color);
+        background: var(--secondary-color);
         transition: 0.4s ease;
         transition-property: transform, opacity;
 
@@ -88,7 +88,7 @@
         opacity: 0;
 
         a {
-            color: var(--primary-color);
+            color: var(--secondary-color);
 
             &:hover {
                 text-decoration: underline;

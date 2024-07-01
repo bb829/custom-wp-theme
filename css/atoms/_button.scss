@@ -1,5 +1,6 @@
 .button {
     padding: px(12) px(42);
+    transition: all ease 0.2s;
 
     @include to(md) {
         padding: px(12) px(24);
@@ -10,6 +11,11 @@
         background: var(--primary-color);
         color: var(--secondary-color);
         border: solid px(2) var(--primary-color);
+
+        &:hover {
+            background: transparent;
+            color: var(--primary-color);
+        }
     }
 
     &--secondary {
@@ -18,7 +24,8 @@
         border: solid px(2) var(--secondary-color);
 
         &:hover {
-            color: var(--primary-color);
+            background: transparent;
+            color: var(--secondary-color);
         }
     }
 
@@ -34,20 +41,20 @@
 
     &--alternative {
         background: transparent;
-        color: var(--secondary-color);
-        border: solid px(2) var(--secondary-color);
+        color: var(--primary-color);
+        border: solid px(2) var(--primary-color);
 
         &:hover {
-            color: var(--secondary-color);
+            color: var(--primary-color);
         }
 
         .section--dark & {
             background: transparent;
-            color: var(--primary-color);
-            border: solid px(2) var(--primary-color);
+            color: var(--secondary-color);
+            border: solid px(2) var(--secondary-color);
 
             a:hover {
-                color: var(--primary-color);
+                color: var(--secondary-color);
             }
         }
     }

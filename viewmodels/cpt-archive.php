@@ -8,8 +8,10 @@ class CptArchiveViewModel {
     }
 
     public function fetchPosts() {
+        $post_type = get_query_var('post_type');
+
         $args = [
-            'post_type' => 'carrots',
+            'post_type' => $post_type,
             'posts_per_page' => -1,
         ];
     

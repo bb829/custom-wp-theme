@@ -5,14 +5,15 @@ if (is_front_page()) {
 }
 get_header($header_template);
 
-$carrots_query = new WP_Query(array('post_type' => 'carrots'));
+$post_type = get_query_var('post_type');
+$cpt_query = new WP_Query(array('post_type' => $post_type));
 
-$context['posts'] = new Timber\PostQuery($carrots_query);
+$context['posts'] = new Timber\PostQuery($cpt_query);
 $context['menu'] = Timber::get_menu('primary-menu');
 $context['theme_options'] = get_fields('option');
-$context['viewmodel'] = new CptTopListViewModel();
+$context['viewmodel'] = new CptArchiveViewModel();
 
-$templates = array( 'archive-carrots.twig' );
+$templates = array( 'archive.twig' );
 Timber::render( $templates, $context );
 
 wp_footer();

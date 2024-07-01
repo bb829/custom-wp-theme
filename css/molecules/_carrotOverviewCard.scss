@@ -1,6 +1,6 @@
 .carrotOverviewCard {
-    border:solid 1px var(--secondary-color);
-    background: var(--primary-color);
+    border:solid 1px var(--primary-color);
+    background: var(--secondary-color);
     padding: px(20) px(30);
 
     &__image {
@@ -11,14 +11,14 @@
     }
 
     h3 {
-        color: var(--secondary-color);
+        color: var(--primary-color);
     }
 
     &__content {
         p {
             color: var(--primary-font-size);;
             text-align: center;
-            color: var(--secondary-color);
+            color: var(--primary-color);
         }
     }
 }

@@ -98,10 +98,10 @@ function cpt_init($block, $content = '', $is_preview = false)
     $context = Timber::context();
 
     $args = array(
-        'post_type' => 'carrots',
+        'post_type' => 'any',
+        'post__in' => get_field('cpt_select'),
+        'orderby' => 'post__in',
         'posts_per_page' => -1,
-        'post__in' => get_field('cpt'),
-        'orderby' => 'post__in'
     );
 
     $context['posts'] = Timber::get_posts( $args );
