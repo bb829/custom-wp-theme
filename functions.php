@@ -11,6 +11,7 @@ include 'controller/posts.php';
 include 'controller/blocks.php';
 include 'controller/fields.php';
 include 'controller/post-types.php';
+include 'controller/field-helpers.php';
 include 'controller/taxonomies.php';
 include 'controller/plugins.php';
 include 'controller/theme-options.php';
@@ -22,3 +23,9 @@ include 'viewmodels/cpt-single.php';
 
 add_theme_support('post-thumbnails');
 add_theme_support('menus');
+
+function enable_svg_upload() {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+}
+add_filter( 'upload_mimes', 'enable_svg_upload' );

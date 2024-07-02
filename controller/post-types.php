@@ -1,5 +1,5 @@
 <?php
-add_action('acf/init', 'register_dynamic_cpts');
+add_action('acf/init', 'register_dynamic_cpts', 10 , 4);
 function register_dynamic_cpts()
 {
     $cpts = get_field('cpt', 'option');

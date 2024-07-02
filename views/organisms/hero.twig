@@ -12,7 +12,7 @@
 		<div class="container py-4">
 			<div class="row">
 				<div class="col-12 {{fields.animation ? 'col-md-6' }} {{fields.image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center z-4" style="perspective:1000px;">
-					<div class="swing-in-top-fwd delay-4">
+					<div class="swing-in-top-fwd delay-2">
 
 						{% if fields.title %}
 
@@ -67,18 +67,24 @@
 
 				</div>
 
-				{% if fields.animation %}
+				{% if fields.asset_type == 'animation' %}
+
+					{% if fields.animation %}
 
 					{% include 'molecules/heroAnimation.twig' %}
 
+					{% endif %}
+
 				{% endif %}
 
-				{% if not fields.animation and fields.image %}
+				{% if fields.asset_type == 'image' %}
+					{% if fields.image %}
 
 					<div class="col-12 col-md-6 d-flex align-items-center justify-content-center scale-in-center delay-4 z-4">
 						<img src="{{fields.image.url}}" class="textImage__image cover"/>
 					</div>
 
+					{% endif %}
 				{% endif %}
 
 			</div>

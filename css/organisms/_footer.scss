@@ -1,14 +1,14 @@
 .footer {
-    background: var(--secondary-color);
+    background: var(--primary-color);
 
     span {
         font-size: var(--alternative-font-size);
-        color: var(--primary-color);
+        color: var(--secondary-color);
 
         a {
             font-size: var(--alternative-font-size);
             font-weight: 400;
-            color: var(--primary-color);
+            color: var(--secondary-color);
 
             &:hover {
                 text-decoration: underline;

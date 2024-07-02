@@ -17,6 +17,21 @@ $hero
         'label' => 'Hero',
         'layout' => 'block'
     ])
+    ->addSelect('asset_type', [
+        'label' => 'Asset type',
+        'required' => 0,
+        'choices' => [
+            'image' => 'Image',
+            'animation' => 'Animation',
+        ],
+        'default_value' => [
+            'image' => 'Image'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
     ->addSelect('animation', [
         'label' => 'Animation',
         'required' => 0,
@@ -32,6 +47,29 @@ $hero
         'multiple' => 0,
         'return_format' => 'value',
         'placeholder' => '',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'asset_type',
+                    'operator' => '==',
+                    'value' => 'animation',
+                ],
+            ],
+        ],
+    ])
+    ->addImage('image', [
+        'wrapper' => [
+            'width' => '30%'
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'asset_type',
+                    'operator' => '==',
+                    'value' => 'image',
+                ],
+            ],
+        ],
     ])
     ->addSelect('font_color', [
         'label' => 'Font color',
@@ -197,6 +235,7 @@ $textImage
         'choices' => [
             'button--primary' => 'Primary',
             'button--secondary' => 'Secondary',
+            'button--tertiary' => 'Tertiary',
             'button--alternative' => 'Alternative'
         ],
         'default_value' => [
@@ -213,6 +252,7 @@ $textImage
         'choices' => [
             'button--primary' => 'Primary',
             'button--secondary' => 'Secondary',
+            'button--tertiary' => 'Tertiary',
             'button--alternative' => 'Alternative'
         ],
         'default_value' => [
@@ -419,6 +459,10 @@ add_action('acf/init', function () use ($cptOverview) {
     acf_add_local_field_group($cptOverview->build());
 });
 
+add_action('acf/init', function () {
+
+});
+
 $themeOptions = new StoutLogic\AcfBuilder\FieldsBuilder('theme_options');
 $themeOptions
     ->addTab('general', [
@@ -435,19 +479,19 @@ $themeOptions
     ->addColorPicker('primary_color', [
         'label' => 'Primary color',
         'wrapper' => array(
-            'width' => '33%', // Adjust the width as necessary
+            'width' => '33%',
         ),
     ])
     ->addColorPicker('secondary_color', [
         'label' => 'Secondary color',
         'wrapper' => array(
-            'width' => '33%', // Adjust the width as necessary
+            'width' => '33%',
         ),
     ])
     ->addColorPicker('tertiary_color', [
         'label' => 'Tertiary color',
         'wrapper' => array(
-            'width' => '33%', // Adjust the width as necessary
+            'width' => '33%',
         ),
     ])
     ->endGroup()
@@ -530,34 +574,12 @@ $themeOptions
         ]
     ])
     ->endRepeater()
-    ->endRepeater()
-    ->addTab('CPT_archive', [
-        'placement' => 'left',
-        'label' => 'CPT Archive',
-        'layout' => 'block'
-    ]);
-    $args = array(
-    '_builtin' => false // Exclude built-in post types
-);
+    ->endRepeater();
 
-// CHECK TIMING OF EXECUTION, get_post_types() is not working now
 
-$custom_post_types = get_post_types($args, 'names', 'and');
-
-    foreach ($custom_post_types as $cpt) {
-        $themeOptions
-            ->addGroup($cpt . '_archive', [
-                'label' => $cpt . 'Archive',
-                'layout' => 'block'
-            ])
-            ->addWysiwyg('intro', [
-                'label' => 'Intro',
-                'required' => 1
-            ])
-            ->endGroup();
-    }
-    $themeOptions
+$themeOptions
     ->setLocation('options_page', '==', 'theme-options');
+
 
 add_action('acf/init', function () use ($themeOptions) {
     acf_add_local_field_group($themeOptions->build());

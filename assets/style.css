@@ -12619,16 +12619,16 @@ a:hover {
 }
 
 .footer {
-  background: var(--secondary-color);
+  background: var(--primary-color);
 }
 .footer span {
   font-size: var(--alternative-font-size);
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 .footer span a {
   font-size: var(--alternative-font-size);
   font-weight: 400;
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 .footer span a:hover {
   text-decoration: underline;

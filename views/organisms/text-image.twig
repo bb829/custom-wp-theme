@@ -1,13 +1,14 @@
 {% set title = fields.title ? fields.title : item.title %}
 {% set content = fields.content ? fields.content : item.text %}
-{% set buttonLeft = fields.buttons.button_left ? fields.buttons.button_left : item.buttons.button_left %}
-{% set buttonRight = fields.buttons.button_right ? fields.buttons.button_right : item.buttons.button_right %}
+{% set buttonLeft = fields.buttons.button_left ? fields.buttons.button_left : item.button_left %}
+{% set buttonRight = fields.buttons.button_right ? fields.buttons.button_right : item.button_right %}
 {% set backgroundVideo = fields.background_video ? fields.background_video : item.background_video %}
 {% set image = fields.image ? fields.image : item.image %}
 {% set layout = fields.layout ? fields.layout : item.layout %}
 {% set font_color = fields.font_color ? fields.font_color : item.font_color %}
 {% set background_color = fields.background_color ? fields.background_color : item.background_color %}
-
+{% set buttonLeftStyle = fields.buttons.button_left_style ? fields.buttons.button_left_style : item.button_left_style %}
+{% set buttonRightStyle = fields.buttons.button_right_style ? fields.buttons.button_right_style : item.button_right_style %}
 
 <section data-inviewport="no" class="section {{backgroundVideo ? 'section--bgVideo'}} {{font_color ? font_color}} textImage d-flex align-items-center justify-content-center position-relative" style="background: {{background_color}}">
 
@@ -42,20 +43,17 @@
 						{% endif %}
 
 					</div>
-
-					{# <pre>{{dump(fields)}}</pre> #}
-
 					{% if buttonLeft or buttonRight %}
 
 						<div class="d-flex mt-3 gap-3 fade-in delay-5">
 
-							{% if buttonLeft.url and buttonRight.title %}
+							{% if buttonLeft.url and buttonLeft.title %}
 
 				{% include 'atoms/button.twig' with {
 		'url': buttonLeft.url,
 		'title': buttonLeft.title,
 		'target': buttonLeft.target,
-		'classes': buttonLeft_style
+		'classes': buttonLeftStyle
 		}
 	%}
 
@@ -68,7 +66,7 @@
 		'url': buttonRight.url,
 		'title': buttonRight.title,
 		'target': buttonRight.target,
-		'classes': buttonRight.button_right_style
+		'classes': buttonRightStyle
 		}
 	%}
 
@@ -110,19 +108,17 @@
 						{% endif %}
 					</div>
 
-					{# <pre>{{dump(fields)}}</pre> #}
-
 					{% if buttonLeft or buttonRight %}
 
 						<div class="d-flex mt-4 gap-3 fade-in delay-5">
 
-							{% if buttonLeft.url and buttonRight.title %}
+							{% if buttonLeft.url and buttonLeft.title %}
 
 								{% include 'atoms/button.twig' with {
 						'url': buttonLeft.url,
 						'title': buttonLeft.title,
 						'target': buttonLeft.target,
-						'style': fields.buttons.button_left_style
+						'classes': buttonLeftStyle
 					}
 				%}
 
@@ -134,7 +130,7 @@
 						'url': buttonRight.url,
 						'title': buttonRight.title,
 						'target': buttonRight.target,
-						'style': fields.buttons.button_right_style
+						'classes': buttonRightStyle
 					}
 				%}
 

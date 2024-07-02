@@ -1,30 +1,36 @@
 {% extends 'base.twig' %}
 
+
 {% block content %}
+{% set archiveIntro = attribute(theme_options, cpt ~ '_archive_intro') %}
 
-    <div class="archiveCarrots">
+	<section class="section--first archiveCarrots">
 
-    <div class="container">
+		<div class="container">
 
-    <div class="row">
+			<div class="row fade-in delay-2" style="opacity: 0;">
 
-    <div class="col-12">
-        <div class="my-4">
-        <h1>Check all our sausages</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-    </div>
+				<div class="col-12">
+					<div class="my-5">
+						{{archiveIntro}}
+					</div>
+				</div>
+			</div>
 
-    {% for cpt in viewmodel.fetchPosts %}
+			<div class="row fade-in delay-4" style="opacity: 0;">
 
-        {% include 'molecules/carrotOverviewCard.twig' %}
+				{% for cpt in viewmodel.fetchPosts %}
 
-    {% endfor %}
+					{% include 'molecules/carrotOverviewCard.twig' %}
 
-    </div>
+				{% endfor %}
 
-    </div>
+			</div>
 
-    </div>
+		</div>
+ 
+	</div>
 
+</section>
 {% endblock %}
+
