@@ -6,12 +6,14 @@
 {% set image = fields.image ? fields.image : item.image %}
 {% set layout = fields.layout ? fields.layout : item.layout %}
 {% set font_color = fields.font_color ? fields.font_color : item.font_color %}
-{% set background_color = fields.background_color ? fields.background_color : item.background_color %}
+{% set background = fields.background_color ? fields.background_color : cpt_options.hero_background_color %}
 {% set buttonLeftStyle = fields.buttons.button_left_style ? fields.buttons.button_left_style : item.button_left_style %}
 {% set buttonRightStyle = fields.buttons.button_right_style ? fields.buttons.button_right_style : item.button_right_style %}
 {% set inFocus = fields.in_focus ? fields.in_focus : item.in_focus %}
+{% set font = fields.font_color ? fields.font_color : item.content_font_color %}
+{% set imageType = fields.image_type ? fields.image_type : item.content_image_type %}
 
-<section {{inFocus ?: 'data-inviewport="no"' }} class="section {{backgroundVideo ? 'section--bgVideo'}} {{inFocus ? 'section--focussed'}} {{font_color ? font_color}} textImage d-flex align-items-center justify-content-center position-relative" style="background: {{background_color}}">
+<section {{inFocus ?: 'data-inviewport="no"' }} class="section {{backgroundVideo ? 'section--bgVideo'}} {{inFocus ? 'section--focussed'}} {{background ? background}} {{font ? font}} textImage d-flex align-items-center justify-content-center position-relative" style="background: {{background_color}}">
 
 	{% if backgroundVideo %}
 
@@ -84,7 +86,7 @@
 			{% if image %}
 
 				<div class="textImage__imageWrapper col-12 col-md-6 d-flex align-items-center justify-content-center scale-in-center delay-3 mt-3 mt-md-0">
-					<img src="{{image.url}}" class="textImage__image cover"/>
+						<img src="{{image.url}}" class="textImage__image {{imageType ? imageType}} cover"/>
 				</div>
 
 			{% endif %}

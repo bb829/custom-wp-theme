@@ -3,6 +3,8 @@
 
 {% block content %}
 {% set archiveIntro = attribute(theme_options, cpt ~ '_archive_intro') %}
+{% set cardType = attribute(theme_options, cpt ~ '_archive_card_type') %}
+
 
 	<section class="section--first archiveCarrots">
 
@@ -21,7 +23,9 @@
 
 				{% for cpt in viewmodel.fetchPosts %}
 
-					{% include 'molecules/carrotOverviewCard.twig' %}
+					{% include 'molecules/carrotOverviewCard.twig' with {
+						'card_type': cardType
+					} %}
 
 				{% endfor %}
 

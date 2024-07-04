@@ -24,8 +24,20 @@
     &__image {
         width: 100%;
         height: auto;
-        clip-path: circle(50% at 50% 50%);
-        aspect-ratio: 1;
+        min-height: px(420);
+        max-height: 100vh;
+
+        &--rounded {
+            clip-path: circle(50% at 50% 50%);
+            aspect-ratio: 1;
+        }
+
+        &--squared {
+        }
+
+        &--fullHeight {
+            aspect-ratio: 9/16;
+        }
     }
 
     &__wrapper {

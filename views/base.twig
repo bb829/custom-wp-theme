@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-    {% block head %}
-    {% endblock %}
-</head>
-<body>
+	<head>
+		{% block head %}{% endblock %}
+	</head>
+	<body>
+		<main>
+			{% include 'organisms/navigation.twig' %}
 
-    <header>
-        {% include 'organisms/navigation.twig' %}
-    </header>
+			{% block content %}{% endblock %}
+		</main>
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-
-    <footer>
-        {% include 'organisms/footer.twig' %}
-    </footer>
-</body>
+		<footer>
+			{% include 'organisms/footer.twig' %}
+		</footer>
+	</body>
 </html>

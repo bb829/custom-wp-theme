@@ -13,9 +13,10 @@ add_action('acf/init', function () {
             $primaryColor = $siteColors['primary_color'];
             $secondaryColor = $siteColors['secondary_color'];
             $tertiaryColor = $siteColors['tertiary_color'];
+            $accentColor = $siteColors['accent_color'];
         }
 
-        $scssContent = ":root { --primary-color: $primaryColor; --secondary-color: $secondaryColor; --tertiary-color: $tertiaryColor;}";
+        $scssContent = ":root { --primary-color: $primaryColor; --secondary-color: $secondaryColor; --tertiary-color: $tertiaryColor; --accent-color: $accentColor;}";
 
         $scssCompiler = new Compiler();
 

@@ -31,11 +31,12 @@
 
     &--tertiary {
         background: var(--tertiary-color);
-        color: var(--primary-color);
+        color: var(--secondary-color);
         border: solid px(2) var(--tertiary-color);
 
         &:hover {
-            color: var(--primary-color);
+            background: transparent;
+            color: var(--tertiary-color);
         }
     }
 

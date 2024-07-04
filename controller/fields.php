@@ -17,6 +17,23 @@ $hero
         'label' => 'Hero',
         'layout' => 'block'
     ])
+    ->addSelect('font_color', [
+        'label' => 'Font color',
+        'required' => 0,
+        'choices' => [
+            '' => 'Default',
+            'section--primaryFont' => 'Primary Color',
+            'section--secondaryFont' => 'Secondary Color',
+            'section--tertiaryFont' => 'Tertiary Color'
+        ],
+        'default_value' => [
+            '' => 'Default'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
     ->addSelect('asset_type', [
         'label' => 'Asset type',
         'required' => 0,
@@ -41,7 +58,7 @@ $hero
             'rocket' => 'Rocket'
         ],
         'wrapper' => [
-            'width' => '50%',
+            'width' => '100%',
         ],
         'allow_null' => 1,
         'multiple' => 0,
@@ -59,7 +76,7 @@ $hero
     ])
     ->addImage('image', [
         'wrapper' => [
-            'width' => '30%'
+            'width' => '50%'
         ],
         'conditional_logic' => [
             [
@@ -71,31 +88,41 @@ $hero
             ],
         ],
     ])
-    ->addSelect('font_color', [
-        'label' => 'Font color',
+    ->addSelect('image_type', [
+        'label' => 'Image type',
         'required' => 0,
         'choices' => [
-            'section--light' => 'Primary',
-            'section--dark' => 'Secondary',
-        ],
-        'default_value' => [
-            'button--primary' => 'Primary'
+            '' => 'Default',
+            'hero__image--rounded' => 'Rounded',
+            'hero__image--squared' => 'Squared',
+            'hero__image--fullHeight' => 'Squared full height',
         ],
         'wrapper' => [
             'width' => '50%',
         ],
         'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'asset_type',
+                    'operator' => '==',
+                    'value' => 'image',
+                ],
+            ],
+        ],
     ])
-    ->addColorPicker('background_color', [
+    ->addSelect('background_color', [
         'label' => 'Background color',
-        'required' => 0,
+        'choices' => [
+            '' => 'None',
+            'section--primaryBG' => 'Primary Color',
+            'section--secondaryBG' => 'Secondary Color',
+            'section--tertiaryBG' => 'Tertiary Color'
+        ],
         'wrapper' => [
             'width' => '50%',
         ],
-        'conditional_logic' => [],
-        'enable_opacity' => 0,
-        'return_format' => 'string',
-        'default_value' => '',
+        'return_format' => 'value',
     ])
     ->addText('background_video', [
         'label' => 'Background video',
@@ -121,7 +148,8 @@ $hero
         'required' => 0,
         'choices' => [
             'button--primary' => 'Primary',
-            'button--secondary' => 'Secondary',
+            'button--secondary' => 'Secondary',            
+            'button--tertiary' => 'Tertiary',
             'button--alternative' => 'Alternative'
         ],
         'default_value' => [
@@ -138,6 +166,7 @@ $hero
         'choices' => [
             'button--primary' => 'Primary',
             'button--secondary' => 'Secondary',
+            'button--tertiary' => 'Tertiary',
             'button--alternative' => 'Alternative'
         ],
         'default_value' => [
@@ -165,22 +194,42 @@ $textImage
     ->addTrueFalse('in_focus', [
         'label' => 'In focus',
     ])
-    ->addColorPicker('background_color', [
+    ->addSelect('background_color', [
         'label' => 'Background color',
-        'required' => 0,
+        'choices' => [
+            '' => 'None',
+            'section--primaryBG' => 'Primary Color',
+            'section--secondaryBG' => 'Secondary Color',
+            'section--tertiaryBG' => 'Tertiary Color',
+            'section--accentBG' => 'Accent Color'
+        ],
         'wrapper' => [
             'width' => '50%',
         ],
-        'conditional_logic' => [],
-        'enable_opacity' => 0,
-        'return_format' => 'string',
-        'default_value' => '',
+        'return_format' => 'value',
+    ])
+    ->addSelect('font_color', [
+        'label' => 'Font color',
+        'required' => 0,
+        'choices' => [
+            '' => 'Default',
+            'section--primaryFont' => 'Primary Color',
+            'section--secondaryFont' => 'Secondary Color',
+            'section--tertiaryFont' => 'Tertiary Color'
+        ],
+        'default_value' => [
+            '' => 'Default'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
     ])
     ->addText('background_video', [
         'label' => 'Background video',
         'required' => 0,
         'wrapper' => [
-            'width' => '50%'
+            'width' => '100%'
         ],
     ])
     ->addSelect('layout', [
@@ -195,31 +244,29 @@ $textImage
         ],
         'allow_null' => 0,
     ])
-    ->addSelect('font_color', [
-        'label' => 'Font color',
-        'required' => 0,
-        'choices' => [
-            'section--light' => 'Primary',
-            'section--dark' => 'Secondary',
-        ],
-        'default_value' => [
-            'button--primary' => 'Primary'
-        ],
-        'wrapper' => [
-            'width' => '50%',
-        ],
-        'return_format' => 'value',
-    ])
-
     ->addWysiwyg('content', [
         'wrapper' => [
-            'width' => '70%'
+            'width' => '100%'
         ]
     ])
     ->addImage('image', [
         'wrapper' => [
-            'width' => '30%'
+            'width' => '70%'
         ]
+    ])
+    ->addSelect('image_type', [
+        'label' => 'Image type',
+        'required' => 0,
+        'choices' => [
+            '' => 'Default',
+            'textImage__image--rounded' => 'Rounded',
+            'textImage__image--squared' => 'Squared',
+            'textImage__image--fullHeight' => 'Squared full height',
+        ],
+        'wrapper' => [
+            'width' => '30%',
+        ],
+        'return_format' => 'value',
     ])
     ->addGroup('buttons')
     ->addLink('button_left', [
@@ -432,16 +479,30 @@ $cptOverview
         'label' => 'CPT overview',
         'layout' => 'block'
     ])
-    ->addColorPicker('background_color', [
+    ->addSelect('card_type', [
+        'label' => 'Card type',
+        'choices' => [
+            'small-image' => 'Small image',
+            'large-image' => 'Large image',
+        ],
+        'default' => 'small-image',
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'return_format' => 'value',
+    ])
+    ->addSelect('background_color', [
         'label' => 'Background color',
-        'required' => 0,
+        'choices' => [
+            '' => 'None',
+            'section--primaryBG' => 'Primary Color',
+            'section--secondaryBG' => 'Secondary Color',
+            'section--tertiaryBG' => 'Tertiary Color'
+        ],
         'wrapper' => [
             'width' => '50%',
         ],
-        'conditional_logic' => [],
-        'enable_opacity' => 0,
-        'return_format' => 'string',
-        'default_value' => '',
+        'return_format' => 'value',
     ])
     ->addText('background_video', [
         'label' => 'Background video url',
@@ -451,10 +512,50 @@ $cptOverview
         ],
     ])
     ->addWysiwyg('content')
+    ->addSelect('relationship_type', [
+        'label' => 'Relationship type',
+        'choices' => [
+            'cpt_select' => 'Post item',
+            'cpt_taxonomy' => 'Taxonomy',
+        ],
+        'default' => 'cpt_select',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
     ->addRelationship('cpt_select', [
         'label' => 'Select CPT',
         'max' => 3,
-        'return_format' => 'id'
+        'return_format' => 'id',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'relationship_type',
+                    'operator' => '==',
+                    'value' => 'cpt_select',
+                ],
+            ],
+        ],
+    ])
+    ->addSelect('taxonomy_select', [
+        'label' => 'Select taxonomy',
+        'choices' => [
+            'category' => 'Category',
+        ],
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'relationship_type',
+                    'operator' => '==',
+                    'value' => 'cpt_taxonomy',
+                ],
+            ],
+        ],
     ])
     ->setLocation('block', '==', 'acf/cpt-overview');
 
@@ -482,19 +583,25 @@ $themeOptions
     ->addColorPicker('primary_color', [
         'label' => 'Primary color',
         'wrapper' => array(
-            'width' => '33%',
+            'width' => '25%',
         ),
     ])
     ->addColorPicker('secondary_color', [
         'label' => 'Secondary color',
         'wrapper' => array(
-            'width' => '33%',
+            'width' => '25%',
         ),
     ])
     ->addColorPicker('tertiary_color', [
         'label' => 'Tertiary color',
         'wrapper' => array(
-            'width' => '33%',
+            'width' => '25%',
+        ),
+    ])
+    ->addColorPicker('accent_color', [
+        'label' => 'Accent color',
+        'wrapper' => array(
+            'width' => '25%',
         ),
     ])
     ->endGroup()
@@ -506,15 +613,24 @@ $themeOptions
         'label' => 'CPT Header',
         'layout' => 'block',
     ])
-    ->addSelect('header_background_color', [
+    ->addSelect('single_cpt_header_type', [
         'label' => 'Header background color',
         'choices' => [
             'singleCPT--primaryBG' => 'Primary Color',
             'singleCPT--secondaryBG' => 'Secondary Color',
             'singleCPT--tertiaryBG' => 'Tertiary Color'
         ],
-        'default_value' => [
-            'button--primary' => 'Primary'
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
+    ->addSelect('header_background_color', [
+        'label' => 'Header background color',
+        'choices' => [
+            'singleCPT--primaryBG' => 'Primary Color',
+            'singleCPT--secondaryBG' => 'Secondary Color',
+            'singleCPT--tertiaryBG' => 'Tertiary Color'
         ],
         'wrapper' => [
             'width' => '50%',

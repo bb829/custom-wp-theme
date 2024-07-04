@@ -24,7 +24,7 @@ include 'viewmodels/cpt-single.php';
 add_theme_support('post-thumbnails');
 add_theme_support('menus');
 
-function enable_svg_upload() {
+function enable_svg_upload($mimes) {
     $mimes['svg'] = 'image/svg+xml';
     return $mimes;
 }

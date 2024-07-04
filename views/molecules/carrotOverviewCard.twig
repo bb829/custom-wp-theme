@@ -5,11 +5,25 @@
 
 		{% if cpt.thumbnail %}
 
-			<div class="carrotOverviewCard__image p-3 d-flex align-items-center justify-content-center">
+			{% if card_type == 'small-image' %}
 
-				<img src="{{cpt.thumbnail}}" width="40"/>
+				<div class="carrotOverviewCard__image carrotOverviewCard__image--small p-2 mt-3 d-flex align-items-center justify-content-center">
 
-			</div>
+					<img src="{{cpt.thumbnail}}" class="w-100" width="160" />
+
+				</div>
+
+			{% endif %}
+
+			{% if card_type == 'large-image' %}
+
+				<div class="carrotOverviewCard__image carrotOverviewCard__image--large overflow-hidden mb-3 d-flex align-items-center justify-content-center">
+
+					<img src="{{cpt.thumbnail}}" class="cover w-100" width="600" height="600"/>
+
+				</div>
+
+			{% endif %}
 
 		{% endif %}
 
@@ -18,7 +32,7 @@
 			<h3 class="text-center m-0">{{cpt.post_title ? cpt.post_title : cpt.title}}</h3>
 
 		{% endif %}
-		
+
 		{% for specification in cpt.specifications %}
 
 			{% include 'molecules/carrotSpecifications.twig' with {
@@ -29,7 +43,7 @@
 
 		{% if cpt.content %}
 
-			<div class="carrotOverviewCard__content text-align-center">
+			<div class="carrotOverviewCard__content text-align-center mb-3">
 
 				{{cpt.content|striptags('<p><br>')|truncate(28)}}
 
@@ -37,13 +51,18 @@
 
 		{% endif %}
 
-				{% include 'atoms/button.twig' with {
+		<div class="mb-3">
+
+			{% include 'atoms/button.twig' with {
 		'url': cpt.permalink,
 		'title': 'See CPT',
 		'classes': 'button--primary d-inline-flex'
 		}
 	%}
 
+		</div>
+
 	</div>
 
 </div>
+

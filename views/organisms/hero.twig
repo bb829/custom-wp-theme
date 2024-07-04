@@ -1,4 +1,8 @@
-<section class="section {{fields.font_color ? fields.font_color}} section--first overflow-hidden">
+{% set background = fields.background_color ? fields.background_color : cpt_options.hero_background_color %}
+{% set font = fields.font_color ? fields.font_color : cpt_options.hero_font_color %}
+{% set imageType = fields.image_type ? fields.image_type : cpt_options.hero_image_type %}
+
+<section class="section {{background ? background}} {{font ? font}} section--first overflow-hidden">
 
 	<div class="hero d-flex align-items-center justify-content-center fade-in delay-2 pt-md-0" style="background: {{fields.background_color}}">
 
@@ -79,7 +83,7 @@
 					{% if fields.image %}
 
 					<div class="col-12 col-md-6 d-flex align-items-center justify-content-center scale-in-center delay-4 z-4">
-						<img src="{{fields.image.url}}" class="textImage__image cover"/>
+						<img src="{{fields.image.url}}" class="hero__image {{imageType ? imageType}} cover"/>
 					</div>
 
 					{% endif %}

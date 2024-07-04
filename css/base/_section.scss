@@ -5,7 +5,7 @@
     transition: background ease 0.4s;
     transition: opacity 0.4s ease;
 
-    &--dark {
+    &--primaryFont {
         h1,
         h2,
         h3,
@@ -16,6 +16,34 @@
         a:not(.button),
         strong {
             color: var(--primary-color);
+        }
+    }
+
+    &--secondaryFont {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        p,
+        span,
+        a:not(.button),
+        strong {
+            color: var(--secondary-color);
+        }
+    }
+
+    &--tertiaryFont {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        p,
+        span,
+        a:not(.button),
+        strong {
+            color: var(--tertiary-color);
         }
     }
 
@@ -41,6 +69,9 @@
 
     &--tertiaryBG {
         background: var(--tertiary-color);
+    }
+    &--accentBG {
+        background: var(--accent-color);
     }
 
     &--blue {

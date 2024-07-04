@@ -9,7 +9,7 @@ class CptTopListViewModel
         $this->post = $this->post = get_post(get_the_ID());
     }
 
-    public function fetchPosts()
+    public function fetchFeatured()
     {
         $args = [
             'post_type' => 'any',

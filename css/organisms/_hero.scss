@@ -14,16 +14,21 @@
     }
 
     &__image {
-        &--big {
-            width: px(750);
+        width: 100%;
+        height: auto;
+        min-height: px(420);
+        max-height: 100vh;
+
+        &--rounded {
+            clip-path: circle(50% at 50% 50%);
+            aspect-ratio: 1;
         }
 
-        &--top {
-            z-index: 2;
+        &--squared {
         }
 
-        &--bottom {
-            z-index: 1;
+        &--fullHeight {
+            aspect-ratio: 9/16;
         }
     }
 

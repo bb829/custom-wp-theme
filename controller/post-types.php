@@ -44,7 +44,12 @@ function register_dynamic_cpts()
                     );
                     
                     register_taxonomy($taxonomy_name, $cpt_name, $taxonomy_args);
+
+                    register_image_taxonomies($taxonomy_name, $taxonomy_label);
                 }
+
+                getCustomTaxonomiesForCPT($cpt_name);
+
             }         
         }
     }
@@ -153,18 +158,63 @@ function register_acf_fields_for_cpts($cpt_identifier)
         ->addTrueFalse('in_focus', [
             'label' => 'In focus',
         ])
+        ->addSelect('background_color', [
+            'label' => 'Background color',
+            'choices' => [
+                '' => 'None',
+                'section--primaryBG' => 'Primary Color',
+                'section--secondaryBG' => 'Secondary Color',
+                'section--tertiaryBG' => 'Tertiary Color',
+                'section--accentBG' => 'Accent Color'
+            ],
+            'wrapper' => [
+                'width' => '50%',
+            ],
+            'return_format' => 'value',
+        ])
+        ->addSelect('font_color', [
+            'label' => 'Font color',
+            'required' => 0,
+            'choices' => [
+                '' => 'Default',
+                'section--primaryFont' => 'Primary Color',
+                'section--secondaryFont' => 'Secondary Color',
+                'section--tertiaryFont' => 'Tertiary Color'
+            ],
+            'default_value' => [
+                '' => 'Default'
+            ],
+            'wrapper' => [
+                'width' => '50%',
+            ],
+            'return_format' => 'value',
+        ])    
         ->addWysiwyg('text', [
             'label' => 'Text',
             'wrapper' => [
-                'width' => '60%',
+                'width' => '100%',
             ]
         ])
         ->addImage('image', [
             'label' => 'Image',
             'wrapper' => [
-                'width' => '40%',
+                'width' => '50%',
             ]
         ])
+        ->addSelect('content_image_type', [
+            'label' => 'Image type',
+            'required' => 0,
+            'choices' => [
+                '' => 'Default',
+                'textImage__image--rounded' => 'Rounded',
+                'textImage__image--squared' => 'Squared',
+                'textImage__image--fullHeight' => 'Squared full height',
+            ],
+            'wrapper' => [
+                'width' => '50%',
+            ],
+            'return_format' => 'value',
+        ])      
         ->addLink('button_left', [
             'label' => 'Button left',
             'wrapper' => [
@@ -226,7 +276,47 @@ function register_acf_fields_for_cpts($cpt_identifier)
             'label' => 'Featured posts',
             'layout' => 'block'
         ])
-        ->addWysiwyg('featured_posts_content')
+        ->addSelect('featured_posts_card_type', [
+            'label' => 'Card type',
+            'choices' => [
+                'small-image' => 'Small image',
+                'large-image' => 'Large image',
+            ],
+            'default' => 'small-image',
+            'wrapper' => [
+                'width' => '100%',
+            ],
+            'return_format' => 'value',
+        ])
+        ->addSelect('featured_posts_background_color', [
+            'label' => 'Background color',
+            'choices' => [
+                '' => 'None',
+                'section--primaryBG' => 'Primary Color',
+                'section--secondaryBG' => 'Secondary Color',
+                'section--tertiaryBG' => 'Tertiary Color',
+                'section--accentBG' => 'Accent Color'
+            ],
+            'wrapper' => [
+                'width' => '50%',
+            ],
+            'return_format' => 'value',
+        ])
+        ->addText('featured_posts_background_video', [
+            'label' => 'Background video url',
+            'required' => 0,
+            'wrapper' => [
+                'width' => '50%'
+            ],
+        ])
+        ->addImage('featured_posts_background_image', [
+            'label' => 'Background image',
+            'required' => 0,
+            'wrapper' => [
+                'width' => '50%'
+            ],
+        ])
+        ->addWysiwyg('featured_posts_content')    
         ->addRelationship('featured_posts_select', [
             'label' => 'Select CPT',
             'max' => 3,
@@ -234,4 +324,35 @@ function register_acf_fields_for_cpts($cpt_identifier)
         ])
         ->setLocation('post_type', '==', $cpt_identifier);
     acf_add_local_field_group($CPTFields->build());
+}
+
+function register_image_taxonomies($taxonomy_name, $taxonomy_label) {
+    $TAXFields = new StoutLogic\AcfBuilder\FieldsBuilder($taxonomy_name . '_options');
+    $TAXFields
+    ->addImage('taxonomy_image', [
+        'label' => $taxonomy_label . ' taxonomy image',
+        'wrapper' => [
+            'width' => '100%',
+        ]
+    ])
+    ->setLocation('taxonomy', '==', $taxonomy_name);
+    acf_add_local_field_group($TAXFields->build());
+
+}
+
+function getCustomTaxonomiesForCPT($cpt_name) {
+    $taxonomies = get_object_taxonomies($cpt_name);
+    $custom_taxonomies = [];
+    foreach ($taxonomies as $taxonomy) {
+        if (strpos($taxonomy, 'category') === false && strpos($taxonomy, 'post_tag') === false) {
+            $custom_taxonomies[] = $taxonomy;
+        }
+    }
+    
+    var_dump($custom_taxonomies);
+
+    // POPULATE ACF "TAXONOMY_SELECT" FIELD WITH VALUES OF $custom_taxonomies FOR QUERYING THE TERMS FOR THE CPT_OVERVIEW COMPONENT
+
+
+    return $custom_taxonomies;
 }
