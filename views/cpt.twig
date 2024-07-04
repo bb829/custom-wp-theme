@@ -2,12 +2,21 @@
 
 {% block content %}
 
-{% include 'organisms/cpt-header.twig' %}
+	{% include 'organisms/cpt-header.twig' %}
 
-{% for item in cpt_options.content %}
 
-    {% include 'organisms/text-image.twig' with item %}
+		{% for item in cpt_options.content %}
 
-{% endfor %}
+			{% include 'organisms/text-image.twig' with item %}
+
+		{% endfor %}
+
+
+	{% if cpt_options.featured_posts_content %}
+
+		{% include 'organisms/cpt-top-list.twig' %}
+
+	{% endif %}
 
 {% endblock %}
+

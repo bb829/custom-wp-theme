@@ -162,6 +162,9 @@ $textImage
         'label' => 'Text and image',
         'layout' => 'block'
     ])
+    ->addTrueFalse('in_focus', [
+        'label' => 'In focus',
+    ])
     ->addColorPicker('background_color', [
         'label' => 'Background color',
         'required' => 0,

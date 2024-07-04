@@ -1,4 +1,5 @@
 <?php
+
 add_action('acf/init', 'register_dynamic_cpts', 10 , 4);
 function register_dynamic_cpts()
 {
@@ -149,6 +150,9 @@ function register_acf_fields_for_cpts($cpt_identifier)
                 'width' => '100%',
             ]
         ])
+        ->addTrueFalse('in_focus', [
+            'label' => 'In focus',
+        ])
         ->addWysiwyg('text', [
             'label' => 'Text',
             'wrapper' => [
@@ -218,6 +222,16 @@ function register_acf_fields_for_cpts($cpt_identifier)
             'allow_null' => 0,
         ])
         ->endRepeater()
+        ->addTab('featured_posts', [
+            'label' => 'Featured posts',
+            'layout' => 'block'
+        ])
+        ->addWysiwyg('featured_posts_content')
+        ->addRelationship('featured_posts_select', [
+            'label' => 'Select CPT',
+            'max' => 3,
+            'return_format' => 'id'
+        ])
         ->setLocation('post_type', '==', $cpt_identifier);
     acf_add_local_field_group($CPTFields->build());
 }

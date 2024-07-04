@@ -9,8 +9,9 @@
 {% set background_color = fields.background_color ? fields.background_color : item.background_color %}
 {% set buttonLeftStyle = fields.buttons.button_left_style ? fields.buttons.button_left_style : item.button_left_style %}
 {% set buttonRightStyle = fields.buttons.button_right_style ? fields.buttons.button_right_style : item.button_right_style %}
+{% set inFocus = fields.in_focus ? fields.in_focus : item.in_focus %}
 
-<section data-inviewport="no" class="section {{backgroundVideo ? 'section--bgVideo'}} {{font_color ? font_color}} textImage d-flex align-items-center justify-content-center position-relative" style="background: {{background_color}}">
+<section {{inFocus ?: 'data-inviewport="no"' }} class="section {{backgroundVideo ? 'section--bgVideo'}} {{inFocus ? 'section--focussed'}} {{font_color ? font_color}} textImage d-flex align-items-center justify-content-center position-relative" style="background: {{background_color}}">
 
 	{% if backgroundVideo %}
 

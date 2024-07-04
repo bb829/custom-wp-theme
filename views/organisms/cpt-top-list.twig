@@ -1,3 +1,8 @@
+{% set content = fields.content ? fields.content : cpt_options.featured_posts_content %}
+{% set title = fields.title ? fields.title : item.title %}
+{% set background = fields.background ? fields.background : item.background %}
+{% set cpt_select = fields.cpt_select ? fields.cpt_select : cpt_options.featured_posts_select %}
+
 <section data-inviewport="no" class="section carrotOverview {{fields.background ? fields.background}} textImage d-flex align-items-center justify-content-center">
 
 	<div class="container">
@@ -6,12 +11,12 @@
 
 			<div class="col-12 {{ fields.image ? 'col-md-6' }} d-flex flex-column align-items-center justify-content-center" style="perspective:1000px;">
 
-				{% if fields.title %}
-					<h2 class="textImage__title text-center">{{fields.title}}</h2>
+				{% if title %}
+					<h2 class="textImage__title text-center">{{title}}</h2>
 				{% endif %}
-				{% if fields.content %}
+				{% if content %}
 					<div class="textImage__content text-center">
-						{{fields.content}}
+						{{content}}
 					</div>
 
 				{% endif %}
@@ -20,7 +25,7 @@
 
 		</div>
 
-		{% if fields.cpt_select %}
+		{% if cpt_select %}
 
 			<div class="row mt-4">
 
