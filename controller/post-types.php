@@ -1,6 +1,6 @@
 <?php
 
-add_action('acf/init', 'register_dynamic_cpts', 10 , 4);
+add_action('acf/init', 'register_dynamic_cpts', 10, 4);
 function register_dynamic_cpts()
 {
     $cpts = get_field('cpt', 'option');
@@ -26,14 +26,14 @@ function register_dynamic_cpts()
 
             $taxonomies = $cpt['taxonomies'];
 
-            if($taxonomies) {
-                foreach($taxonomies as $tax) {
+            if ($taxonomies) {
+                foreach ($taxonomies as $tax) {
                     $taxonomy_name = $tax['taxonomy_name'];
                     $taxonomy_label = $tax['taxonomy_label'];
                     $taxonomy_labels = array(
                         'name' => _x($taxonomy_label, 'taxonomy general name'),
                     );
-                    
+
                     $taxonomy_args = array(
                         'hierarchical' => true,
                         'labels' => $taxonomy_labels,
@@ -42,15 +42,13 @@ function register_dynamic_cpts()
                         'query_var' => true,
                         'rewrite' => array('slug' => $taxonomy_name),
                     );
-                    
+
                     register_taxonomy($taxonomy_name, $cpt_name, $taxonomy_args);
 
                     register_image_taxonomies($taxonomy_name, $taxonomy_label);
                 }
 
-                getCustomTaxonomiesForCPT($cpt_name);
-
-            }         
+            }
         }
     }
 }
@@ -188,7 +186,7 @@ function register_acf_fields_for_cpts($cpt_identifier)
                 'width' => '50%',
             ],
             'return_format' => 'value',
-        ])    
+        ])
         ->addWysiwyg('text', [
             'label' => 'Text',
             'wrapper' => [
@@ -214,7 +212,7 @@ function register_acf_fields_for_cpts($cpt_identifier)
                 'width' => '50%',
             ],
             'return_format' => 'value',
-        ])      
+        ])
         ->addLink('button_left', [
             'label' => 'Button left',
             'wrapper' => [
@@ -316,7 +314,7 @@ function register_acf_fields_for_cpts($cpt_identifier)
                 'width' => '50%'
             ],
         ])
-        ->addWysiwyg('featured_posts_content')    
+        ->addWysiwyg('featured_posts_content')
         ->addRelationship('featured_posts_select', [
             'label' => 'Select CPT',
             'max' => 3,
@@ -326,33 +324,37 @@ function register_acf_fields_for_cpts($cpt_identifier)
     acf_add_local_field_group($CPTFields->build());
 }
 
-function register_image_taxonomies($taxonomy_name, $taxonomy_label) {
+function register_image_taxonomies($taxonomy_name, $taxonomy_label)
+{
     $TAXFields = new StoutLogic\AcfBuilder\FieldsBuilder($taxonomy_name . '_options');
     $TAXFields
-    ->addImage('taxonomy_image', [
-        'label' => $taxonomy_label . ' taxonomy image',
-        'wrapper' => [
-            'width' => '100%',
-        ]
-    ])
-    ->setLocation('taxonomy', '==', $taxonomy_name);
+        ->addImage('taxonomy_image', [
+            'label' => 'Taxonomy image',
+            'wrapper' => [
+                'width' => '100%',
+            ]
+        ])
+        ->setLocation('taxonomy', '==', $taxonomy_name);
     acf_add_local_field_group($TAXFields->build());
 
 }
 
-function getCustomTaxonomiesForCPT($cpt_name) {
-    $taxonomies = get_object_taxonomies($cpt_name);
+add_filter('acf/load_field/key=field_cpt_overview_taxonomy_select', 'editTaxonomySelectChoices');
+function editTaxonomySelectChoices($field) {
+    $taxonomies = get_taxonomies(['_builtin' => false], 'objects');
+
     $custom_taxonomies = [];
+    $taxName = [];
+    $taxLabel = [];
     foreach ($taxonomies as $taxonomy) {
-        if (strpos($taxonomy, 'category') === false && strpos($taxonomy, 'post_tag') === false) {
-            $custom_taxonomies[] = $taxonomy;
+        if (strpos($taxonomy->name, 'category') === false && strpos($taxonomy->name, 'post_tag') === false) {
+            $taxName[] = $taxonomy->name;
+            $taxLabel[] = $taxonomy->label;
         }
     }
-    
-    var_dump($custom_taxonomies);
 
-    // POPULATE ACF "TAXONOMY_SELECT" FIELD WITH VALUES OF $custom_taxonomies FOR QUERYING THE TERMS FOR THE CPT_OVERVIEW COMPONENT
+    $choices = array_combine($taxName, $taxLabel);
+    $field['choices'] = $choices;
 
-
-    return $custom_taxonomies;
+    return $field;
 }

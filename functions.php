@@ -12,7 +12,6 @@ include 'controller/blocks.php';
 include 'controller/fields.php';
 include 'controller/post-types.php';
 include 'controller/field-helpers.php';
-include 'controller/taxonomies.php';
 include 'controller/plugins.php';
 include 'controller/theme-options.php';
 include 'controller/scss.php';
