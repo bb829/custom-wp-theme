@@ -557,7 +557,27 @@ $cptOverview
             ],
         ],
     ])
-    ->setLocation('block', '==', 'acf/cpt-overview');
+    ->addSelect('terms_select', [
+        'label' => 'Select terms',
+        'choices' => [
+            'option1' => 'Option 1',
+        ],
+        'multiple' => true,
+        'ui' => true,
+        'return_format' => 'value',
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'relationship_type',
+                    'operator' => '==',
+                    'value' => 'cpt_taxonomy',
+                ],
+            ],
+        ],
+    ])    ->setLocation('block', '==', 'acf/cpt-overview');
 
 add_action('acf/init', function () use ($cptOverview) {
     acf_add_local_field_group($cptOverview->build());

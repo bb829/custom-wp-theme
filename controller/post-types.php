@@ -326,10 +326,20 @@ function register_acf_fields_for_cpts($cpt_identifier)
 
 function register_image_taxonomies($taxonomy_name, $taxonomy_label)
 {
-    $TAXFields = new StoutLogic\AcfBuilder\FieldsBuilder($taxonomy_name . '_options');
+    $TAXFields = new StoutLogic\AcfBuilder\FieldsBuilder($taxonomy_name . '_options', [
+        'title' => '',
+        'style' => 'seamless',
+    ]);
     $TAXFields
         ->addImage('taxonomy_image', [
-            'label' => 'Taxonomy image',
+            'label' => 'Image',
+            'wrapper' => [
+                'width' => '100%',
+            ],
+            'return_value' => 'id'
+        ])
+        ->addWysiwyg('taxonomy_content', [
+            'label' => 'Content',
             'wrapper' => [
                 'width' => '100%',
             ]
@@ -340,7 +350,8 @@ function register_image_taxonomies($taxonomy_name, $taxonomy_label)
 }
 
 add_filter('acf/load_field/key=field_cpt_overview_taxonomy_select', 'editTaxonomySelectChoices');
-function editTaxonomySelectChoices($field) {
+function editTaxonomySelectChoices($field)
+{
     $taxonomies = get_taxonomies(['_builtin' => false], 'objects');
 
     $custom_taxonomies = [];
@@ -356,5 +367,29 @@ function editTaxonomySelectChoices($field) {
     $choices = array_combine($taxName, $taxLabel);
     $field['choices'] = $choices;
 
+    return $field;
+}
+
+add_filter('acf/load_field/key=field_cpt_overview_terms_select', 'editTermsSelectChoices');
+
+function editTermsSelectChoices($field)
+{
+    $taxonomy = get_field('taxonomy_select');
+
+    $terms = get_terms([
+        'taxonomy' => $taxonomy,
+        'hide_empty' => false,
+        'number' => 0,
+    ]);
+
+    $choices = [];
+
+    foreach ($terms as $term) {
+        $choices[$term->slug] = $term->name;
+    }
+
+    $field['choices'] = $choices;
+
+        
     return $field;
 }

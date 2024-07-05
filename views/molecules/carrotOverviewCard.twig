@@ -1,15 +1,18 @@
 {% set mid = loop.index == 2 %}
+{% set image = cpt.thumbnail ? cpt.thumbnail %}
+{% set content = cpt.content ? cpt.content %}
+
 <div class="col-12 col-md-4 {{mid ? 'my-4 my-md-0'}} {{loop.index > 3 ? 'mt-4'}}">
 
 	<div class="carrotOverviewCard w-100 h-100 d-flex align-items-center flex-column gap-2">
 
-		{% if cpt.thumbnail %}
+		{% if image %}
 
 			{% if card_type == 'small-image' %}
 
 				<div class="carrotOverviewCard__image carrotOverviewCard__image--small p-2 mt-3 d-flex align-items-center justify-content-center">
 
-					<img src="{{cpt.thumbnail}}" class="w-100" width="160" />
+					<img src="{{image}}" class="w-100" width="160" />
 
 				</div>
 
@@ -41,11 +44,11 @@
 
 		{% endfor %}
 
-		{% if cpt.content %}
+		{% if content %}
 
 			<div class="carrotOverviewCard__content text-align-center mb-3">
 
-				{{cpt.content|striptags('<p><br>')|truncate(28)}}
+				{{content|striptags('<p><br>')|truncate(28)}}
 
 			</div>
 
@@ -55,7 +58,7 @@
 
 			{% include 'atoms/button.twig' with {
 		'url': cpt.permalink,
-		'title': 'See CPT',
+		'title': cpt.button_text ? cpt.button_text : 'Read more',
 		'classes': 'button--primary d-inline-flex'
 		}
 	%}

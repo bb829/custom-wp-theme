@@ -1,6 +1,7 @@
 {% set content = fields.content ? fields.content : cpt_options.featured_posts_content %}
 {% set title = fields.title ? fields.title : item.title %}
 {% set cpt_select = fields.cpt_select ? fields.cpt_select : cpt_options.featured_posts_select %}
+{% set taxonomy_select = fields.taxonomy_select ? fields.taxonomy_select : cpt_options.featured_posts_taxonomy_select %}
 {% set background = fields.background_color ? fields.background_color : cpt_options.featured_posts_background_color %}
 {% set bgImage = fields.background_image ? fields.background_image : cpt_options.featured_posts_background_image %}
 {% set bgVideo = fields.background_video ? fields.background_video : cpt_options.featured_posts_background_video %}
@@ -28,7 +29,7 @@
 
 		</div>
 
-		{% if cpt_select %}
+		{% if cpt_select or taxonomy_select %}
 
 			<div class="row mt-4">
 
