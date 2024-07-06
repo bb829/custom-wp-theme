@@ -56,6 +56,8 @@ class CptTopListViewModel
             
             $taxonomy_object = get_taxonomy($taxonomy);
             $associated_post_types = $taxonomy_object->object_type;
+            
+            $meta = [];
 
             foreach($queried_terms as $term) {
                 $term_meta = get_term_meta($term->term_id);
@@ -64,6 +66,7 @@ class CptTopListViewModel
                     'thumbnail' => wp_get_attachment_url($term_meta['taxonomy_image'][0]),
                     'title' => $term->name,
                     'content' => wpautop($term_meta['taxonomy_content'][0]),
+                    'permalink' => get_term_link($term),
                     'archive_link' =>  get_post_type_archive_link($associated_post_types[0]),
                     'button_text' => 'View ' . $term->name
                 ];

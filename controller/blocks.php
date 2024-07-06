@@ -64,6 +64,16 @@ function register_blocks()
             'icon' => 'carrot'
         )
     );
+
+    acf_register_block(
+        array(
+            'name' => 'pricing-table',
+            'title' => __('Pricing table'),
+            'render_callback' => 'pricing_table_init',
+            'category' => 'formatting',
+            'icon' => 'carrot'
+        )
+    );
 }
 
 function hero_init($block, $content = '', $is_preview = false)
@@ -74,6 +84,16 @@ function hero_init($block, $content = '', $is_preview = false)
     $context['is_preview'] = $is_preview;
     Timber::render('organisms/hero.twig', $context);
 }
+
+function pricing_table_init($block, $content = '', $is_preview = false)
+{
+    $context = Timber::context();
+    $context['block'] = $block;
+    $context['fields'] = get_fields();
+    $context['is_preview'] = $is_preview;
+    Timber::render('organisms/pricing-table.twig', $context);
+}
+
 
 function textimage_init($block, $content = '', $is_preview = false)
 {

@@ -1,0 +1,52 @@
+{% set content = fields.content ? fields.content %}
+{% set background = fields.background_color ? fields.background_color : cpt_options.hero_background_color %}
+{% set inFocus = fields.in_focus ? fields.in_focus %}
+{% set fontColor = fields.font_color ? fields.font_color %}
+
+<section {{inFocus ?: 'data-inviewport="no"' }} class="section {{inFocus ? 'section--focussed'}} pricingTable {{fields.row_color ? fields.row_color : 'pricingTable--primaryRowColor'}}  {{background ? background}} {{fontColor ? fontColor}} d-flex align-items-center justify-content-center">
+
+	<div class="container">
+		{% if content %}
+
+			<div class="row align-items-center justify-content-center">
+
+				<div class="col-12 textImage__content {{ image ? 'col-md-6' }} d-flex flex-column" style="perspective:1000px;">
+
+					<div class="fade-in delay-1 d-flex align-items-start justify-content-center">
+
+
+						<div class="textImage__content ">
+
+							{{content}}
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		{% endif %}
+
+		<div class="row mt-4 fade-in delay-3 align-items-center justify-content-center">
+
+			<div class="col-12 col-lg-8">
+
+				<div class="d-flex flex-column">
+
+					{% for item in fields.pricing_table_content %}
+
+						{% include 'molecules/pricing.twig' %}
+
+					{% endfor %}
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</section>

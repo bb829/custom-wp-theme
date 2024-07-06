@@ -1,0 +1,47 @@
+{% if item.new_row == true %}
+
+	{{loop.index > 1 ? '</tbody></table></div>'}}
+
+	<a class="{{loop.index > 1 ? 'mt-5' }} p-4 w-100 text-center position-relative" data-bs-toggle="collapse" href="#collapse-{{loop.index}}" role="button" aria-expanded="false" aria-controls="collapse-{{loop.index}}">
+		
+    {{item.row_title}}
+
+		{% if item.image %}
+
+			<img src="{{item.image.url}}" alt="{{item.image.alt}}" width="110" height="110" class="position-absolute overflow-hidden table__image">
+
+		{% endif %}
+
+    <i class="fa-solid fa-chevron-down position-absolute"></i>
+
+	</a>
+
+	<div id="collapse-{{loop.index}}" class="collapse">
+
+	<table class="table">
+
+  <thead>
+
+      <th class="p-3 pt-4" scope="col">Name</th>
+      
+      <th class="p-3 pt-4" scope="col">Description</th>
+
+      <th class="p-3 pt-4 text-end" scope="col">Price</th>
+
+    </tr>
+
+  </thead>
+
+	{% endif %}
+
+    <tr>
+
+      <th class="col-3 p-3" scope="row">{{item.title}}</td>
+
+      <td class="col-8 p-3">{{item.description}}</td>
+
+      <td class="col-1 p-3 text-end">&euro; {{item.price}}</td>
+      
+    </tr>
+
+	{{loop.last ? '</tbody></table></div>'}}

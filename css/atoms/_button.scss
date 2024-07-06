@@ -48,15 +48,5 @@
         &:hover {
             color: var(--primary-color);
         }
-
-        .section--dark & {
-            background: transparent;
-            color: var(--secondary-color);
-            border: solid px(2) var(--secondary-color);
-
-            a:hover {
-                color: var(--secondary-color);
-            }
-        }
     }
 }

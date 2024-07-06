@@ -35,7 +35,9 @@
 
 				{% for cpt in viewmodel.fetchFeatured %}
 					{% include 'molecules/carrotOverviewCard.twig' with {
-						'card_type': cardType
+						'imageBackground': fields.image_background,
+						'card_type': cardType,
+						'buttonType': fields.button_type
 					}%}
 				{% endfor %}
 

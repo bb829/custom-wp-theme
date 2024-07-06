@@ -11,6 +11,127 @@ add_action('acf/init', function () use ($banner) {
     acf_add_local_field_group($banner->build());
 });
 
+$pricingTable = new StoutLogic\AcfBuilder\FieldsBuilder('pricing_table');
+$pricingTable
+    ->addAccordion('pricing_table')
+    ->addTrueFalse('in_focus', [
+        'label' => 'In focus',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+    ])
+    ->addSelect('row_color', [
+        'label' => 'Row color',
+        'choices' => [
+            '' => 'None',
+            'pricingTable--primaryRowColor' => 'Primary Color',
+            'pricingTable--secondaryRowColor' => 'Secondary Color',
+            'pricingTable--tertiaryRowColor' => 'Tertiary Color',
+            'pricingTable--accentRowColor' => 'Accent Color'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
+    ->addSelect('background_color', [
+        'label' => 'Background color',
+        'choices' => [
+            '' => 'None',
+            'section--primaryBG' => 'Primary Color',
+            'section--secondaryBG' => 'Secondary Color',
+            'section--tertiaryBG' => 'Tertiary Color',
+            'section--accentBG' => 'Accent Color'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
+    ->addSelect('font_color', [
+        'label' => 'Font color',
+        'required' => 0,
+        'choices' => [
+            '' => 'Default',
+            'section--primaryFont' => 'Primary Color',
+            'section--secondaryFont' => 'Secondary Color',
+            'section--tertiaryFont' => 'Tertiary Color'
+        ],
+        'default_value' => [
+            '' => 'Default'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
+    ->addWysiwyg('content', [
+        'label' => 'Content',
+        'wrapper' => [
+            'width' => '100%',
+        ],
+
+    ])
+    ->addRepeater('pricing_table_content', [
+        'label' => 'Pricing table content',
+        'layout' => 'block',
+        'button_label' => 'Add pricing table',
+    ])
+    ->addTrueFalse('new_row', [
+        'label' => 'New row',
+    ])
+    ->addText('row_title', [
+        'label' => 'Row title',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'new_row',
+                    'operator' => '==',
+                    'value' => '1',
+                ],
+            ],
+        ],
+    ])
+    ->addImage('image', [
+        'label' => 'Item image',
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'new_row',
+                    'operator' => '==',
+                    'value' => '1',
+                ],
+            ],
+        ],
+    ])
+    ->addText('title', [
+        'label' => 'Item title',
+        'wrapper' => [
+            'width' => '75%',
+        ],
+    ])
+    ->addText('price', [
+        'label' => 'Item price',
+        'wrapper' => [
+            'width' => '25%',
+        ],
+    ])
+    ->addWysiwyg('description', [
+        'label' => 'Item description',
+        'wrapper' => [
+            'width' => '100%',
+        ],
+    ])
+    ->endRepeater()
+    ->setLocation('block', '==', 'acf/pricing-table');
+
+add_action('acf/init', function () use ($pricingTable) {
+    acf_add_local_field_group($pricingTable->build());
+});
+
 $hero = new StoutLogic\AcfBuilder\FieldsBuilder('hero');
 $hero
     ->addAccordion('hero', [
@@ -148,7 +269,7 @@ $hero
         'required' => 0,
         'choices' => [
             'button--primary' => 'Primary',
-            'button--secondary' => 'Secondary',            
+            'button--secondary' => 'Secondary',
             'button--tertiary' => 'Tertiary',
             'button--alternative' => 'Alternative'
         ],
@@ -491,6 +612,36 @@ $cptOverview
         ],
         'return_format' => 'value',
     ])
+    ->addSelect('image_background', [
+        'label' => 'Image background color',
+        'required' => 0,
+        'choices' => [
+            '' => 'None',
+            '--primaryBG' => 'Primary Color',
+            '--secondaryBG' => 'Secondary Color',
+            '--tertiaryBG' => 'Tertiary Color',
+            '--accentBG' => 'Accent Color'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
+    ->addSelect('button_type', [
+        'label' => 'Button type in card',
+        'required' => 0,
+        'choices' => [
+            'button--primary' => 'Primary',
+            'button--secondary' => 'Secondary',
+            'button--tertiary' => 'Tertiary',
+            'button--alternative' => 'Alternative'
+        ],
+        'default_value' => 'button--primary',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
     ->addSelect('background_color', [
         'label' => 'Background color',
         'choices' => [
@@ -577,7 +728,7 @@ $cptOverview
                 ],
             ],
         ],
-    ])    ->setLocation('block', '==', 'acf/cpt-overview');
+    ])->setLocation('block', '==', 'acf/cpt-overview');
 
 add_action('acf/init', function () use ($cptOverview) {
     acf_add_local_field_group($cptOverview->build());
