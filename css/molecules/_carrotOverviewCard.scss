@@ -1,18 +1,51 @@
 .carrotOverviewCard {
-    border:solid 1px var(--primary-color);
+    border:solid 1px var(--accent-color);
     background: var(--secondary-color);
+
+    &--primaryBG {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+
+    &--secondaryBG {
+        background: var(--secondary-color);
+        border-color: var(--secondary-color);
+    }
+
+    &--tertiaryBG {
+        background: var(--tertiary-color);
+        border-color: var(--tertiary-color);
+    }
+
+    &--accentBG {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
+    }
+
+    &__imageWrapper {
+        position: absolute;
+        top:-100px;
+    }
 
     &__image {
 
         &--large {
             width: 100%;
-            height: 280px;
+            height: 240px;
         }
 
         &--small {
             width: 140px;
             height: 140px;
             border-radius: px(10);
+        }
+
+        // ADD AN INSET BORDER OF 2PX
+        &--iconRounded {
+            width: 140px;
+            height: 140px;
+            border-radius: 100%;
+            border: solid 2px var(--accent-color);
         }
 
         &--primaryBG {
@@ -38,6 +71,7 @@
 
     &__content {
         p {
+            font-size: px(16);
             color: var(--primary-font-size);;
             text-align: center;
             color: var(--primary-color);

@@ -1,10 +1,11 @@
 {% extends 'base.twig' %}
 
-
 {% block content %}
-{% set archiveIntro = attribute(theme_options, cpt ~ '_archive_intro') %}
-{% set cardType = attribute(theme_options, cpt ~ '_archive_card_type') %}
 
+	{% set archiveIntro = attribute(theme_options, cpt ~ '_archive_intro') %}
+	{% set cardType = attribute(theme_options, cpt ~ '_archive_card_type') %}
+	{% set cardBackground = attribute(theme_options, cpt ~ '_archive_card_background') %}
+	{% set filters = attribute(theme_options, cpt ~ '_filters') %}
 
 	<section class="section--first archiveCarrots">
 
@@ -21,20 +22,116 @@
 
 			<div class="row fade-in delay-4" style="opacity: 0;">
 
-				{% for cpt in viewmodel.fetchPosts %}
+				{% if filters == true %}
 
-					{% include 'molecules/carrotOverviewCard.twig' with {
-						'card_type': cardType
+					<div class="col-12 col-md-2 d-flex justify-content-between column-gap-3">
+
+						<form name="getEvents" id="getEvents" class="col-12 d-flex flex-column row-gap-3" method="post" action="">
+
+							<div class="d-flex flex-column align-items-start row-gap-3">
+
+								<div class="d-flex flex-column row-gap-2">
+
+									<strong>Locatie</strong>
+
+									<input type="text" class="form-control" placeholder="Locatie" name="locatie"/>
+
+								</div>
+
+								<div class="d-flex flex-column row-gap-2">
+
+									<strong>Datum</strong>
+
+									<div class="d-flex flex-column row-gap-3">
+
+										<div class="d-flex">
+
+											<input type="text" value="" class="form-control datepicker" placeholder="Datum vanaf" name="datumvan"/>
+
+										</div>
+
+										<div class="d-flex">
+
+											<input type="text" value="" class="form-control datepicker" placeholder="Datum tot" name="datumtot"/>
+
+										</div>
+
+										<!-- <div class="d-flex justify-content-between w-100"><span>€ 0</span><span>€ <?php echo $maxprice ?></span></div> -->
+
+									</div>
+
+								</div>
+
+								<div class="d-flex flex-column row-gap-2">
+
+									<strong>Prijs</strong>
+
+									<div class="d-flex flex-column row-gap-3">
+
+										<div class="d-flex">
+
+											<input type="text" value="" class="form-control" placeholder="Min" name="minprice"/>
+
+										</div>
+
+										<div class="d-flex">
+
+											<input type="text" value="" class="form-control" placeholder="Max" name="maxprice"/>
+
+										</div>
+
+										<!-- <div class="d-flex justify-content-between w-100"><span>€ 0</span><span>€ <?php echo $maxprice ?></span></div> -->
+
+									</div>
+
+								</div>
+
+								<div class="d-flex mt-2">
+
+									<button class="button-primary filterEvents rounded-1" type="submit" value="Filter">Filter evenementen</button>
+
+								</div>
+
+							</div>
+
+						</form>
+
+					</div>
+
+				{% endif %}
+
+				{% if filters == true %}
+
+					<div class="col-12 col-md-10">
+
+						<div class="row">
+
+						{% endif %}
+
+						{% for cpt in viewmodel.fetchPosts %}
+
+							{% include 'molecules/carrotOverviewCard.twig' with {
+						'card_type': cardType,
+						'cardBG': cardBackground,
+						'filters': filters,
+
 					} %}
 
-				{% endfor %}
+						{% endfor %}
+
+						{% if filters == true %}
+
+						</div>
+
+					</div>
+
+				{% endif %}
 
 			</div>
 
 		</div>
- 
+
 	</div>
 
-</section>
-{% endblock %}
+</section>{% endblock %}
 

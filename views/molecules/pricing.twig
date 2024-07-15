@@ -20,7 +20,7 @@
 
 				{% for table in table.pricing_table_table %}
 
-					<div id="tab-{{table.title}}" data-pricing-table class="d-flex pricing__table flex-column w-100">
+					<div id="tab-{{table.title}}" data-pricing-table class="d-flex pricing__table {{loop.index == 1 ? '' : 'd-none'}} flex-column w-100">
 
 						<div class="pricing__head d-flex position-relative">
 

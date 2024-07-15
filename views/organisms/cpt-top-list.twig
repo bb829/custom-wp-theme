@@ -37,7 +37,8 @@
 					{% include 'molecules/carrotOverviewCard.twig' with {
 						'imageBackground': fields.image_background,
 						'card_type': cardType,
-						'buttonType': fields.button_type
+						'buttonType': fields.button_type,
+						'cardBG': fields.card_background
 					}%}
 				{% endfor %}
 

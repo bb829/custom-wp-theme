@@ -11906,6 +11906,20 @@ html {
   border-radius: 2.5rem;
 }
 
+.overlay-dark {
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.overlay-light {
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 2;
+}
+
+.mt-10 {
+  margin-top: 5rem !important;
+}
+
 :root {
   --blue-bg: #035afc;
   --yellow-bg: #FCC715;
@@ -12501,11 +12515,6 @@ a:hover {
     order: 1;
   }
 }
-.textImage__videoOverlay {
-  background: var(--secondary-color);
-  opacity: 0.6;
-  z-index: 2;
-}
 @media (max-width: 991px) {
   .textImage__imageWrapper {
     order: 2;
@@ -12601,17 +12610,43 @@ a:hover {
 }
 
 .carrotOverviewCard {
-  border: solid 1px var(--primary-color);
+  border: solid 1px var(--accent-color);
   background: var(--secondary-color);
+}
+.carrotOverviewCard--primaryBG {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.carrotOverviewCard--secondaryBG {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+.carrotOverviewCard--tertiaryBG {
+  background: var(--tertiary-color);
+  border-color: var(--tertiary-color);
+}
+.carrotOverviewCard--accentBG {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.carrotOverviewCard__imageWrapper {
+  position: absolute;
+  top: -100px;
 }
 .carrotOverviewCard__image--large {
   width: 100%;
-  height: 280px;
+  height: 240px;
 }
 .carrotOverviewCard__image--small {
   width: 140px;
   height: 140px;
   border-radius: 0.625rem;
+}
+.carrotOverviewCard__image--iconRounded {
+  width: 140px;
+  height: 140px;
+  border-radius: 100%;
+  border: solid 2px var(--accent-color);
 }
 .carrotOverviewCard__image--primaryBG {
   background: var(--primary-color);
@@ -12629,6 +12664,7 @@ a:hover {
   color: var(--primary-color);
 }
 .carrotOverviewCard__content p {
+  font-size: 1rem;
   color: var(--primary-font-size);
   text-align: center;
   color: var(--primary-color);
@@ -12797,8 +12833,9 @@ a:hover {
   opacity: 1;
 }
 .navigation__item--traditional a {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--primary-color);
+  font-weight: 400;
 }
 .navigation__item--traditional a:hover {
   text-decoration: underline;

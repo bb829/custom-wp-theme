@@ -9,12 +9,6 @@
         }
     }
 
-    &__videoOverlay {
-        background: var(--secondary-color);
-        opacity: 0.6;
-        z-index: 2;
-    }
-
     &__imageWrapper {
         @include to(md) {
             order: 2;

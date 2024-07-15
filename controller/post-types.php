@@ -30,17 +30,19 @@ function register_dynamic_cpts()
                 foreach ($taxonomies as $tax) {
                     $taxonomy_name = $tax['taxonomy_name'];
                     $taxonomy_label = $tax['taxonomy_label'];
+
                     $taxonomy_labels = array(
                         'name' => _x($taxonomy_label, 'taxonomy general name'),
                     );
-
+                    
+                    // FIND A WAY TO ADD AN IMAGE TO THE TAXONOMY
                     $taxonomy_args = array(
                         'hierarchical' => true,
                         'labels' => $taxonomy_labels,
                         'show_ui' => true,
                         'show_in_rest' => true,
                         'query_var' => true,
-                        'rewrite' => array('slug' => $taxonomy_name),
+                        'rewrite' => array('slug' => $taxonomy_name)
                     );
 
                     register_taxonomy($taxonomy_name, $cpt_name, $taxonomy_args);
@@ -62,50 +64,12 @@ function register_acf_fields_for_cpts($cpt_identifier)
             'label' => 'CPT Header',
             'layout' => 'block'
         ])
-        ->addTrueFalse('show_options', [
-            'label' => 'Show options',
-            'wrapper' => [
-                'width' => '25%',
-            ]
-        ])
         ->addWysiwyg('header_content', [
             'label' => 'Header content',
             'wrapper' => [
                 'width' => '100%',
             ]
         ])
-        ->addRepeater('options', [
-            'label' => 'CPT options',
-            'layout' => 'block',
-            'button_label' => 'Add option',
-            'min' => 0,
-            'max' => 5,
-            'wrapper' => [
-                'width' => '75%',
-            ],
-            'conditional_logic' => [
-                [
-                    [
-                        'field' => 'show_options',
-                        'operator' => '==',
-                        'value' => '1',
-                    ],
-                ],
-            ],
-        ])
-        ->addImage('option_image', [
-            'label' => 'Option image',
-            'wrapper' => [
-                'width' => '50%',
-            ]
-        ])
-        ->addText('option_name', [
-            'label' => 'Option name',
-            'wrapper' => [
-                'width' => '50%',
-            ]
-        ])
-        ->endRepeater()
         ->addRepeater('buttons', [
             'label' => 'Buttons',
             'layout' => 'block',
@@ -277,6 +241,7 @@ function register_acf_fields_for_cpts($cpt_identifier)
         ->addSelect('featured_posts_card_type', [
             'label' => 'Card type',
             'choices' => [
+                'icon-image' => 'Icon image',
                 'small-image' => 'Small image',
                 'large-image' => 'Large image',
             ],

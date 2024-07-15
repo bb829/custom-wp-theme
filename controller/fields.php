@@ -234,11 +234,51 @@ $hero
         ],
         'return_format' => 'value',
     ])
+    ->addTrueFalse('video', [
+        'label' => 'Background video',
+        'wrapper' => [
+            'width' => '100%',
+        ],
+    ])
     ->addText('background_video', [
         'label' => 'Background video',
         'required' => 0,
         'wrapper' => [
             'width' => '50%'
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'video',
+                    'operator' => '==',
+                    'value' => '1',
+                ],
+            ],
+        ],
+    ])
+    ->addSelect('video_overlay', [
+        'label' => 'Video overlay',
+        'required' => 0,
+        'choices' => [
+            'none' => 'None',
+            'overlay-dark' => 'Dark',
+            'overlay-light' => 'Light',
+        ],
+        'default_value' => [
+            'none' => 'None'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'video',
+                    'operator' => '==',
+                    'value' => '1',
+                ],
+            ],
         ],
     ])
     ->addWysiwyg('content')
@@ -592,12 +632,27 @@ $cptOverview
     ->addSelect('card_type', [
         'label' => 'Card type',
         'choices' => [
+            'icon-image' => 'Icon image',
             'small-image' => 'Small image',
             'large-image' => 'Large image',
         ],
         'default' => 'small-image',
         'wrapper' => [
             'width' => '100%',
+        ],
+        'return_format' => 'value',
+    ])
+    ->addSelect('card_background', [
+        'label' => 'Card background color',
+        'choices' => [
+            '' => 'None',
+            '--primaryBG' => 'Primary Color',
+            '--secondaryBG' => 'Secondary Color',
+            '--tertiaryBG' => 'Tertiary Color',
+            '--accentBG' => 'Accent Color'
+        ],
+        'wrapper' => [
+            'width' => '50%',
         ],
         'return_format' => 'value',
     ])
@@ -858,16 +913,22 @@ $themeOptions
             'width' => '100%',
         ]
     ])
+    ->addImage('taxonony_image', [
+        'label' => 'Taxonomy image',
+        'wrapper' => [
+            'width' => '33%',
+        ]
+    ])
     ->addText('taxonomy_name', [
         'label' => 'Taxonomy name',
         'wrapper' => [
-            'width' => '50%',
+            'width' => '33%',
         ]
     ])
     ->addText('taxonomy_label', [
         'label' => 'Taxonomy label',
         'wrapper' => [
-            'width' => '50%',
+            'width' => '33%',
         ]
     ])
     ->endRepeater()

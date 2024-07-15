@@ -108,8 +108,9 @@
             opacity: 1;
     
             a {
-                font-size: 18px;
+                font-size: 16px;
                 color: var(--primary-color);
+                font-weight: 400;
     
                 &:hover {
                     text-decoration: underline;

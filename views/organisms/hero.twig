@@ -1,21 +1,25 @@
 {% set background = fields.background_color ? fields.background_color : cpt_options.hero_background_color %}
 {% set font = fields.font_color ? fields.font_color : cpt_options.hero_font_color %}
 {% set imageType = fields.image_type ? fields.image_type : cpt_options.hero_image_type %}
+{% set videoOverlay = fields.video_overlay ? fields.video_overlay %}
 
 <section class="section {{background ? background}} {{font ? font}} section--first overflow-hidden">
 
 	<div class="hero d-flex align-items-center justify-content-center fade-in delay-2 pt-md-0" style="background: {{fields.background_color}}">
 
-		{% if fields.background_video %}
+		{% if fields.video == true %}
 
-			<div class="textImage__videoOverlay position-absolute w-100 h-100"></div>
-			<video class="w-100 h-100 position-absolute cover object-center grey" src="{{fields.background_video}}" autoplay muted playsinline nocontrols loop></video>
+			<div class="{{videoOverlay ? videoOverlay }} position-absolute w-100 h-100"></div>
+			<video class="w-100 h-100 position-absolute cover object-center" src="{{fields.background_video}}" autoplay muted playsinline nocontrols loop></video>
 
 		{% endif %}
 
 		<div class="container py-4">
+
 			<div class="row">
+
 				<div class="col-12 {{fields.animation ? 'col-md-6' }} {{fields.image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center z-4" style="perspective:1000px;">
+
 					<div class="swing-in-top-fwd delay-2">
 
 						{% if fields.title %}

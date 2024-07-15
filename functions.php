@@ -15,6 +15,8 @@ include 'controller/field-helpers.php';
 include 'controller/plugins.php';
 include 'controller/theme-options.php';
 include 'controller/scss.php';
+include 'controller/rest.php';
+include 'controller/filters.php';
 
 include 'viewmodels/cpt-top-list.php';
 include 'viewmodels/cpt-archive.php';
