@@ -4,3 +4,4 @@ import '@fortawesome/fontawesome-free/js/solid.min'
 
 import './modules/navigation';
 import './modules/section';
+import './modules/pricing';

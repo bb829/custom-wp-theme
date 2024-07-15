@@ -1,31 +1,62 @@
-<nav class="navigation d-flex align-items-center justify-content-center position-fixed top-0 end-0 bottom-0  start-0 w-100 h-100">
+{% if theme_options.navigation == 'traditional' %}
+	<div class="container">
+		<div class="row">
+			<nav class="navigation navigation--traditional d-flex py-4">
 
-	<div class="navigation__toggleBG d-flex position-absolute top-0 end-0 w-100 h-100"></div>
+				<div class="site_logo me-5">
 
-	<div class="navigation__hamburger d-flex flex-column align-items-center justify-content-center position-fixed z-9">
+					<img width="200" src="{{theme_options.logo}}" alt="">
 
-		<div class="navigation__toggleWrapper d-flex flex-column align-items-center justify-content-center position-absolute z-4">
+				</div>
 
-			<div class="navigation__bar navigation__bar--top w-100"></div>
+				<ul class="w-100 d-flex align-items-center column-gap-4">
+					{% for item in menu.items %}
+						<li data-menu-item="true" class="navigation__item navigation__item--traditional d-flex {{ item.classes | join(' ') }}">
+							<a class="navigation__link" href="{{item.url}}">{{item.title}}</a>
+						</li>
+					{% endfor %}
+				</ul>
 
-			<div class="navigation__bar navigation__bar--mid w-100"></div>
+			</nav>
+		</div>
+	</div>
 
-			<div class="navigation__bar navigation__bar--bottom w-100"></div>
+{% endif %}
+
+{% if theme_options.navigation == 'fullscreen' %}
+
+	<nav class="navigation d-flex align-items-center justify-content-center position-fixed top-0 end-0 bottom-0  start-0 w-100 h-100">
+
+		<div class="navigation__toggleBG d-flex position-absolute top-0 end-0 w-100 h-100"></div>
+
+		<div class="navigation__hamburger d-flex flex-column align-items-center justify-content-center position-fixed z-9">
+
+			<div class="navigation__toggleWrapper d-flex flex-column align-items-center justify-content-center position-absolute z-4">
+
+				<div class="navigation__bar navigation__bar--top w-100"></div>
+
+				<div class="navigation__bar navigation__bar--mid w-100"></div>
+
+				<div class="navigation__bar navigation__bar--bottom w-100"></div>
+
+			</div>
 
 		</div>
 
-	</div>
+		<div
+			class="navigation__wrapper d-flex align-items-center justify-content-center position-fixed top-0 end-0 bottom-0 start-0 w-100 h-100">
 
-    <div class="navigation__wrapper d-flex align-items-center justify-content-center position-fixed top-0 end-0 bottom-0 start-0 w-100 h-100">
+			{# <pre>{{dump(menu.items)}}</pre> #}
+			<ul class="navigation__list position-fixed w-100 h-100 top-0 end-0 bottom-0 start-0 d-flex align-items-center justify-content-center flex-column p-0">
+				{% for item in menu.items %}
+					<li data-menu-item="true" class="navigation__item d-flex p-0 {{ item.classes | join(' ') }}">
+						<a class="navigation__link" href="{{item.url}}">{{item.title}}</a>
+					</li>
+				{% endfor %}
+			</ul>
 
-	{# <pre>{{dump(menu.items)}}</pre> #}
-	<ul class="navigation__list position-fixed w-100 h-100 top-0 end-0 bottom-0 start-0 d-flex align-items-center justify-content-center flex-column p-0">
-		{% for item in menu.items %}
-			<li data-menu-item="true" class="navigation__item d-flex p-0 {{ item.classes | join(' ') }}">
-				<a class="navigation__link" href="{{item.url}}">{{item.title}}</a>
-			</li>
-		{% endfor %}
-	</ul>
+		</div>
+	</nav>
 
-    </div> 
-</nav>
+{% endif %}
+

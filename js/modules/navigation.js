@@ -4,25 +4,29 @@ const navigation = document.querySelector('.navigation');
 const items = document.querySelectorAll('[data-menu-item="true"]');
 
 function toggleFunction() {
-    navigation.classList.toggle('navigation--focussed');
-    items.forEach(item => {
+    if (navigation) {
+        navigation.classList.toggle('navigation--focussed');
+        items.forEach(item => {
 
-        setTimeout(() => {        
-            item.classList.toggle('fade-in');
-        }, 260);
+            setTimeout(() => {
+                item.classList.toggle('fade-in');
+            }, 260);
+
+        });
+    }
+}
+
+if (toggle) {
+    toggle.addEventListener('click', () => {
+
+        toggleFunction();
+
+        // // wrapper.classList.remove('blur');
+        // // wrapper.classList.add('blur');
+
+        // setTimeout(() => {
+        //     wrapper.classList.remove('blur')
+        // }, 280);
 
     });
-  }
-
-  toggle.addEventListener('click', () => {
-
-    toggleFunction();
-
-    // // wrapper.classList.remove('blur');
-    // // wrapper.classList.add('blur');
-
-    // setTimeout(() => {
-    //     wrapper.classList.remove('blur')
-    // }, 280);
-
-});
+}

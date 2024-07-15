@@ -2,6 +2,15 @@
     z-index: 99999;
     pointer-events: none;
 
+    &--traditional {
+        pointer-events: all;
+        border-bottom: solid 1px #f2f2f2;
+    }
+
+    &--traditional {
+        background: #fff;
+    }
+
     &__hamburger {
         transform: translateX(10px)translateY(-10px);
         top: px(-60);
@@ -94,6 +103,20 @@
                 text-decoration: underline;
             }
         }
+
+        &--traditional {
+            opacity: 1;
+    
+            a {
+                font-size: 18px;
+                color: var(--primary-color);
+    
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
     }
 
     &__link {

@@ -14,25 +14,17 @@ add_action('acf/init', function () use ($banner) {
 $pricingTable = new StoutLogic\AcfBuilder\FieldsBuilder('pricing_table');
 $pricingTable
     ->addAccordion('pricing_table')
-    ->addTrueFalse('in_focus', [
-        'label' => 'In focus',
-        'wrapper' => [
-            'width' => '50%',
-        ],
-    ])
-    ->addSelect('row_color', [
-        'label' => 'Row color',
+    ->addSelect('type', [
+        'label' => 'Type',
         'choices' => [
-            '' => 'None',
-            'pricingTable--primaryRowColor' => 'Primary Color',
-            'pricingTable--secondaryRowColor' => 'Secondary Color',
-            'pricingTable--tertiaryRowColor' => 'Tertiary Color',
-            'pricingTable--accentRowColor' => 'Accent Color'
+            'default' => 'Default',
+            'tabs' => 'Tabs',
         ],
         'wrapper' => [
             'width' => '50%',
         ],
         'return_format' => 'value',
+        'default_value' => 'default'
     ])
     ->addSelect('background_color', [
         'label' => 'Background color',
@@ -72,30 +64,30 @@ $pricingTable
         ],
 
     ])
-    ->addRepeater('pricing_table_content', [
+    ->addRepeater('pricing_table_table', [
         'label' => 'Pricing table content',
         'layout' => 'block',
         'button_label' => 'Add pricing table',
     ])
-    ->addTrueFalse('new_row', [
-        'label' => 'New row',
-    ])
-    ->addText('row_title', [
-        'label' => 'Row title',
-        'conditional_logic' => [
-            [
-                [
-                    'field' => 'new_row',
-                    'operator' => '==',
-                    'value' => '1',
-                ],
-            ],
+    ->addSelect('background_color', [
+        'label' => 'Background color',
+        'choices' => [
+            '' => 'None',
+            'section--primaryBG' => 'Primary Color',
+            'section--secondaryBG' => 'Secondary Color',
+            'section--tertiaryBG' => 'Tertiary Color',
+            'section--accentBG' => 'Accent Color'
         ],
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'return_format' => 'value',
     ])
+
     ->addImage('image', [
         'label' => 'Item image',
         'wrapper' => [
-            'width' => '100%',
+            'width' => '50%',
         ],
         'conditional_logic' => [
             [
@@ -108,23 +100,20 @@ $pricingTable
         ],
     ])
     ->addText('title', [
-        'label' => 'Item title',
+        'label' => 'Title',
         'wrapper' => [
-            'width' => '75%',
+            'width' => '50%',
         ],
     ])
-    ->addText('price', [
-        'label' => 'Item price',
-        'wrapper' => [
-            'width' => '25%',
-        ],
+    ->addRepeater('table_row', [
+        'label' => 'Table row',
+        'layout' => 'block',
+        'button_label' => 'Add row',
     ])
-    ->addWysiwyg('description', [
-        'label' => 'Item description',
-        'wrapper' => [
-            'width' => '100%',
-        ],
-    ])
+    ->addText('item')
+    ->addWysiwyg('description')
+    ->addNumber('price')
+    ->endRepeater()
     ->endRepeater()
     ->setLocation('block', '==', 'acf/pricing-table');
 
@@ -744,8 +733,26 @@ $themeOptions
         'placement' => 'left',
         'label' => 'General'
     ])
-    ->addText('site_logo', [
-        'label' => 'Site Logo',
+    ->addImage('logo', [
+        'label' => 'Logo',
+        'return_format' => 'url',
+        'preview_size' => 'thumbnail',
+        'library' => 'all',
+        'mime_types' => 'png,svg',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+    ])
+    ->addSelect('navigation', [
+        'label' => 'Site navigation',
+        'choices' => [
+            'fullscreen' => 'fullscreen',
+            'traditional' => 'traditional',
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
     ])
     ->addGroup('site_colors', [
         'label' => 'Site colors',

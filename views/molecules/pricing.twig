@@ -1,47 +1,129 @@
-{% if item.new_row == true %}
+<div class="pricing">
 
-	{{loop.index > 1 ? '</tbody></table></div>'}}
+	{% if type == 'tabs' %}
 
-	<a class="{{loop.index > 1 ? 'mt-5' }} p-4 w-100 text-center position-relative" data-bs-toggle="collapse" href="#collapse-{{loop.index}}" role="button" aria-expanded="false" aria-controls="collapse-{{loop.index}}">
-		
-    {{item.row_title}}
+		<div class="pricing pricing--tabs d-flex flex-column">
 
-		{% if item.image %}
+			<div class="pricing pricing--tabs d-flex column-gap-3 px-4">
 
-			<img src="{{item.image.url}}" alt="{{item.image.alt}}" width="110" height="110" class="position-absolute overflow-hidden table__image">
+				{% for tab in table.pricing_table_table %}
 
-		{% endif %}
+					<a role="button" id="tab-{{tab.title}}" class="pricing__tab {{loop.index == 1 ?'pricing__tab--active' }} d-flex align-items-center justify-content-center col-4 col-md-2 p-2">
+						{{tab.title}}
+					</a>
 
-    <i class="fa-solid fa-chevron-down position-absolute"></i>
+				{% endfor %}
 
-	</a>
+			</div>
 
-	<div id="collapse-{{loop.index}}" class="collapse">
+			<div class="pricing__content">
 
-	<table class="table">
+				{% for table in table.pricing_table_table %}
 
-  <thead>
+					<div id="tab-{{table.title}}" data-pricing-table class="d-flex pricing__table flex-column w-100">
 
-      <th class="p-3 pt-4" scope="col">Name</th>
-      
-      <th class="p-3 pt-4" scope="col">Description</th>
+						<div class="pricing__head d-flex position-relative">
 
-      <th class="p-3 pt-4 text-end" scope="col">Price</th>
+							<h2 class="pricing__heading position-absolute">{{table.title}}</h2>
 
-    </tr>
+							<img src="{{table.image.url}}" alt="{{table.image.alt}}" class="pricing__image pricing__image--tabs w-100 cover" width="1200">
 
-  </thead>
+						</div>
+
+						<table class="table pricing__row p-3 mb-0">
+
+							<thead>
+
+								<th class="p-3 pt-4" scope="col">Name</th>
+
+								<th class="p-3 pt-4" scope="col">Description</th>
+
+								<th class="p-3 pt-4 text-end" scope="col">Price</th>
+
+							</thead>
+
+							{% for row in table.table_row %}
+
+								<tr>
+
+									<td class="col-2 px-3">
+										<strong>{{row.item}}</strong>
+									</td>
+
+									<td class="col-9 px-3 pricing__description">{{row.description}}</td>
+
+									<td class="col-1 px-3 text-end pricing__price">{{row.price}}</td>
+
+								</tr>
+
+							{% endfor %}
+
+						</table>
+
+					</div>
+
+				{% endfor %}
+
+			</div>
+
+		</div>
 
 	{% endif %}
 
-    <tr>
+	{% if type == 'default' %}
 
-      <th class="col-3 p-3" scope="row">{{item.title}}</td>
+		<div class="d-flex align-items-center justify-content-center">
 
-      <td class="col-8 p-3">{{item.description}}</td>
+			<div class="col-8 d-flex flex-column">
 
-      <td class="col-1 p-3 text-end">&euro; {{item.price}}</td>
-      
-    </tr>
+				{% for tab in table.pricing_table_table %}
 
-	{{loop.last ? '</tbody></table></div>'}}
+					<a href="#tab-{{tab.title}}" data-bs-toggle="collapse" class="{{loop.index > 1 ? 'mt-5' }} pricing__tab--default d-flex align-items-center justify-content-center p-3 position-relative">
+						<img src="{{tab.image.url}}" alt="{{tab.image.alt}}" class="pricing__image pricing__image--default position-absolute cover" width="120" height="120">
+						<span>{{tab.title}}</span>
+					</a>
+
+					<div id="tab-{{tab.title}}" class="collapse">
+
+						<table class="table pricing__row p-3 mb-0 w-100">
+
+							<thead>
+
+								<th class="p-3 pt-4" scope="col">Name</th>
+
+								<th class="p-3 pt-4" scope="col">Description</th>
+
+								<th class="p-3 pt-4 text-end" scope="col">Price</th>
+
+							</thead>
+
+							{% for row in tab.table_row %}
+
+								<tr>
+
+									<td class="col-2 px-3">
+										<strong>{{row.item}}</strong>
+									</td>
+
+									<td class="col-9 px-3 pricing__description">{{row.description}}</td>
+
+									<td class="col-1 px-3 text-end pricing__price">{{row.price}}</td>
+
+								</tr>
+
+							{% endfor %}
+
+						</table>
+
+					</div>
+
+				{% endfor %}
+
+			</div>
+
+		</div>
+
+	{% endif %}
+
+</div>
+

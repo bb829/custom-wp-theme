@@ -11938,65 +11938,112 @@ html {
     --h6-font-size: 1.125rem;
   }
 }
-.section--focussed .fade-in-top, .section--first .fade-in-top, nav .fade-in-top {
+.section--focussed .fade-in-top,
+.section--first .fade-in-top,
+nav .fade-in-top {
   -webkit-animation: fade-in-top 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in-top 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
-.section--focussed .fade-in-bottom, .section--first .fade-in-bottom, nav .fade-in-bottom {
+.section--focussed .fade-in-bottom,
+.section--first .fade-in-bottom,
+nav .fade-in-bottom {
   -webkit-animation: fade-in-bottom 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in-bottom 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
-.section--focussed .fade-in-right, .section--first .fade-in-right, nav .fade-in-right {
+.section--focussed .fade-in-right,
+.section--first .fade-in-right,
+nav .fade-in-right {
   -webkit-animation: fade-in-right 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in-right 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
-.section--focussed .fade-in-left, .section--first .fade-in-left, nav .fade-in-left {
+.section--focussed .fade-in-left,
+.section--first .fade-in-left,
+nav .fade-in-left {
   -webkit-animation: fade-in-left 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in-left 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
-.section--focussed .scale-in-center, .section--first .scale-in-center, nav .scale-in-center {
+.section--focussed .scale-in-center,
+.section--first .scale-in-center,
+nav .scale-in-center {
   -webkit-animation: scale-in-center 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
   animation: scale-in-center 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
-.section--focussed .flip-in-hor-bottom, .section--first .flip-in-hor-bottom, nav .flip-in-hor-bottom {
+.section--focussed .flip-in-hor-bottom,
+.section--first .flip-in-hor-bottom,
+nav .flip-in-hor-bottom {
   -webkit-animation: flip-in-hor-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: flip-in-hor-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
-.section--focussed .swing-in-top-fwd, .section--first .swing-in-top-fwd, nav .swing-in-top-fwd {
+.section--focussed .swing-in-top-fwd,
+.section--first .swing-in-top-fwd,
+nav .swing-in-top-fwd {
   -webkit-animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
   animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
   transform-origin: center;
 }
-.section--focussed .fade-in, .section--first .fade-in, nav .fade-in {
+.section--focussed .fade-in,
+.section--first .fade-in,
+nav .fade-in {
   -webkit-animation: fade-in 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
-.section--focussed .vibrate-1-slow, .section--first .vibrate-1-slow, nav .vibrate-1-slow {
+.section--focussed .vibrate-1-slow,
+.section--first .vibrate-1-slow,
+nav .vibrate-1-slow {
   -webkit-animation: vibrate-1 6s linear infinite both;
   animation: vibrate-1 6s linear infinite both;
 }
-.section--focussed .vibrate-1, .section--first .vibrate-1, nav .vibrate-1 {
+.section--focussed .vibrate-1,
+.section--first .vibrate-1,
+nav .vibrate-1 {
   -webkit-animation: vibrate-1 3s linear infinite both;
   animation: vibrate-1 3s linear infinite both;
 }
-.section--focussed .vibrate-1-reverse, .section--first .vibrate-1-reverse, nav .vibrate-1-reverse {
+.section--focussed .vibrate-1-reverse,
+.section--first .vibrate-1-reverse,
+nav .vibrate-1-reverse {
   -webkit-animation: vibrate-1 3s linear infinite reverse both;
   animation: vibrate-1 3s linear infinite reverse both;
 }
-.section--focussed .delay-1, .section--first .delay-1, nav .delay-1 {
+.section--focussed .delay-1,
+.section--first .delay-1,
+nav .delay-1 {
   animation-delay: 0.2s;
 }
-.section--focussed .delay-2, .section--first .delay-2, nav .delay-2 {
+.section--focussed .delay-2,
+.section--first .delay-2,
+nav .delay-2 {
   animation-delay: 0.4s;
 }
-.section--focussed .delay-3, .section--first .delay-3, nav .delay-3 {
+.section--focussed .delay-3,
+.section--first .delay-3,
+nav .delay-3 {
   animation-delay: 0.6s;
 }
-.section--focussed .delay-4, .section--first .delay-4, nav .delay-4 {
+.section--focussed .delay-4,
+.section--first .delay-4,
+nav .delay-4 {
   animation-delay: 0.8s;
 }
-.section--focussed .delay-5, .section--first .delay-5, nav .delay-5 {
+.section--focussed .delay-5,
+.section--first .delay-5,
+nav .delay-5 {
   animation-delay: 1s;
+}
+.section--focussed .fa-chevron-down,
+.section--first .fa-chevron-down,
+nav .fa-chevron-down {
+  transition: transform ease 0.4s;
+}
+.section--focussed [aria-expanded=false] .fa-chevron-down,
+.section--first [aria-expanded=false] .fa-chevron-down,
+nav [aria-expanded=false] .fa-chevron-down {
+  transform: rotate(0deg);
+}
+.section--focussed [aria-expanded=true] .fa-chevron-down,
+.section--first [aria-expanded=true] .fa-chevron-down,
+nav [aria-expanded=true] .fa-chevron-down {
+  transform: rotate(180deg);
 }
 
 @-webkit-keyframes fade-in-top {
@@ -12596,9 +12643,80 @@ a:hover {
   font-size: var(--alternative-font-size);
 }
 
+.pricing__tab {
+  transition: transform 0.2s;
+  position: relative;
+  border: solid 1px var(--primary-color);
+  border-bottom: none;
+  color: var(--primary-color);
+}
+.pricing--tabs .pricing__tab {
+  min-height: 62px;
+  position: relative;
+  top: 6px;
+}
+.pricing--tabs .pricing__tab:hover {
+  transform: translateY(-6px);
+}
+.pricing__tab--active {
+  border-bottom: none;
+  background: var(--primary-color);
+  color: var(--secondary-color);
+}
+.pricing__tab--active:hover {
+  color: var(--secondary-color);
+}
+.pricing__tab--default {
+  background: var(--tertiary-color);
+}
+.pricing__tab--default span {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}
+.pricing__table {
+  backdrop-filter: blur(20px);
+}
+.pricing__row tr :last-child {
+  border-bottom: 0 !important;
+  padding-bottom: 1.5rem;
+}
+.pricing__content {
+  border: solid 1px var(--primary-color);
+}
+.pricing__description p {
+  font-size: 16px;
+}
+.pricing__heading {
+  font-size: 3rem;
+  color: var(--secondary-color);
+  bottom: 1.5rem;
+  left: 1.5rem;
+}
+.pricing__image--tabs {
+  height: 15.625rem;
+}
+.pricing__image--default {
+  width: 6.25rem;
+  height: 6.25rem;
+  border: solid 2px var(--secondary-color);
+  border-radius: 100%;
+  left: -40px;
+}
+.pricing__price {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 .navigation {
   z-index: 99999;
   pointer-events: none;
+}
+.navigation--traditional {
+  pointer-events: all;
+  border-bottom: solid 1px #f2f2f2;
+}
+.navigation--traditional {
+  background: #fff;
 }
 .navigation__hamburger {
   transform: translateX(10px) translateY(-10px);
@@ -12675,6 +12793,16 @@ a:hover {
 .navigation__item a:hover {
   text-decoration: underline;
 }
+.navigation__item--traditional {
+  opacity: 1;
+}
+.navigation__item--traditional a {
+  font-size: 18px;
+  color: var(--primary-color);
+}
+.navigation__item--traditional a:hover {
+  text-decoration: underline;
+}
 .navigation__link {
   font-size: var(--navigation-font-size);
 }
@@ -12708,25 +12836,17 @@ a:hover {
   background: var(--tertiary-color);
 }
 
-.pricingTable--primaryRowColor a[data-bs-toggle=collapse] {
-  background: var(--primary-color);
-  border: solid 1px var(--primary-color);
-  color: var(--secondary-color);
-}
-.pricingTable--secondaryRowColor a[data-bs-toggle=collapse] {
-  background: var(--secondary-color);
-  border: solid 1px var(--secondary-color);
-  color: var(--primary-color);
-}
-.pricingTable--tertiaryRowColor a[data-bs-toggle=collapse] {
-  background: var(--tertiary-color);
-  border: solid 1px var(--tertiary-color);
-  color: var(--secondary-color);
-}
-.pricingTable a[data-bs-toggle=collapse]:hover .table__image {
+.pricingTable a[data-bs-toggle=collapse]:hover .table__image--default {
   transform: scale(1.1);
 }
-.pricingTable .table__image {
+.pricingTable .table__image--bigImage {
+  width: 100%;
+  object-fit: cover;
+  transition: transform ease 0.2s;
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+.pricingTable .table__image--default {
   transition: transform ease 0.2s;
   margin-top: -18px;
   border-radius: 100%;
@@ -12735,13 +12855,8 @@ a:hover {
   left: -20px;
 }
 .pricingTable .fa-chevron-down {
-  transition: transform ease 0.4s;
-  transform: rotate(0deg);
   right: 20px;
   top: 28px;
-}
-.pricingTable [aria-expanded=true] .fa-chevron-down {
-  transform: rotate(180deg);
 }
 
 .button {

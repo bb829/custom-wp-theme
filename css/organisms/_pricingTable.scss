@@ -1,42 +1,29 @@
 .pricingTable {
 
-    &--primaryRowColor {
-        a[data-bs-toggle="collapse"] {
-            background: var(--primary-color);
-            border: solid 1px var(--primary-color);
-            color: var(--secondary-color);
-        }
-    }
-
-    &--secondaryRowColor {
-        a[data-bs-toggle="collapse"] {
-            background: var(--secondary-color);
-            border: solid 1px var(--secondary-color);
-            color: var(--primary-color);
-        }
-    }
-
-    &--tertiaryRowColor {
-        a[data-bs-toggle="collapse"] {
-            background: var(--tertiary-color);
-            border: solid 1px var(--tertiary-color);
-            color: var(--secondary-color);
-        }
-    }
-
     a[data-bs-toggle="collapse"]:hover {
-        .table__image {
+        .table__image--default {
             transform: scale(1.1);
         }
     }
 
     .table__image {
-        transition: transform ease 0.2s;
-        margin-top: -18px;
-        border-radius: 100%;
-        border: solid 2px var(--accent-color);
-        top: 0px;
-        left: -20px;
+
+        &--bigImage {
+            width: 100%;
+            object-fit: cover;
+            transition: transform ease 0.2s;
+            aspect-ratio: 1;
+            border-radius: 100%;
+        }
+
+        &--default {
+            transition: transform ease 0.2s;
+            margin-top: -18px;
+            border-radius: 100%;
+            border: solid 2px var(--accent-color);
+            top: 0px;
+            left: -20px;
+        }
     }
 
     .fa-chevron-down {
