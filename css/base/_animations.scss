@@ -2,6 +2,16 @@
 .section--first,
 nav {
 
+  .animatePrimaryGradient {
+    width: 200vw;
+    height: 300vh;
+    top:-50vh;
+    left:-50vw;
+    background: var(--accent-color);
+    background: linear-gradient(159deg, var(--tertiary-color) 30%, var(--accent-color-two) 100%);
+    animation: animatePrimaryGradient 2s ease forwards;
+  }
+
   .fade-in-top {
     -webkit-animation: fade-in-top 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
     animation: fade-in-top 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
@@ -78,6 +88,14 @@ nav {
     animation-delay: 1s;
   }
 
+  .delay-10 {
+    animation-delay: 2s;
+  }
+
+  .delay-12 {
+    animation-delay: 2.4s;
+  }
+
   .fa-chevron-down {
     transition: transform ease 0.4s;
   }
@@ -93,6 +111,18 @@ nav {
       transform: rotate(180deg);
     }
   }
+}
+
+@keyframes animatePrimaryGradient {
+
+  0% {
+    transform: rotate(0deg)
+  }
+
+  100% {
+    transform: rotate(260deg);
+  }
+
 }
 
 @-webkit-keyframes fade-in-top {

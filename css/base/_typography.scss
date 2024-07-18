@@ -34,7 +34,30 @@ h6 {
     font-weight: 700;
 }
 
-p {
+label {
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--primary-font-size-alt);
+    line-height: 1.6em;
+    font-weight: 700;
+
+    @include to(md) {
+        font-size: var(--primary-font-size);
+    }
+
+    a {
+        font-family: 'Poppins', sans-serif;
+        font-size: var(--primary-font-size);
+        text-decoration: none;
+        font-weight: 600;
+        line-height: 1.6em;
+
+        @include to(md) {
+            font-size: var(--primary-font-size);
+        }
+    }
+}
+
+p, input, textarea {
     font-family: 'Poppins', sans-serif;
     font-size: var(--primary-font-size);
     line-height: 1.6em;

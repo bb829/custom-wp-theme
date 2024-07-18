@@ -1,0 +1,15 @@
+<div class="form {{type ? type}} w-100 p-3 rounded">
+
+{% if title == 'true' %}
+
+{{ '[forms_form title="true" id="' ~ ID ~ '"]'|do_shortcode }}
+
+
+{% else %}
+
+{{ '[forms_form id="' ~ ID ~ '"]'|do_shortcode }}
+
+{% endif %}
+
+
+</div>

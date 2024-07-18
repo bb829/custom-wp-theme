@@ -21,6 +21,18 @@ function add_cpt_tabs_to_theme_options()
                     'label' => 'Enable filters for ' . $cpt['cpt_label'] . '?',
                     'name' => strtolower($cpt['cpt_name']) . '_filters',
                     'type' => 'true_false',
+                    'wrapper' => [
+                        'width' => '50%',
+                    ]
+                ];
+                $fields[] = [
+                    'key' => $field_key . '_enable_card_taxonomies',
+                    'label' => 'Enable card taxonomies for ' . $cpt['cpt_label'] . '?',
+                    'name' => strtolower($cpt['cpt_name']) . '_taxonomies',
+                    'type' => 'true_false',
+                    'wrapper' => [
+                        'width' => '50%',
+                    ]
                 ];
                 $fields[] = [
                     'key' => $field_key . '_wysiwyg_intro',

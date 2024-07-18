@@ -40,59 +40,64 @@
 
 		{% endif %}
 
-		{% if cpt.post_title or cpt.title %}
+		<div class="d-flex flex-column column-gap-3">
 
-			<h3 class="text-center m-0 {{card_type == 'icon-image' ? 'mt-5'}}">{{cpt.post_title ? cpt.post_title : cpt.title}}</h3>
+			{% if cpt.post_title or cpt.title %}
 
-		{% endif %}
+				<h3 class="text-center m-0 {{card_type == 'icon-image' ? 'mt-5'}}">{{cpt.post_title ? cpt.post_title : cpt.title}}</h3>
 
-		{% if cpt.terms %}
+			{% endif %}
 
-			<div class="d-flex flex-column gap-3">
-			
-				<div class="d-flex">
 
-					{% for term in cpt.terms %}
 
-						{{dump(term)}}
+			{% if options %}
 
-						<strong>{{taxonomy|replace({'_': ' '})|capitalize}}</strong>
+				<div class="carrotOverviewCard__taxonomyWrapper d-flex w-100 column-gap-3 row-gap-2 align-items-center justify-content-center my-3">
+
+					{% for taxonomy in cpt.terms %}
+
+						<div class="carrotOverviewCard__taxonomy d-flex flex-column p-2">
+
+							<strong>{{taxonomy.name|replace({'_': ' '})|capitalize}}</strong>
+
+							<span>{{taxonomy.terms}}</span>
+
+						</div>
 
 					{% endfor %}
 
 				</div>
 
+			{% endif %}
 
-			</div>
+			{% for specification in cpt.specifications %}
 
-		{% endif %}
-
-		{% for specification in cpt.specifications %}
-
-			{% include 'molecules/carrotSpecifications.twig' with {
+				{% include 'molecules/carrotSpecifications.twig' with {
 				'specification': specification
 			} %}
 
-		{% endfor %}
+			{% endfor %}
 
-		{% if content %}
+			{% if content %}
 
-			<div class="carrotOverviewCard__content text-align-center mb-3 p-3">
+				<div class="carrotOverviewCard__content px-3 mb-3">
 
-				{{content|striptags('<p><br>')|truncate(28)}}
+					{{content|striptags('<p><br>')|truncate(28)}}
 
-			</div>
+				</div>
 
-		{% endif %}
+			{% endif %}
 
-		<div class="mb-3">
+			<div class="mb-3 d-flex align-items-center justify-content-center">
 
-			{% include 'atoms/button.twig' with {
+				{% include 'atoms/button.twig' with {
 		'url': cpt.permalink,
 		'title': cpt.button_text ? cpt.button_text : 'Read more',
 		'classes': buttonType ? buttonType : 'button--primary'
 		}
 	%}
+
+			</div>
 
 		</div>
 

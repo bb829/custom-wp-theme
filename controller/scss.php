@@ -2,10 +2,6 @@
 use ScssPhp\ScssPhp\Compiler;
 
 add_action('acf/init', function () {
-    $primaryColor = '';
-    $secondaryColor = '';
-    $siteColors = '';
-
     try {
         $siteColors = get_field('site_colors', 'option');
 
@@ -14,9 +10,11 @@ add_action('acf/init', function () {
             $secondaryColor = $siteColors['secondary_color'];
             $tertiaryColor = $siteColors['tertiary_color'];
             $accentColor = $siteColors['accent_color'];
+            $accentColorTwo = $siteColors['accent_color_two'];
+            $accentColorThree = $siteColors['accent_color_three'];
         }
 
-        $scssContent = ":root { --primary-color: $primaryColor; --secondary-color: $secondaryColor; --tertiary-color: $tertiaryColor; --accent-color: $accentColor;}";
+        $scssContent = ":root { --primary-color: $primaryColor; --secondary-color: $secondaryColor; --tertiary-color: $tertiaryColor; --accent-color: $accentColor; --accent-color-two: $accentColorTwo; --accent-color-three: $accentColorThree;}";
 
         $scssCompiler = new Compiler();
 

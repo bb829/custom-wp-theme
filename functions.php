@@ -30,3 +30,10 @@ function enable_svg_upload($mimes) {
     return $mimes;
 }
 add_filter( 'upload_mimes', 'enable_svg_upload' );
+
+add_filter('timber/twig', function($twig) {
+    $twig->addFilter(new \Twig\TwigFilter('do_shortcode', function($text) {
+        return do_shortcode($text);
+    }));
+    return $twig;
+});

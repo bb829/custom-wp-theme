@@ -6,6 +6,7 @@
 	{% set cardType = attribute(theme_options, cpt ~ '_archive_card_type') %}
 	{% set cardBackground = attribute(theme_options, cpt ~ '_archive_card_background') %}
 	{% set filters = attribute(theme_options, cpt ~ '_filters') %}
+	{% set cardOptions = attribute(theme_options, cpt ~ '_taxonomies') %}
 
 	<section class="section--first archiveCarrots">
 
@@ -114,6 +115,7 @@
 						'card_type': cardType,
 						'cardBG': cardBackground,
 						'filters': filters,
+						'options': cardOptions
 
 					} %}
 

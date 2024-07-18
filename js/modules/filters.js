@@ -54,9 +54,11 @@ jQuery(document).ready(function ($) {
     }
 
     $(function () {
-        $(".datepicker").datepicker({
-            dateFormat: "dd-mm-yy"
-        });
+        if ($(".datepicker").length > 0) {
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy"
+            });
+        }
     });
 
 });

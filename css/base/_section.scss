@@ -74,6 +74,15 @@
         background: var(--accent-color);
     }
 
+    &--accentTwoBG {
+        background: var(--accent-color-two);
+    }
+
+    &--primaryGradient {
+        background: var(--accent-color);
+        background: linear-gradient(159deg, var(--tertiary-color) 50%, var(--accent-color-two) 100%);
+    }
+
     &--blue {
         background: var(--blue-bg);
     }

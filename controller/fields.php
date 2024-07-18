@@ -134,7 +134,8 @@ $hero
             '' => 'Default',
             'section--primaryFont' => 'Primary Color',
             'section--secondaryFont' => 'Secondary Color',
-            'section--tertiaryFont' => 'Tertiary Color'
+            'section--tertiaryFont' => 'Tertiary Color',
+
         ],
         'default_value' => [
             '' => 'Default'
@@ -150,6 +151,7 @@ $hero
         'choices' => [
             'image' => 'Image',
             'animation' => 'Animation',
+            'form' => 'Form',
         ],
         'default_value' => [
             'image' => 'Image'
@@ -158,6 +160,47 @@ $hero
             'width' => '50%',
         ],
         'return_format' => 'value',
+    ])
+    ->addText('form_id', [
+        'label' => 'Form ID',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'asset_type',
+                    'operator' => '==',
+                    'value' => 'form',
+                ],
+            ],
+        ],
+    ])
+    ->addSelect('form_type', [
+        'label' => 'Form type',
+        'required' => 0,
+        'choices' => [
+            'form--primary' => 'Primary',
+            'form--secondary' => 'Secondary'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'allow_null' => 1,
+        'multiple' => 0,
+        'return_format' => 'value',
+        'default_value' => [
+            'form--primary' => 'Primary'
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'asset_type',
+                    'operator' => '==',
+                    'value' => 'form',
+                ],
+            ],
+        ],
     ])
     ->addSelect('animation', [
         'label' => 'Animation',
@@ -221,18 +264,96 @@ $hero
             ],
         ],
     ])
-    ->addSelect('background_color', [
-        'label' => 'Background color',
+    ->addTrueFalse('gradient', [
+        'label' => 'Background gradient',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+    ])
+    ->addTrueFalse('background_paint', [
+        'label' => 'Background Color',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+    ])
+    ->addSelect('background_gradient', [
+        'label' => 'Background gradient',
         'choices' => [
-            '' => 'None',
-            'section--primaryBG' => 'Primary Color',
-            'section--secondaryBG' => 'Secondary Color',
-            'section--tertiaryBG' => 'Tertiary Color'
+            'section--primaryGradient' => 'Primary Gradient',
+            'section--secondaryGradient' => 'Secondary Gradient'
         ],
         'wrapper' => [
             'width' => '50%',
         ],
         'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'gradient',
+                    'operator' => '==',
+                    'value' => '1',
+                ],
+            ],
+        ],
+    ])
+    ->addTrueFalse('animate_gradient', [
+        'label' => 'Animate gradient',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'gradient',
+                    'operator' => '==',
+                    'value' => '1',
+                ],
+            ],
+        ],
+    ])
+    ->addSelect('gradient_animation', [
+        'label' => 'Background gradient animation',
+        'choices' => [
+            'animatePrimaryGradient' => 'Primary Gradient',
+            'animateSecondaryGradient' => 'Secondary Gradient'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'animate_gradient',
+                    'operator' => '==',
+                    'value' => '1',
+                ],
+            ],
+        ],
+    ])
+    ->addSelect('background_color', [
+        'label' => 'Background color',
+        'choices' => [
+            'section--primaryBG' => 'Primary Color',
+            'section--secondaryBG' => 'Secondary Color',
+            'section--tertiaryBG' => 'Tertiary Color',
+            'section--accentBG' => 'Accent Color',
+            'section--accentTwoBG' => 'Accent two Color',
+            'section--accentThreeBG' => 'Accent three Color'
+        ],
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'background_paint',
+                    'operator' => '==',
+                    'value' => '1',
+                ],
+            ],
+        ],
     ])
     ->addTrueFalse('video', [
         'label' => 'Background video',
@@ -351,7 +472,9 @@ $textImage
             'section--primaryBG' => 'Primary Color',
             'section--secondaryBG' => 'Secondary Color',
             'section--tertiaryBG' => 'Tertiary Color',
-            'section--accentBG' => 'Accent Color'
+            'section--accentBG' => 'Accent Color',
+            'section--accentTwoBG' => 'Accent Two Color'
+
         ],
         'wrapper' => [
             'width' => '50%',
@@ -816,25 +939,37 @@ $themeOptions
     ->addColorPicker('primary_color', [
         'label' => 'Primary color',
         'wrapper' => array(
-            'width' => '25%',
+            'width' => '33%',
         ),
     ])
     ->addColorPicker('secondary_color', [
         'label' => 'Secondary color',
         'wrapper' => array(
-            'width' => '25%',
+            'width' => '33%',
         ),
     ])
     ->addColorPicker('tertiary_color', [
         'label' => 'Tertiary color',
         'wrapper' => array(
-            'width' => '25%',
+            'width' => '33%',
         ),
     ])
     ->addColorPicker('accent_color', [
         'label' => 'Accent color',
         'wrapper' => array(
-            'width' => '25%',
+            'width' => '33%',
+        ),
+    ])
+    ->addColorPicker('accent_color_two', [
+        'label' => 'Accent color 2',
+        'wrapper' => array(
+            'width' => '33%',
+        ),
+    ])
+    ->addColorPicker('accent_color_three', [
+        'label' => 'Accent color 3',
+        'wrapper' => array(
+            'width' => '33%',
         ),
     ])
     ->endGroup()
