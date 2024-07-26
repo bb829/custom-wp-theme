@@ -2,7 +2,7 @@
 {% set image = cpt.thumbnail ? cpt.thumbnail : thumbnail %}
 {% set content = cpt.content ? cpt.content : content %}
 {% set buttonText = linkText ? linkText : cpt.button_text %}
-<div class="col-12 col-md-6 col-lg-4 {{filters == true ? 'col-md-6 col-lg-4' : 'col-md-6 col-lg-4'}} {{mid ? 'my-4 my-md-0'}} {{loop.index > 3 ? 'mt-4'}} {{card_type == 'icon-image' ? 'mt-10' }} {{card_type == 'image-rounded' ? 'mt-10' }}">
+<div class="col-12 col-md-6 col-lg-4 {{filters == true ? 'col-md-6 col-lg-4' : 'col-md-6 col-lg-4'}} {{mid ? 'my-4 my-md-0'}} {{loop.index > 3 ? 'mt-4'}} {{card_type == 'icon-image' ? 'mt-10' }} {{card_type == 'image-rounded' ? 'mb-4-override mt-10' }}">
 
 	<div class="carrotOverviewCard {{cardBG ? 'carrotOverviewCard' ~ cardBG}} w-100 h-100 d-flex align-items-center flex-column position-relative pt-0 {{card_type == 'icon-image' ? 'pt-5'}}">
 

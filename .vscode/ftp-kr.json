@@ -1,0 +1,16 @@
+{
+    "host": "mobifz.ssh.transip.me",
+    "username": "mobielefietsenmakervoordeligernl",
+    "password": "mob722!@",
+    "remotePath": "www/wp-content/themes/custom-wp-theme",
+    "protocol": "sftp",
+    "port": 0,
+    "fileNameEncoding": "utf8",
+    "autoUpload": true,
+    "autoDelete": false,
+    "autoDownload": false,
+    "ignore": [
+        ".git",
+        "/.vscode"
+    ]
+}
