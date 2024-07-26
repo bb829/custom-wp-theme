@@ -2,7 +2,19 @@
 
 {% block content %}
 
+{% set headerType = attribute(theme_options, cpt ~ '_single_header_type') %}
+
+{% if headerType == 'default' %}
+
 	{% include 'organisms/cpt-header.twig' %}
+
+{% endif %}
+
+{% if headerType == 'minimal' %}
+
+	{% include 'organisms/cpt-header-minimal.twig' %}
+
+{% endif %}
 
 
 		{% for item in cpt_options.content %}

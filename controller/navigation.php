@@ -7,4 +7,15 @@ function register_my_menus()
             'primary-menu' => __('Primary Menu')
         )
     );
+    register_nav_menus(
+        array(
+            'secondary-menu' => __('Secondary Menu')
+        )
+    );
+
+    register_nav_menus(
+        array(
+            'sitemap' => __('Sitemap')
+        )
+    );
 }

@@ -1,0 +1,67 @@
+{% block content %}
+
+	{% set headerImageType = attribute(theme_options, cpt ~ '_single_image_type') %}
+
+	<section class="section section--first cptHeader">
+
+		<div class="p-4 py-5">
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-12 col-md-6 fade-in-top delay-1">
+						<div class="d-flex justify-content-center flex-column h-100">
+							<div class="d-flex flex-column">
+								<h1>{{ cpt_options.cpt_title ? cpt_options.cpt_title : viewmodel.fetchPost.title }}</h1>
+
+								{% if viewmodel.fetchTerms %}
+									<div class="d-flex column-gap-3 row-gap-2 align-items-start justify-content-start mt-2 mb-3">
+										{% for taxonomy in viewmodel.fetchTerms %}
+											<div class="cptHeader__taxonomy d-flex flex-column">
+												<strong>{{taxonomy.name|replace({'_': ' '})|capitalize}}</strong>
+												<span>{{taxonomy.terms}}</span>
+											</div>
+										{% endfor %}
+									</div>
+								{% endif %}
+
+								{{cpt_options.header_content}}
+							</div>
+
+							{% if cpt_options.buttons %}
+
+								<div class="d-flex column-gap-3 mt-4">
+									{% for button in cpt_options.buttons %}
+										{% include 'atoms/button.twig' with {
+                    'url': button.button.url, 
+                    'title': button.button.title, 
+                    'classes': button.button_style, 
+                    'target': button.button.blank, 
+                    'alt': button.button.alt
+                    
+                    } 
+                    
+                    %}
+									{% endfor %}
+
+								</div>
+
+							{% endif %}
+						</div>
+
+					</div>
+
+					<div class="col-12 col-md-6  mt-4 mt-lg-0 fade-in-right delay-2">
+						<img src="{{viewmodel.fetchPost.thumbnail}}" alt="{{viewmodel.fetchPost.title}}" class="cptHeader__image {{headerImageType ? headerImageType }} cover">
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+{% endblock %}
+

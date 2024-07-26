@@ -1,8 +1,12 @@
 .textImage {
-
+    
     &__content {
         max-width: px(750);
         z-index: 4;
+
+        &--top {
+            max-width: unset;
+        }
 
         @include to(md) {
             order: 1;

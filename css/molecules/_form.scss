@@ -2,9 +2,10 @@
     &--primary {
         background: var(--secondary-color);
 
-        input {
+        input,
+        textarea {
             border: none;
-            background: transparent;
+            background: var(--accent-color);
 
             &:focus {
                 outline: none;
@@ -15,19 +16,151 @@
             background: var(--accent-color);
         }
 
-        button[role="submit"] {
+        button[role="submit"],
+        .gform_button {
             transition: all ease 0.2s;
-            padding: px(12) px(24);
-            background: var(--primary-color);
+            padding: px(12) px(24) !important;
+            background: var(--accent-color-two);
             color: var(--secondary-color);
-            border: solid 2px var(--primary-color);
-            border-radius: px(6);
+            border: solid 2px var(--accent-color-two);
+            border-radius: 2.5rem;
 
             &:hover {
                 background: var(--secondary-color);
-                color: var(--primary-color);
-                border: solid 2px var(--primary-color);
+                color: var(--accent-color-two);
+                border: solid 2px var(--accent-color-two);
             }
+        }
+
+        .gform_previous_button {
+            color: var(--tertiary-color) !important;
+
+            &:hover {
+                background: var(--tertiary-color) !important;
+                color: var(--secondary-color) !important;
+                border: solid 2px var(--secondary-color) !important;
+            }
+        }
+
+        .gform_next_button {
+            color: var(--secondary-color);
+
+            &:hover {
+                background: var(--secondary-color);
+                color: var(--tertiary-color);
+                border: solid 2px var(--tertiary-color);
+            }
+        }
+
+        .gform_next_button,
+        .gform_previous_button {
+            transition: all ease 0.2s;
+            padding: px(12) px(24) !important;
+            background: var(--tertiary-color);
+            border: solid 2px var(--tertiary-color);
+            border-radius: 2.5rem;
+
+            &:hover {
+                background: var(--secondary-color);
+                color: var(--tertiary-color);
+                border: solid 2px var(--tertiary-color);
+            }
+        }
+
+        .gform-icon::before {
+            display: none !important;
+        }
+
+        .gfield_contains_required,
+        .gfield_required_text {
+            label::after {
+
+                font-family: 'arial', sans-serif;
+                content: '*';
+                font-size: var(--primary-font-size);
+                color: #c00;
+                position: relative;
+                left: 8px;
+            }
+        }
+
+        .gfield_required_text {
+            width: px(0);
+            overflow: hidden;
+
+            ::after {
+                font-family: 'arial', sans-serif;
+                content: '*';
+                font-size: var(--primary-font-size);
+                color: #c00;
+                position: relative;
+                left: 8px;
+            }
+        }
+
+        .gf_progressbar_title {
+            margin-bottom: px(8) !important;
+            color: var(--primary-color) !important;
+            font-weight: bold !important;
+            font-size: var(--primary-font-size) !important;
+        }
+
+        .gfield_required .gfield_required_text {
+            display: none !important;
+        }
+
+        .gform_validation_errors,
+        .validation_message {
+            padding: px(12) px(12) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        .gf_progressbar {
+            background: none !important;
+
+            .gf_progressbar_percentage {
+                display: flex !important;
+                height: auto !important;
+                padding: px(8) px(12);
+                border-radius: 2.5rem !important;
+                background: var(--accent-color-two) !important;
+
+                span {
+                    color: var(--secondary-color) !important;
+                    font-weight: 700 !important;
+                }
+            }
+        }
+
+        p,
+        span,
+        input,
+        h1,
+        h2,
+        h3,
+        h4,
+        strong {
+            color: var(--primary-color);
+        }
+
+        a {
+            color: var(--accent-color-two) !important;
+        }
+
+        .gfield_label {
+            font-weight: 400 !important;
+        }
+
+        .gfield_html {
+            font-weight: 700 !important;
+        }
+
+        .gform_page_footer {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: space-between !important;
         }
     }
 }

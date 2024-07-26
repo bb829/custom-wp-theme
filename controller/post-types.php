@@ -64,6 +64,30 @@ function register_acf_fields_for_cpts($cpt_identifier)
             'label' => 'CPT Header',
             'layout' => 'block'
         ])
+        ->addText('cpt_title', [
+            'label' => 'CPT Title',
+            'wrapper' => [
+                'width' => '100%',
+            ]
+        ])
+        ->addSelect('header_image_type', [
+            'label' => 'Image type',
+            'required' => 0,
+            'choices' => [
+                '' => 'Default',
+                'textImage__image--rounded' => 'Rounded',
+                'textImage__image--squared' => 'Squared',
+                'textImage__image--fullHeight' => 'Squared full height',
+            ],
+            'wrapper' => [
+                'width' => '30%',
+            ],
+            'return_format' => 'value',
+        ])
+    
+        ->addTrueFalse('full_height', [
+            'label' => 'Full height',
+        ])
         ->addWysiwyg('header_content', [
             'label' => 'Header content',
             'wrapper' => [
@@ -92,7 +116,8 @@ function register_acf_fields_for_cpts($cpt_identifier)
                 'button--primary' => 'Primary',
                 'button--secondary' => 'Secondary',
                 'button--tertiary' => 'Tertiary',
-                'button--alternative' => 'Alternative'
+                'button--alternative' => 'Alternative',
+                'button--alternative-1' => 'Alternative two'
             ],
             'default_value' => [
                 'button--primary' => 'Primary'
@@ -116,6 +141,9 @@ function register_acf_fields_for_cpts($cpt_identifier)
             'wrapper' => [
                 'width' => '100%',
             ]
+        ])
+        ->addTrueFalse('text_full_height', [
+            'label' => 'Full height',
         ])
         ->addTrueFalse('in_focus', [
             'label' => 'In focus',
@@ -189,7 +217,8 @@ function register_acf_fields_for_cpts($cpt_identifier)
                 'button--primary' => 'Primary',
                 'button--secondary' => 'Secondary',
                 'button--tertiary' => 'Tertiary',
-                'button--alternative' => 'Alternative'
+                'button--alternative' => 'Alternative',
+                'button--alternative-1' => 'Alternative two'
             ],
             'default_value' => [
                 'button--primary' => 'Primary'
@@ -211,7 +240,8 @@ function register_acf_fields_for_cpts($cpt_identifier)
                 'button--primary' => 'Primary',
                 'button--secondary' => 'Secondary',
                 'button--tertiary' => 'Tertiary',
-                'button--alternative' => 'Alternative'
+                'button--alternative' => 'Alternative',
+                'button--alternative-1' => 'Alternative two'
             ],
             'default_value' => [
                 'button--secondary' => 'Secondary'
@@ -237,6 +267,9 @@ function register_acf_fields_for_cpts($cpt_identifier)
         ->addTab('featured_posts', [
             'label' => 'Featured posts',
             'layout' => 'block'
+        ])
+        ->addTrueFalse('featured_full_height', [
+            'label' => 'Full height',
         ])
         ->addSelect('featured_posts_card_type', [
             'label' => 'Card type',

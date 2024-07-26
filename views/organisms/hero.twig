@@ -8,7 +8,7 @@
 {% set animateGradient = fields.animate_gradient ? fields.animate_gradient %}
 {% set gradientAnimation = fields.gradient_animation ? fields.gradient_animation %}
 
-<section class="section {{bg ? background}} {{gradient ? backgroundGradient}}{{font ? font}} section--first overflow-hidden position-relative overflow-hidden">
+<section class="section {{fields.full_height ? 'section--fullHeight'}} {{bg ? background}} {{gradient ? backgroundGradient}} {{font ? font}} section--first overflow-hidden position-relative overflow-hidden">
 
 	{% if animateGradient == true %}
 
@@ -20,7 +20,7 @@
 
 	{% endif %}
 
-	<div class="hero d-flex align-items-center justify-content-center fade-in {{animateGradient ? 'delay-5' : 'delay-2'}} pt-md-0" style="background: {{fields.background_color}}">
+	<div class="hero d-flex align-items-center justify-content-center fade-in {{animateGradient ? 'delay-5' : 'delay-2'}} pt-md-0">
 
 		{% if fields.video == true %}
 
@@ -33,9 +33,9 @@
 
 			<div class="row">
 
-				<div class="col-12 {{fields.asset_type == 'image' ? 'col-md-6' }} {{fields.asset_type == 'animation' ? 'col-md-6' }} {{fields.asset_type == 'form' ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center z-4" style="perspective:1000px;">
+				<div class="col-12 {{fields.asset_type == 'image' ? 'col-lg-8 col-xl-6' }} {{fields.asset_type == 'video' ? 'col-lg-8 col-xl-6' }} {{fields.asset_type == 'animation' ? 'col-lg-8 col-xl-6' }} {{fields.asset_type == 'form' ? 'col-lg-8 col-xl-6' }} d-flex flex-column align-items-start justify-content-center z-4" style="perspective:1000px;">
 
-					<div class="{{animateGradient ? 'fade-in delay-5' : 'swing-in-top-fwd delay-2'}}">
+					<div class="w-100 {{animateGradient ? 'fade-in delay-5' : 'swing-in-top-fwd delay-2'}}">
 
 						{% if fields.title %}
 
@@ -103,8 +103,18 @@
 				{% if fields.asset_type == 'image' %}
 					{% if fields.image %}
 
-						<div class="col-12 col-md-6 mt-4 mt-md-0 d-flex align-items-center justify-content-center scale-in-center delay-4 z-4">
+						<div class="col-12 col-lg-4 col-xl-6 mt-4 mt-lg-0 d-flex align-items-center justify-content-center scale-in-center delay-4 z-4">
 							<img src="{{fields.image.url}}" class="hero__image {{imageType ? imageType}} cover"/>
+						</div>
+
+					{% endif %}
+				{% endif %}
+
+				{% if fields.asset_type == 'video' %}
+					{% if fields.video_asset %}
+
+						<div class="col-12 col-lg-4 col-xl-6 mt-4 mt-lg-0 d-flex align-items-center justify-content-center scale-in-center delay-4 z-4">
+							<video src="{{fields.video_asset}}" class="hero__image {{imageType ? imageType}} cover" autoplay muted loop nocontrols playsinline/>
 						</div>
 
 					{% endif %}
@@ -112,13 +122,15 @@
 
 				{% if fields.asset_type == 'form' %}
 
-					<div class="col-12 col-md-6 mt-4 mt-md-0 d-flex align-items-center justify-content-center scale-in-center delay-4 z-4">
+					<div class="col-12 col-lg-4 col-xl-6 mt-4 mt-lg-0 d-flex align-items-center justify-content-center scale-in-center delay-4 z-4">
 
-						{% if fields.form_id %}
+						{% if fields.form_software %}
 							{% include 'molecules/form.twig' with {
 							'ID': fields.form_id,
 							'title': true,
-							'type': fields.form_type
+							'type': fields.form_type,
+							'software': fields.form_software,
+							'shortcode': fields.gravityforms_shortcode
 						}%}
 
 						{% endif %}

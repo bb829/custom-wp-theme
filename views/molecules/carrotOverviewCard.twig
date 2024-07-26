@@ -1,18 +1,28 @@
 {% set mid = loop.index == 2 %}
-{% set image = cpt.thumbnail ? cpt.thumbnail %}
-{% set content = cpt.content ? cpt.content %}
+{% set image = cpt.thumbnail ? cpt.thumbnail : thumbnail %}
+{% set content = cpt.content ? cpt.content : content %}
+{% set buttonText = linkText ? linkText : cpt.button_text %}
+<div class="col-12 col-md-6 col-lg-4 {{filters == true ? 'col-md-6 col-lg-4' : 'col-md-6 col-lg-4'}} {{mid ? 'my-4 my-md-0'}} {{loop.index > 3 ? 'mt-4'}} {{card_type == 'icon-image' ? 'mt-10' }} {{card_type == 'image-rounded' ? 'mt-10' }}">
 
-<div class="col-12 {{filters == true ? 'col-md-4' : 'col-md-4'}} {{mid ? 'my-4 my-md-0'}} {{loop.index > 3 ? 'mt-4'}} {{card_type == 'icon-image' ? 'mt-10' }}">
-
-	<div class="carrotOverviewCard {{cardBG ? 'carrotOverviewCard' ~ cardBG}} w-100 h-100 d-flex align-items-center flex-column gap-2 position-relative pt-0 {{card_type == 'icon-image' ? 'pt-5'}}">
+	<div class="carrotOverviewCard {{cardBG ? 'carrotOverviewCard' ~ cardBG}} w-100 h-100 d-flex align-items-center flex-column position-relative pt-0 {{card_type == 'icon-image' ? 'pt-5'}}">
 
 		{% if image %}
 
 			{% if card_type == 'icon-image' %}
 
+				<div class="carrotOverviewCard__imageWrapper carrotOverviewCard__imageWrapper--iconRounded p-2 mt-3 d-flex align-items-center justify-content-center">
+
+					<img src="{{image}}" class="carrotOverviewCard__image carrotOverviewCard__image--iconRounded {{imageBackground ? 'carrotOverviewCard__image' ~ imageBackground}}"/>
+
+				</div>
+
+			{% endif %}
+
+			{% if card_type == 'image-rounded' %}
+
 				<div class="carrotOverviewCard__imageWrapper p-2 mt-3 d-flex align-items-center justify-content-center">
 
-					<img src="{{image}}" class="carrotOverviewCard__image carrotOverviewCard__image--iconRounded {{imageBackground ? 'carrotOverviewCard__image' ~ imageBackground}} cover"/>
+					<img src="{{image}}" class="carrotOverviewCard__image carrotOverviewCard__image--imageRounded {{imageBackground ? 'carrotOverviewCard__image' ~ imageBackground}}" width="140" height="140"/>
 
 				</div>
 
@@ -30,9 +40,9 @@
 
 			{% if card_type == 'large-image' %}
 
-				<div class="carrotOverviewCard__image carrotOverviewCard__image--large overflow-hidden mb-3 d-flex align-items-center justify-content-center">
+				<div class="carrotOverviewCard__image carrotOverviewCard__image--large overflow-hidden d-flex align-items-center justify-content-center">
 
-					<img src="{{cpt.thumbnail}}" class="cover w-100" width="600" height="600"/>
+					<img src="{{image}}" class="cover w-100" width="600" height="600"/>
 
 				</div>
 
@@ -40,23 +50,64 @@
 
 		{% endif %}
 
-		<div class="d-flex flex-column column-gap-3">
+		{% if card_type == 'large-image' or card_type == 'image-rounded' %}
+			<div class="carrotOverviewCard__titleWrapper w-100 d-flex flex-column column-gap-3 {{card_type == 'image-rounded' ? 'carrotOverviewCard__titleWrapper--imageRounded' : 'py-3 '}}">
+
+				{% if cpt.post_title or cpt.title %}
+
+					<h3 class="text-center m-0 carrotOverviewCard__title">{{cpt.post_title ? cpt.post_title : cpt.title}}</h3>
+
+				{% endif %}
+
+				{% if itemOptions %}
+
+					<div class="carrotOverviewCard__options d-flex w-100  align-items-center mt-2 justify-content-center">
+{# 						**TEMPORARY SOLUTION **
+						OPTIONS NEED TO BE CUSTOM DEFINED AS A REPEATER IN THE THE PRICING TABLE COMPONENT
+						OPTION NAME AND VALUE ARE DISPLAYED HERE INSIDE A FOR LOOP #}
+						<h4 class="m-0"><strong>&euro; {{cpt.price}}</strong></h4>
+
+					</div>
+
+				{% endif %}
+
+				{% if options %}
+
+					<div class="d-flex w-100 column-gap-3 row-gap-2 align-items-center justify-content-center">
+
+						{% for taxonomy in cpt.terms %}
+
+							<div class="carrotOverviewCard__taxonomy d-flex flex-column p-2 text-center mt-2">
+
+								<strong>{{taxonomy.name|replace({'_': ' '})|capitalize}}</strong>
+
+								<span>{{taxonomy.terms}}</span>
+
+							</div>
+
+						{% endfor %}
+
+					</div>
+
+				{% endif %}
+
+			</div>
+
+		{% else %}
 
 			{% if cpt.post_title or cpt.title %}
 
-				<h3 class="text-center m-0 {{card_type == 'icon-image' ? 'mt-5'}}">{{cpt.post_title ? cpt.post_title : cpt.title}}</h3>
+				<h3 class="text-center m-0 carrotOverviewCard__title {{card_type == 'icon-image' ? 'mt-4'}} {{card_type == 'image-rounded' ? 'mt-4'}}">{{cpt.post_title ? cpt.post_title : cpt.title}}</h3>
 
 			{% endif %}
 
-
-
 			{% if options %}
 
-				<div class="carrotOverviewCard__taxonomyWrapper d-flex w-100 column-gap-3 row-gap-2 align-items-center justify-content-center my-3">
+				<div class="d-flex w-100 column-gap-3 row-gap-2 align-items-center justify-content-center mb-3">
 
 					{% for taxonomy in cpt.terms %}
 
-						<div class="carrotOverviewCard__taxonomy d-flex flex-column p-2">
+						<div class="carrotOverviewCard__taxonomy d-flex flex-column p-2 text-center">
 
 							<strong>{{taxonomy.name|replace({'_': ' '})|capitalize}}</strong>
 
@@ -70,34 +121,27 @@
 
 			{% endif %}
 
-			{% for specification in cpt.specifications %}
 
-				{% include 'molecules/carrotSpecifications.twig' with {
-				'specification': specification
-			} %}
+		{% endif %}
 
-			{% endfor %}
+		{% if content %}
 
-			{% if content %}
+			<div class="carrotOverviewCard__content mt-4 px-4 mb-5">
 
-				<div class="carrotOverviewCard__content px-3 mb-3">
+				{{content|striptags('<p><br>')|truncate(28)}}
 
-					{{content|striptags('<p><br>')|truncate(28)}}
+			</div>
 
-				</div>
+		{% endif %}
 
-			{% endif %}
+		<div class="carrotOverviewCard__button mb-4 d-flex align-items-center justify-content-center">
 
-			<div class="mb-3 d-flex align-items-center justify-content-center">
-
-				{% include 'atoms/button.twig' with {
-		'url': cpt.permalink,
-		'title': cpt.button_text ? cpt.button_text : 'Read more',
+			{% include 'atoms/button.twig' with {
+		'url': cpt.permalink ? cpt.permalink : link,
+		'title': buttonText ? buttonText : 'Read more',
 		'classes': buttonType ? buttonType : 'button--primary'
 		}
 	%}
-
-			</div>
 
 		</div>
 

@@ -4,7 +4,7 @@
 {% set fontColor = fields.font_color ? fields.font_color %}
 {% set type = fields.type ? fields.type %}
 
-<section {{inFocus ?: 'data-inviewport="no"' }} class="section {{inFocus ? 'section--focussed'}} pricingTable {{fields.row_color ? fields.row_color : 'pricingTable--primaryRowColor'}}  {{background ? background}} {{fontColor ? fontColor}} d-flex align-items-center justify-content-center">
+<section {{inFocus ?: 'data-inviewport="no"' }} class="section {{inFocus ? 'section--focussed'}} pricingTable {{fields.full_height ? 'section--fullHeight'}} {{fields.row_color ? fields.row_color : 'pricingTable--primaryRowColor'}}  {{background ? background}} {{fontColor ? fontColor}} d-flex align-items-center justify-content-center">
 
 	<div class="container">
 
@@ -37,6 +37,23 @@
 							'table': fields
 			}%}
 
+
+			{% if type == 'cards' %}
+				
+				{% for cpt in fields.item_row %}
+					{% include 'molecules/carrotOverviewCard.twig' with {
+							'itemOptions': true,
+							'linkText': fields.cta_button_text,
+							'content': cpt.description,
+							'thumbnail': cpt.row_image.url,
+							'card_type': fields.card_type,
+							'buttonType': fields.button_type,
+							'link': fields.card_button_link
+					}%}
+
+				{% endfor %}
+
+			{% endif %}
 		</div>
 
 	</div>

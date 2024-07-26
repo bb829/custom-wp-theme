@@ -6,14 +6,15 @@
 {% set bgImage = fields.background_image ? fields.background_image : cpt_options.featured_posts_background_image %}
 {% set bgVideo = fields.background_video ? fields.background_video : cpt_options.featured_posts_background_video %}
 {% set cardType = fields.card_type ? fields.card_type : cpt_options.featured_posts_card_type %}
+{% set fullHeight = fields.full_height ? fields.full_height : cpt_options.featured_full_height %}
 
-<section data-inviewport="no" class="section carrotOverview {{background ? background}} textImage d-flex align-items-center justify-content-center">
+<section data-inviewport="no" class="section carrotOverview {{background ? background}} {{fullHeight ? 'section--fullHeight'}} {{fields.font_color ? fields.font_color}} textImage d-flex align-items-center justify-content-center">
 
 	<div class="container">
 
 		<div class="row">
 
-			<div class="col-12 {{ fields.image ? 'col-md-6' }} d-flex flex-column align-items-center justify-content-center" style="perspective:1000px;">
+			<div class="col-12 {{ fields.image ? 'col-lg-6' }} d-flex flex-column align-items-center justify-content-center" style="perspective:1000px;">
 
 				{% if title %}
 					<h2 class="textImage__title text-center">{{title}}</h2>
@@ -38,7 +39,8 @@
 						'imageBackground': fields.image_background,
 						'card_type': cardType,
 						'buttonType': fields.button_type,
-						'cardBG': fields.card_background
+						'cardBG': fields.card_background,
+						'options': fields.show_taxonomies
 					}%}
 				{% endfor %}
 
@@ -52,8 +54,8 @@
 
 				{% include 'atoms/button.twig' with {
 		'url': viewmodel.fetchFeatured[0].archive_link,
-		'title': 'Browse full catalog',
-		'classes': 'button--alternative d-inline-flex'
+		'title': fields.cta_button_text ? fields.cta_button_text : 'Browse full catalog',
+		'classes': fields.button_type_cta
 		}
 	%}
 

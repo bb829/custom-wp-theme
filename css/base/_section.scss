@@ -1,9 +1,15 @@
 .section {
     padding:40px 0px;
     height:auto;
-    min-height: 100vh;
     transition: background ease 0.4s;
     transition: opacity 0.4s ease;
+
+    &--fullHeight {
+        display: flex;
+        min-height: 100vh;
+        align-items: stretch;
+        padding: 40px 0px;
+    }
 
     &--primaryFont {
         h1,
@@ -46,6 +52,37 @@
             color: var(--tertiary-color);
         }
     }
+
+    &--primaryTitle {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            color: var(--primary-color);
+        }
+    }
+
+    &--secondaryTitle {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            color: var(--secondary-color);
+        }
+    }
+
+    &--tertiaryTitle {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            color: var(--tertiary-color);
+        }
+    }
+
 
     &--first {
         padding: 0;

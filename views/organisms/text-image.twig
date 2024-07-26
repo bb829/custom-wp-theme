@@ -6,14 +6,17 @@
 {% set image = fields.image ? fields.image : item.image %}
 {% set layout = fields.layout ? fields.layout : item.layout %}
 {% set font_color = fields.font_color ? fields.font_color : item.font_color %}
+{% set titleColor = fields.title_color ? fields.title_color %}
 {% set background = fields.background_color ? fields.background_color : cpt_options.hero_background_color %}
 {% set buttonLeftStyle = fields.buttons.button_left_style ? fields.buttons.button_left_style : item.button_left_style %}
 {% set buttonRightStyle = fields.buttons.button_right_style ? fields.buttons.button_right_style : item.button_right_style %}
 {% set inFocus = fields.in_focus ? fields.in_focus : item.in_focus %}
 {% set font = fields.font_color ? fields.font_color : item.content_font_color %}
 {% set imageType = fields.image_type ? fields.image_type : item.content_image_type %}
+{% set fullHeight = fields.full_height ? fields.full_height : item.text_full_height %}
+{% set assetType = fields.asset_type ? fields.asset_type : 'image' %}
 
-<section {{inFocus ?: 'data-inviewport="no"' }} class="section {{backgroundVideo ? 'section--bgVideo'}} {{inFocus ? 'section--focussed'}} {{background ? background}} {{font ? font}} textImage d-flex align-items-center justify-content-center position-relative" style="background: {{background_color}}">
+<section {{inFocus ?: 'data-inviewport="no"' }} class="section {{backgroundVideo ? 'section--bgVideo'}} {{fullHeight ? 'section--fullHeight'}} {{inFocus ? 'section--focussed'}} {{background ? background}} {{font ? font}} {{titleColor ? titleColor}} textImage d-flex align-items-center justify-content-center position-relative" style="background: {{background_color}}">
 
 	{% if backgroundVideo %}
 
@@ -26,88 +29,23 @@
 	<div class="container">
 		<div class="row">
 
-			{% if layout == 'text-left' %}
+			{% if layout == 'text-top' %}
 
-				<div class="col-12 textImage__content {{ image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
-					<div class="fade-in-left delay-1">
+				<div class="col-12 col-lg-6 mx-auto d-flex flex-column justify-content-center" style="perspective:1000px;">
+					<div class="fade-in-right delay-1 w-100">
 
 						{% if title %}
 
-							<h2 class="textImage__title">{{title}}</h2>
+							<h2 class="w-100">{{title}}</h2>
 
 						{% endif %}
 
 						{% if content %}
 
-							<div class="textImage__content">
+							<div class="w-100 textImage__contenttextImage__content--top">
 								{{content}}
 							</div>
 
-						{% endif %}
-
-					</div>
-					{% if buttonLeft or buttonRight %}
-
-						<div class="d-flex mt-3 gap-3 fade-in delay-5">
-
-							{% if buttonLeft.url and buttonLeft.title %}
-
-				{% include 'atoms/button.twig' with {
-		'url': buttonLeft.url,
-		'title': buttonLeft.title,
-		'target': buttonLeft.target,
-		'classes': buttonLeftStyle
-		}
-	%}
-
-
-							{% endif %}
-
-							{% if buttonRight.url and buttonRight.title %}
-
-				{% include 'atoms/button.twig' with {
-		'url': buttonRight.url,
-		'title': buttonRight.title,
-		'target': buttonRight.target,
-		'classes': buttonRightStyle
-		}
-	%}
-
-							{% endif %}
-
-						</div>
-
-					{% endif %}
-
-				</div>
-
-			{% endif %}
-
-			{% if image %}
-
-				<div class="textImage__imageWrapper col-12 col-md-6 d-flex align-items-center justify-content-center scale-in-center delay-3 mt-3 mt-md-0">
-						<img src="{{image.url}}" class="textImage__image {{imageType ? imageType}} cover"/>
-				</div>
-
-			{% endif %}
-
-			{% if layout == 'text-right' %}
-
-				<div class="col-12 {{ image ? 'col-md-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
-					<div class="fade-in-right delay-1">
-
-						{% if title %}
-
-							<h2 class="textImage__title">{{title}}</h2>
-
-						{% endif %}
-
-						{% if content %}
-
-							<div class="textImage__content">
-								{{content}}
-							</div>
-							
 						{% endif %}
 					</div>
 
@@ -146,6 +84,165 @@
 				</div>
 
 			{% endif %}
+
+
+			{% if layout == 'text-left' %}
+
+				<div class="col-12 textImage__content {{ image ? 'col-lg-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
+					<div class="fade-in-left delay-1">
+
+						{% if title %}
+
+							<h2 class="textImage__title">{{title}}</h2>
+
+						{% endif %}
+
+						{% if content %}
+
+							<div class="textImage__content">
+								{{content}}
+							</div>
+
+						{% endif %}
+
+					</div>
+					{% if buttonLeft or buttonRight %}
+
+						<div class="d-flex mt-3 gap-3 fade-in delay-5">
+
+							{% if buttonLeft.url and buttonLeft.title %}
+
+								{% include 'atoms/button.twig' with {
+		'url': buttonLeft.url,
+		'title': buttonLeft.title,
+		'target': buttonLeft.target,
+		'classes': buttonLeftStyle
+		}
+	%}
+
+
+							{% endif %}
+
+							{% if buttonRight.url and buttonRight.title %}
+
+								{% include 'atoms/button.twig' with {
+		'url': buttonRight.url,
+		'title': buttonRight.title,
+		'target': buttonRight.target,
+		'classes': buttonRightStyle
+		}
+	%}
+
+							{% endif %}
+
+						</div>
+
+					{% endif %}
+
+				</div>
+
+			{% endif %}
+
+
+			{% if assetType == 'form' %}
+
+				<div class="{{layout == 'text-top' ? 'col-12 mx-auto' : 'col-lg-6'}} mt-4 d-flex align-items-center justify-content-center scale-in-center delay-4 z-4">
+
+					{% if fields.form_software %}
+						{% include 'molecules/form.twig' with {
+							'ID': fields.form_id,
+							'title': true,
+							'type': fields.form_type,
+							'software': fields.form_software,
+							'shortcode': fields.gravityforms_shortcode,
+							'width': 'col-12 col-lg-9'
+						}%}
+
+					{% endif %}
+
+				</div>
+
+			{% endif %}
+
+			{% if assetType == 'video' %}
+
+				<div class="col-12 {{layout == 'text-top' ? 'col-12 col-lg-8 mx-auto mt-3' : 'col-lg-6 mt-4 mt-lg-0'}} d-flex align-items-center justify-content-center scale-in-center delay-4 z-4">
+					<video src="{{fields.video_asset}}" class="hero__image {{imageType ? imageType}} cover" autoplay muted loop nocontrols playsinline/>
+				</div>
+
+			{% endif %}
+
+
+			{% if assetType == 'image' %}
+
+				{% if image %}
+
+					<div class="textImage__imageWrapper col-12 {{layout == 'text-top' ? 'col-12 mt-3' : 'col-lg-6 mt-lg-0'}} d-flex align-items-center justify-content-center scale-in-center delay-3 mt-3">
+						<img src="{{image.url}}" class="textImage__image {{imageType ? imageType}} cover"/>
+					</div>
+
+				{% endif %}
+
+			{% endif %}
+
+			{% if layout == 'text-right' %}
+
+				<div class="col-12 {{ image ? 'col-lg-6' }} d-flex flex-column align-items-start justify-content-center" style="perspective:1000px;">
+					<div class="fade-in-right delay-1">
+
+						{% if title %}
+
+							<h2 class="textImage__title">{{title}}</h2>
+
+						{% endif %}
+
+						{% if content %}
+
+							<div class="textImage__content">
+								{{content}}
+							</div>
+
+						{% endif %}
+					</div>
+
+					{% if buttonLeft or buttonRight %}
+
+						<div class="d-flex mt-4 gap-3 fade-in delay-5">
+
+							{% if buttonLeft.url and buttonLeft.title %}
+
+								{% include 'atoms/button.twig' with {
+						'url': buttonLeft.url,
+						'title': buttonLeft.title,
+						'target': buttonLeft.target,
+						'classes': buttonLeftStyle
+					}
+				%}
+
+							{% endif %}
+
+							{% if buttonRight.url and buttonRight.title %}
+
+								{% include 'atoms/button.twig' with {
+						'url': buttonRight.url,
+						'title': buttonRight.title,
+						'target': buttonRight.target,
+						'classes': buttonRightStyle
+					}
+				%}
+
+							{% endif %}
+
+						</div>
+
+					{% endif %}
+
+				</div>
+
+			{% endif %}
+
+
 		</div>
 	</div>
 </section>
+

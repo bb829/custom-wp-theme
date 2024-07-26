@@ -14,17 +14,148 @@ add_action('acf/init', function () use ($banner) {
 $pricingTable = new StoutLogic\AcfBuilder\FieldsBuilder('pricing_table');
 $pricingTable
     ->addAccordion('pricing_table')
+    ->addTrueFalse('in_focus', [
+        'label' => 'In focus',
+    ])
     ->addSelect('type', [
         'label' => 'Type',
         'choices' => [
             'default' => 'Default',
             'tabs' => 'Tabs',
+            'cards' => 'Cards',
+
         ],
         'wrapper' => [
             'width' => '50%',
         ],
         'return_format' => 'value',
         'default_value' => 'default'
+    ])
+    ->addTrueFalse('full_height', [
+        'label' => 'Full height',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+    ])
+    ->addSelect('card_type', [
+        'label' => 'Card type',
+        'choices' => [
+            'icon-image' => 'Icon image',
+            'small-image' => 'Small image',
+            'large-image' => 'Large image',
+            'image-rounded' => 'Small image rounded'
+        ],
+        'default' => 'small-image',
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'type',
+                    'operator' => '==',
+                    'value' => 'cards',
+                ],
+            ],
+        ],
+    ])
+    ->addSelect('card_background', [
+        'label' => 'Card background color',
+        'choices' => [
+            '' => 'None',
+            '--primaryBG' => 'Primary Color',
+            '--secondaryBG' => 'Secondary Color',
+            '--tertiaryBG' => 'Tertiary Color',
+            '--accentBG' => 'Accent Color'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'type',
+                    'operator' => '==',
+                    'value' => 'cards',
+                ],
+            ],
+        ],
+
+    ])
+    ->addSelect('button_type', [
+        'label' => 'Button type in card',
+        'required' => 0,
+        'choices' => [
+            'button--primary' => 'Primary',
+            'button--secondary' => 'Secondary',
+            'button--tertiary' => 'Tertiary',
+            'button--alternative' => 'Alternative',
+            'button--alternative-1' => 'Alternative two'
+        ],
+        'default_value' => 'button--primary',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'type',
+                    'operator' => '==',
+                    'value' => 'cards',
+                ],
+            ],
+        ],
+    ])
+    ->addSelect('button_type_cta', [
+        'label' => 'Button type under cards',
+        'required' => 0,
+        'choices' => [
+            'button--primary' => 'Primary',
+            'button--secondary' => 'Secondary',
+            'button--tertiary' => 'Tertiary',
+            'button--alternative' => 'Alternative',
+            'button--alternative-1' => 'Alternative two'
+        ],
+        'default_value' => 'button--primary',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'type',
+                    'operator' => '==',
+                    'value' => 'cards',
+                ],
+            ],
+        ],
+
+    ])
+    ->addText('cta_button_text', [
+        'label' => 'CTA button text',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+    ])
+    ->addText('card_button_link', [
+        'label' => 'Card button link',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'type',
+                    'operator' => '==',
+                    'value' => 'cards',
+                ],
+            ],
+        ],
+
     ])
     ->addSelect('background_color', [
         'label' => 'Background color',
@@ -39,6 +170,16 @@ $pricingTable
             'width' => '50%',
         ],
         'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'type',
+                    'operator' => '==',
+                    'value' => 'cards',
+                ],
+            ],
+        ],
+
     ])
     ->addSelect('font_color', [
         'label' => 'Font color',
@@ -110,11 +251,42 @@ $pricingTable
         'layout' => 'block',
         'button_label' => 'Add row',
     ])
+    ->addImage('row_image', [
+        'label' => 'Row image',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+    ])
     ->addText('item')
     ->addWysiwyg('description')
     ->addNumber('price')
     ->endRepeater()
     ->endRepeater()
+    ->addRepeater('item_row', [
+        'label' => 'Item',
+        'layout' => 'block',
+        'button_label' => 'Add item',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'type',
+                    'operator' => '==',
+                    'value' => 'cards',
+                ],
+            ],
+        ],
+    ])
+    ->addImage('row_image', [
+        'label' => 'Item image',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+    ])
+    ->addText('title')
+    ->addWysiwyg('description')
+    ->addNumber('price')
+    ->endRepeater()
+
     ->setLocation('block', '==', 'acf/pricing-table');
 
 add_action('acf/init', function () use ($pricingTable) {
@@ -126,6 +298,12 @@ $hero
     ->addAccordion('hero', [
         'label' => 'Hero',
         'layout' => 'block'
+    ])
+    ->addTrueFalse('full_height', [
+        'label' => 'Full height',
+        'wrapper' => [
+            'width' => '50%',
+        ],
     ])
     ->addSelect('font_color', [
         'label' => 'Font color',
@@ -152,6 +330,7 @@ $hero
             'image' => 'Image',
             'animation' => 'Animation',
             'form' => 'Form',
+            'video' => 'Video',
         ],
         'default_value' => [
             'image' => 'Image'
@@ -161,6 +340,27 @@ $hero
         ],
         'return_format' => 'value',
     ])
+    ->addSelect('form_software', [
+        'label' => 'Form software',
+        'required' => 0,
+        'choices' => [
+            'forms' => 'Forms',
+            'gravityforms' => 'GravityForms',
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'asset_type',
+                    'operator' => '==',
+                    'value' => 'form',
+                ],
+            ],
+        ],
+    ])
     ->addText('form_id', [
         'label' => 'Form ID',
         'wrapper' => [
@@ -169,9 +369,25 @@ $hero
         'conditional_logic' => [
             [
                 [
-                    'field' => 'asset_type',
+                    'field' => 'form_software',
                     'operator' => '==',
-                    'value' => 'form',
+                    'value' => 'forms',
+                ],
+            ],
+        ],
+    ])
+    ->addText('gravityforms_shortcode', [
+        'label' => 'GravityForms shortcode',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'conditional_logic' => [
+
+            [
+                [
+                    'field' => 'form_software',
+                    'operator' => '==',
+                    'value' => 'gravityforms',
                 ],
             ],
         ],
@@ -242,7 +458,7 @@ $hero
         ],
     ])
     ->addSelect('image_type', [
-        'label' => 'Image type',
+        'label' => 'Asset style',
         'required' => 0,
         'choices' => [
             '' => 'Default',
@@ -257,9 +473,16 @@ $hero
         'conditional_logic' => [
             [
                 [
-                    'field' => 'asset_type',
+                    'field' => 'field_1',
                     'operator' => '==',
                     'value' => 'image',
+                ],
+            ],
+            [
+                [
+                    'field' => 'field_1',
+                    'operator' => '==',
+                    'value' => 'video',
                 ],
             ],
         ],
@@ -327,6 +550,21 @@ $hero
                     'field' => 'animate_gradient',
                     'operator' => '==',
                     'value' => '1',
+                ],
+            ],
+        ],
+    ])
+    ->addText('video_asset', [
+        'wrapper' => [
+            'label' => 'Video URL',
+            'width' => '50%'
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'asset_type',
+                    'operator' => '==',
+                    'value' => 'video',
                 ],
             ],
         ],
@@ -421,7 +659,8 @@ $hero
             'button--primary' => 'Primary',
             'button--secondary' => 'Secondary',
             'button--tertiary' => 'Tertiary',
-            'button--alternative' => 'Alternative'
+            'button--alternative' => 'Alternative',
+            'button--alternative-1' => 'Alternative two'
         ],
         'default_value' => [
             'button--primary' => 'Primary'
@@ -438,7 +677,9 @@ $hero
             'button--primary' => 'Primary',
             'button--secondary' => 'Secondary',
             'button--tertiary' => 'Tertiary',
-            'button--alternative' => 'Alternative'
+            'button--alternative' => 'Alternative',
+            'button--alternative-1' => 'Alternative two'
+
         ],
         'default_value' => [
             'button--secondary' => 'Secondary'
@@ -465,6 +706,12 @@ $textImage
     ->addTrueFalse('in_focus', [
         'label' => 'In focus',
     ])
+    ->addTrueFalse('full_height', [
+        'label' => 'Full height',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+    ])
     ->addSelect('background_color', [
         'label' => 'Background color',
         'choices' => [
@@ -475,6 +722,23 @@ $textImage
             'section--accentBG' => 'Accent Color',
             'section--accentTwoBG' => 'Accent Two Color'
 
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
+    ->addSelect('title_color', [
+        'label' => 'Title color',
+        'required' => 0,
+        'choices' => [
+            '' => 'Default',
+            'section--primaryTitle' => 'Primary Color',
+            'section--secondaryTitle' => 'Secondary Color',
+            'section--tertiaryTitle' => 'Tertiary Color'
+        ],
+        'default_value' => [
+            '' => 'Default'
         ],
         'wrapper' => [
             'width' => '50%',
@@ -511,20 +775,165 @@ $textImage
         'choices' => [
             'text-left' => 'Text left, image right',
             'text-right' => 'Text right, image left',
+            'text-top' => 'Text top, image bottom',
         ],
         'wrapper' => [
             'width' => '50%',
         ],
         'allow_null' => 0,
     ])
-    ->addWysiwyg('content', [
+    ->addSelect('asset_type', [
+        'label' => 'Asset type',
+        'required' => 0,
+        'choices' => [
+            'image' => 'Image',
+            'animation' => 'Animation',
+            'form' => 'Form',
+            'video' => 'Video',
+        ],
+        'default_value' => [
+            'image' => 'Image'
+        ],
         'wrapper' => [
-            'width' => '100%'
-        ]
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
+    ->addSelect('form_software', [
+        'label' => 'Form software',
+        'required' => 0,
+        'choices' => [
+            'forms' => 'Forms',
+            'gravityforms' => 'GravityForms',
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'asset_type',
+                    'operator' => '==',
+                    'value' => 'form',
+                ],
+            ],
+        ],
+    ])
+    ->addText('form_id', [
+        'label' => 'Form ID',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'form_software',
+                    'operator' => '==',
+                    'value' => 'forms',
+                ],
+            ],
+        ],
+    ])
+    ->addText('gravityforms_shortcode', [
+        'label' => 'GravityForms shortcode',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'conditional_logic' => [
+
+            [
+                [
+                    'field' => 'form_software',
+                    'operator' => '==',
+                    'value' => 'gravityforms',
+                ],
+            ],
+        ],
+    ])
+    ->addSelect('form_type', [
+        'label' => 'Form type',
+        'required' => 0,
+        'choices' => [
+            'form--primary' => 'Primary',
+            'form--secondary' => 'Secondary'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'allow_null' => 1,
+        'multiple' => 0,
+        'return_format' => 'value',
+        'default_value' => [
+            'form--primary' => 'Primary'
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'asset_type',
+                    'operator' => '==',
+                    'value' => 'form',
+                ],
+            ],
+        ],
+    ])
+    ->addSelect('animation', [
+        'label' => 'Animation',
+        'required' => 0,
+        'choices' => [
+            'lady-summer' => 'Lady Summer',
+            'carrots' => 'Carrots',
+            'rocket' => 'Rocket'
+        ],
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'allow_null' => 1,
+        'multiple' => 0,
+        'return_format' => 'value',
+        'placeholder' => '',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'asset_type',
+                    'operator' => '==',
+                    'value' => 'animation',
+                ],
+            ],
+        ],
     ])
     ->addImage('image', [
         'wrapper' => [
-            'width' => '70%'
+            'width' => '50%'
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'asset_type',
+                    'operator' => '==',
+                    'value' => 'image',
+                ],
+            ],
+        ],
+    ])
+    ->addText('video_asset', [
+        'wrapper' => [
+            'label' => 'Video URL',
+            'width' => '50%'
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'asset_type',
+                    'operator' => '==',
+                    'value' => 'video',
+                ],
+            ],
+        ],
+    ])
+    ->addWysiwyg('content', [
+        'wrapper' => [
+            'width' => '100%'
         ]
     ])
     ->addSelect('image_type', [
@@ -559,7 +968,8 @@ $textImage
             'button--primary' => 'Primary',
             'button--secondary' => 'Secondary',
             'button--tertiary' => 'Tertiary',
-            'button--alternative' => 'Alternative'
+            'button--alternative' => 'Alternative',
+            'button--alternative-1' => 'Alternative two'
         ],
         'default_value' => [
             'button--primary' => 'Primary'
@@ -576,7 +986,8 @@ $textImage
             'button--primary' => 'Primary',
             'button--secondary' => 'Secondary',
             'button--tertiary' => 'Tertiary',
-            'button--alternative' => 'Alternative'
+            'button--alternative' => 'Alternative',
+            'button--alternative-1' => 'Alternative two'
         ],
         'default_value' => [
             'button--secondary' => 'Secondary'
@@ -600,6 +1011,12 @@ $showcase
     ->addAccordion('showcase', [
         'label' => 'Showcase',
         'layout' => 'block'
+    ])
+    ->addTrueFalse('full_height', [
+        'label' => 'Full height',
+        'wrapper' => [
+            'width' => '50%',
+        ],
     ])
     ->addSelect('font_color', [
         'label' => 'Font color',
@@ -752,12 +1169,42 @@ $cptOverview
         'label' => 'CPT overview',
         'layout' => 'block'
     ])
+    ->addTrueFalse('show_taxonomies', [
+        'label' => 'Show taxonomies',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+    ])
+    ->addTrueFalse('full_height', [
+        'label' => 'Full height',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+    ])
+    ->addSelect('font_color', [
+        'label' => 'Font color',
+        'required' => 0,
+        'choices' => [
+            '' => 'Default',
+            'section--primaryFont' => 'Primary Color',
+            'section--secondaryFont' => 'Secondary Color',
+            'section--tertiaryFont' => 'Tertiary Color'
+        ],
+        'default_value' => [
+            '' => 'Default'
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
     ->addSelect('card_type', [
         'label' => 'Card type',
         'choices' => [
             'icon-image' => 'Icon image',
             'small-image' => 'Small image',
             'large-image' => 'Large image',
+            'image-rounded' => 'Small image rounded'
         ],
         'default' => 'small-image',
         'wrapper' => [
@@ -801,7 +1248,24 @@ $cptOverview
             'button--primary' => 'Primary',
             'button--secondary' => 'Secondary',
             'button--tertiary' => 'Tertiary',
-            'button--alternative' => 'Alternative'
+            'button--alternative' => 'Alternative',
+            'button--alternative-1' => 'Alternative two'
+        ],
+        'default_value' => 'button--primary',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
+    ->addSelect('button_type_cta', [
+        'label' => 'Button type under cards',
+        'required' => 0,
+        'choices' => [
+            'button--primary' => 'Primary',
+            'button--secondary' => 'Secondary',
+            'button--tertiary' => 'Tertiary',
+            'button--alternative' => 'Alternative',
+            'button--alternative-1' => 'Alternative two'
         ],
         'default_value' => 'button--primary',
         'wrapper' => [
@@ -827,6 +1291,12 @@ $cptOverview
         'required' => 0,
         'wrapper' => [
             'width' => '50%'
+        ],
+    ])
+    ->addText('cta_button_text', [
+        'label' => 'CTA button text',
+        'wrapper' => [
+            'width' => '50%',
         ],
     ])
     ->addWysiwyg('content')
@@ -929,6 +1399,18 @@ $themeOptions
         ],
         'wrapper' => [
             'width' => '50%',
+        ],
+        'return_format' => 'value',
+    ])
+    ->addSelect('footer_background_color', [
+        'label' => 'Footer background color',
+        'choices' => [
+            'section--primaryBG' => 'Primary Color',
+            'section--secondaryBG' => 'Secondary Color',
+            'section--tertiaryBG' => 'Tertiary Color'
+        ],
+        'wrapper' => [
+            'width' => '100%',
         ],
         'return_format' => 'value',
     ])

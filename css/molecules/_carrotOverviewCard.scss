@@ -1,5 +1,5 @@
 .carrotOverviewCard {
-    border:solid 1px var(--accent-color);
+    border: solid 1px var(--accent-color);
     background: var(--secondary-color);
 
     &--primaryBG {
@@ -24,11 +24,38 @@
 
     &__imageWrapper {
         position: absolute;
-        top:-100px;
+        top: -100px;
+
+        &--iconRounded {
+            width: 140px;
+            height: 140px;
+            border-radius: 100%;
+            background: var(--secondary-color);
+            border: solid 2px var(--accent-color);
+        }
     }
 
-    &__taxonomyWrapper {
-        background: var(--secondary-color);
+    &__title {
+        .carrotOverviewCard & {
+            color: var(--tertiary-color);
+        }
+        .carrotOverviewCard__titleWrapper & {
+            color: var(--secondary-color);
+        }
+    }
+
+    &__titleWrapper {
+        background: var(--tertiary-color);
+
+        &--imageRounded {
+            padding-top: px(82);
+            padding-bottom: px(16);
+        }
+
+        strong,
+        span, h4 {
+            color: var(--secondary-color);
+        }
     }
 
     &__image {
@@ -36,6 +63,7 @@
         &--large {
             width: 100%;
             height: 240px;
+            display: flex;
         }
 
         &--small {
@@ -46,10 +74,20 @@
 
         // ADD AN INSET BORDER OF 2PX
         &--iconRounded {
+            width: 82px;
+            height: auto;
+        }
+
+        &--imageRounded {
             width: 140px;
             height: 140px;
             border-radius: 100%;
-            border: solid 2px var(--accent-color);
+            border: solid 3px var(--tertiary-color);
+            object-fit: cover;
+
+            .section--tertiaryBG & {
+                border-color: var(--secondary-color);
+            }
         }
 
         &--primaryBG {
@@ -69,16 +107,24 @@
         }
     }
 
-    h3 {
-        color: var(--primary-color);
+    &__button {
+        position: absolute;
+        bottom: 0px;
     }
 
     &__content {
+        height: px(220);
+        
         p {
             font-size: px(16);
             color: var(--primary-font-size);;
             text-align: center;
             color: var(--primary-color);
+
+            .carrotOverviewCard--tertiaryBG & {
+                color: var(--secondary-color);
+            }
         }
     }
+
 }

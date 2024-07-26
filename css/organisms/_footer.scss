@@ -1,5 +1,12 @@
 .footer {
-    background: var(--primary-color);
+
+    &__siteMapLink {
+        color: var(--secondary-color);
+    }
+
+    h3 {
+        color: var(--secondary-color);
+    }
 
     span {
         font-size: var(--alternative-font-size);

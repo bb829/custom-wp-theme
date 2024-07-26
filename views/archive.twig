@@ -7,21 +7,32 @@
 	{% set cardBackground = attribute(theme_options, cpt ~ '_archive_card_background') %}
 	{% set filters = attribute(theme_options, cpt ~ '_filters') %}
 	{% set cardOptions = attribute(theme_options, cpt ~ '_taxonomies') %}
+	{% set cardLinkText = attribute(theme_options, cpt ~ '_card_link_text') %}
+	{% set videoAsset = attribute(theme_options, cpt ~ '_archive_video_asset') %}
+	{% set introBGColor = attribute(theme_options, cpt ~ '_intro_background_color') %}
+	{% set fontColor = attribute(theme_options, cpt ~ '_intro_font_color') %}
+	{% set cardButtonType = attribute(theme_options, cpt ~ '_card_button_type') %}
 
-	<section class="section--first archiveCarrots">
+	<section class="section--first archiveCPT">
 
 		<div class="container">
 
-			<div class="row fade-in delay-2" style="opacity: 0;">
+			<div class="archiveCPT__header {{fontColor ? fontColor}} {{introBGColor ? introBGColor}} row fade-in delay-2 {{videoAsset ? 'mt-5'}}" style="opacity: 0;">
 
-				<div class="col-12">
-					<div class="my-5">
+				{% if videoAsset %}
+					<div class="col-12 col-md-3">
+						<video src="{{videoAsset}}" class="archiveCPT__video d-flex w-100 h-100 cover" autoplay muted loop nocontrols playsinline/>
+					</div>
+				{% endif %}
+
+				<div class="{{videoAsset ? 'col-12 col-md-9': 'col-12'}}">
+					<div class="my-5 {{videoAsset ? 'ms-4'}}">
 						{{archiveIntro}}
 					</div>
 				</div>
 			</div>
 
-			<div class="row fade-in delay-4" style="opacity: 0;">
+			<div class="row fade-in delay-4 {{videoAsset ? 'mt-5'}}" style="opacity: 0;">
 
 				{% if filters == true %}
 
@@ -115,7 +126,9 @@
 						'card_type': cardType,
 						'cardBG': cardBackground,
 						'filters': filters,
-						'options': cardOptions
+						'options': cardOptions,
+						'linkText': cardLinkText,
+						'buttonType': cardButtonType
 
 					} %}
 

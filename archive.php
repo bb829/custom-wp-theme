@@ -11,6 +11,8 @@ $cpt_query = new WP_Query(array('post_type' => $post_type));
 $context['posts'] = new Timber\PostQuery($cpt_query);
 $context['cpt'] = $post_type;
 $context['menu'] = Timber::get_menu('primary-menu');
+$context['menuSecondary'] = Timber::get_menu('secondary-menu');
+$context['sitemap'] = Timber::get_menu('sitemap');
 $context['theme_options'] = get_fields('option');
 $context['viewmodel'] = new CptArchiveViewModel();
 

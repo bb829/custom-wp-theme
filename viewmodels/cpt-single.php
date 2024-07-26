@@ -18,6 +18,34 @@ class CptSingleViewModel {
         ];
     }
 
+    public function fetchTerms() {
+        $post_id = get_the_ID();
+        $post_taxonomies = get_post_taxonomies($post_id);
+        $taxonomy_terms = [];
+        
+        foreach ($post_taxonomies as $taxonomy) {
+            $terms = wp_get_post_terms($post_id, $taxonomy, ['fields' => 'all']);
+        
+            if (!empty($terms)) {
+                // Initialize the string for this taxonomy if not already initialized
+                if (!isset($taxonomy_terms[$taxonomy])) {
+                    $taxonomy_terms[$taxonomy] = ['name' => $taxonomy, 'terms' => ''];
+                }
+                
+                $term_names = []; // Array to hold term names for this iteration
+                foreach ($terms as $term) {
+                    // Add each term name to the array
+                    $term_names[] = $term->name;
+                }
+                
+                // Convert the term names array into a string with comma separation
+                $taxonomy_terms[$taxonomy]['terms'] = implode(', ', $term_names);
+            }
+        }
+
+        return $taxonomy_terms;
+    }
+
     public function fetchFeatured()
     {
         $args = [

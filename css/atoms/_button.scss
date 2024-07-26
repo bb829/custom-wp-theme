@@ -49,4 +49,27 @@
             color: var(--primary-color);
         }
     }
+
+    &--alternative-1 {
+        background: var(--accent-color-two);
+        color: var(--secondary-color);
+        border: solid px(2) var(--accent-color-two);
+
+        &:hover {
+            background: transparent;
+            color: var(--accent-color-two);
+            border-color: var(--accent-color-two);
+
+            .section--secondaryFont & {
+                color: var(--secondary-color);
+                border-color: var(--secondary-color);
+            }
+
+            .carrotOverviewCard & {
+                color: var(--accent-color-two);
+                border-color: var(--accent-color-two);
+            }
+        }
+    
+    }
 }
