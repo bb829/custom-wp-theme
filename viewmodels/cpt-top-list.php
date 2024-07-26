@@ -31,8 +31,7 @@ class CptTopListViewModel
                         'title' => get_the_title(),
                         'content' => get_the_content(),
                         'permalink' => get_permalink(),
-                        'archive_link' => get_post_type_archive_link(get_post_type()),
-                        'button_text' => 'View ' . get_the_title()
+                        'archive_link' => get_post_type_archive_link(get_post_type())
                     ];
                 }
             }

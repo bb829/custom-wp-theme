@@ -1,8 +1,9 @@
 {% block content %}
 
 	{% set headerImageType = attribute(theme_options, cpt ~ '_single_image_type') %}
+	{% set titleColor = attribute(theme_options, cpt ~ '_single_title_color') %}
 
-	<section class="section section--first cptHeader">
+	<section class="section section--first cptHeader {{titleColor ? titleColor}}">
 
 		<div class="p-4 py-5">
 

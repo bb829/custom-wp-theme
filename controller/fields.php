@@ -1293,6 +1293,12 @@ $cptOverview
             'width' => '50%'
         ],
     ])
+    ->addText('card_button_text', [
+        'label' => 'Card button text',
+        'wrapper' => [
+            'width' => '50%',
+        ],
+    ])
     ->addText('cta_button_text', [
         'label' => 'CTA button text',
         'wrapper' => [

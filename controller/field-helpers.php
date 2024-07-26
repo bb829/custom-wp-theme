@@ -112,6 +112,18 @@ function add_cpt_tabs_to_theme_options()
                     ],
                 ];
                 $fields[] = [
+                    'key' => $field_key . '_single_title_color',
+                    'label' => $cpt['cpt_label'] . ' single title color',
+                    'name' => strtolower($cpt['cpt_name']) . '_single_title_color',
+                    'type' => 'select',
+                    'choices' => [
+                        '' => 'Default',
+                        'section--primaryTitle' => 'Primary Color',
+                        'section--secondaryTitle' => 'Secondary Color',
+                        'section--tertiaryTitle' => 'Tertiary Color'
+                    ],
+                ];
+                $fields[] = [
                     'key' => $field_key . '_single_image_type',
                     'label' => $cpt['cpt_label'] . ' single image type',
                     'name' => strtolower($cpt['cpt_name']) . '_single_image_type',
