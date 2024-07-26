@@ -97,7 +97,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            row-gap: px(8);
+            row-gap: px(16);
         }
     }
     
@@ -184,6 +184,7 @@
 
     &__logo {
         @include to(md) {
+            position: relative;
             width: px(100);
             z-index: 99999;
         }

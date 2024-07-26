@@ -11,6 +11,8 @@
     "autoDownload": false,
     "ignore": [
         ".git",
-        "/.vscode"
+        "/.vscode",
+        "/node_modules",
+        "/vendor"
     ]
 }
