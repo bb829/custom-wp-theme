@@ -24,6 +24,7 @@
             color: var(--secondary-color);
             border: solid 2px var(--accent-color-two);
             border-radius: 2.5rem;
+            margin-bottom: 0px !important;
 
             &:hover {
                 background: var(--secondary-color);
@@ -161,6 +162,11 @@
             width: 100% !important;
             display: flex !important;
             justify-content: space-between !important;
+            padding-bottom: 0 !important;
+        }
+
+        .gform_footer {
+            padding-bottom: 0 !important;
         }
     }
 }

@@ -256,8 +256,8 @@
                       },
                       "style.css": {
                         "type": "-",
-                        "size": 261547,
-                        "lmtime": 1722024407894.8958,
+                        "size": 261563,
+                        "lmtime": 1722024661071.3127,
                         "modified": false
                       },
                       "1e59d2330b4c6deb84b3.ttf": {
@@ -327,6 +327,62 @@
                         "_section.scss": {
                           "type": "-",
                           "size": 2279,
+                          "lmtime": 0,
+                          "modified": false
+                        }
+                      },
+                      "organisms": {
+                        "_singleCPT.scss": {
+                          "type": "-",
+                          "size": 603,
+                          "lmtime": 0,
+                          "modified": false
+                        },
+                        "_showcase.scss": {
+                          "type": "-",
+                          "size": 1409,
+                          "lmtime": 0,
+                          "modified": false
+                        },
+                        "_carrotOverview.scss": {
+                          "type": "-",
+                          "size": 71,
+                          "lmtime": 0,
+                          "modified": false
+                        },
+                        "_archiveCPT.scss": {
+                          "type": "-",
+                          "size": 1376,
+                          "lmtime": 0,
+                          "modified": false
+                        },
+                        "_navigation.scss": {
+                          "type": "-",
+                          "size": 9008,
+                          "lmtime": 1722024653998.9185,
+                          "modified": false
+                        },
+                        "_textImage.scss": {
+                          "type": "-",
+                          "size": 700,
+                          "lmtime": 0,
+                          "modified": false
+                        },
+                        "_pricingTable.scss": {
+                          "type": "-",
+                          "size": 674,
+                          "lmtime": 0,
+                          "modified": false
+                        },
+                        "_footer.scss": {
+                          "type": "-",
+                          "size": 469,
+                          "lmtime": 0,
+                          "modified": false
+                        },
+                        "_hero.scss": {
+                          "type": "-",
+                          "size": 707,
                           "lmtime": 0,
                           "modified": false
                         }
