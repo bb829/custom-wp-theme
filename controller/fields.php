@@ -60,6 +60,65 @@ $pricingTable
             ],
         ],
     ])
+    ->addSelect('tab_color', [
+        'label' => 'Tab color',
+        'choices' => [
+            '' => 'None',
+            'pricingTable--primaryBG' => 'Primary Color',
+            'pricingTable--secondaryBG' => 'Secondary Color',
+            'pricingTable--tertiaryBG' => 'Tertiary Color',
+        ],
+        'wrapper' => [
+            'width' => '50%',
+        ],
+        'return_format' => 'value',
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'type',
+                    'operator' => '==',
+                    'value' => 'tabs',
+                ],
+            ],
+        ],
+
+    ])
+    ->addTrueFalse('image_overlay', [
+        'label' => 'Image overlay',
+        'wrapper' => [
+            'width' => '100%',
+        ],
+        'conditional_logic' => [
+            [
+                [
+                    'field' => 'type',
+                    'operator' => '==',
+                    'value' => 'tabs',
+                ],
+            ],
+            [
+                [
+                    'field' => 'card_type',
+                    'operator' => '==',
+                    'value' => 'small-image',
+                ],
+            ],
+            [
+                [
+                    'field' => 'card_type',
+                    'operator' => '==',
+                    'value' => 'large-image',
+                ],
+            ],
+            [
+                [
+                    'field' => 'card_type',
+                    'operator' => '==',
+                    'value' => 'image-rounded',
+                ],
+            ],
+        ],
+    ])
     ->addSelect('card_background', [
         'label' => 'Card background color',
         'choices' => [

@@ -6,6 +6,24 @@
         border-bottom: none;
         color: var(--primary-color);
 
+        .pricintTable--primaryBG & {
+            background: var(--secondary-color);
+            border: solid 1px var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .pricingTable--secondaryBG & {
+            background: var(--secondary-color);
+            border: solid 1px var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .pricingTable--tertiaryBG & {
+            background: var(--secondary-color);
+            border: solid 1px var(--tertiary-color);
+            color: var(--tertiary-color);
+        }
+
         .pricing--tabs & {
             min-height: 62px;
             position: relative;
@@ -18,10 +36,22 @@
 
         &--active {
             border-bottom: none;
-            background: var(--primary-color);
-            color: var(--secondary-color);
 
-            &:hover {
+            .pricingTable--primaryBG & {
+                background: var(--primary-color);
+                border: solid 1px var(--primary-color);
+                color: var(--secondary-color);
+            }
+
+            .pricingTable--secondaryBG & {
+                background: var(--secondary-color);
+                border: solid 1px var(--secondary-color);
+                color: var(--primary-color);
+            }
+
+            .pricingTable--tertiaryBG & {
+                background: var(--tertiary-color);
+                border: solid 1px var(--tertiary-color);
                 color: var(--secondary-color);
             }
         }
@@ -43,7 +73,6 @@
     &__row {
         tr {
             :last-child {
-                border-bottom: 0 !important;
                 padding-bottom: px(24);
             }
         }
@@ -51,6 +80,36 @@
 
     &__content {
         border: solid 1px var(--primary-color);
+
+        .pricingTable--primaryBG & {
+            border: solid 1px var(--primary-color);
+        }
+
+        .pricingTable--secondaryBG & {
+            border: solid 1px var(--secondary-color);
+        }
+
+        .pricingTable--tertiaryBG & {
+            border: solid 1px var(--tertiary-color);
+        }
+
+    }
+
+    &__overlay {
+        opacity: 0.6;
+
+        .pricingTable--primaryBG & {
+            background: var(--primary-color);
+        }
+
+        .pricingTable--secondaryBG & {
+            background: var(--secondary-color);
+        }
+
+        .pricingTable--tertiaryBG & {
+            background: var(--tertiary-color);
+        }
+
     }
 
     &__description {
@@ -82,7 +141,7 @@
     }
 
     &__price {
-        font-size: px(24);
+        font-size: var(--primary-font-size);
         font-weight: 700;
     }
 }

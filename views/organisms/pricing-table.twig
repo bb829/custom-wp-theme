@@ -3,8 +3,9 @@
 {% set inFocus = fields.in_focus ? fields.in_focus %}
 {% set fontColor = fields.font_color ? fields.font_color %}
 {% set type = fields.type ? fields.type %}
+{% set tabColor = fields.tab_color ? fields.tab_color %}
 
-<section {{inFocus ?: 'data-inviewport="no"' }} class="section {{inFocus ? 'section--focussed'}} pricingTable {{fields.full_height ? 'section--fullHeight'}} {{fields.row_color ? fields.row_color : 'pricingTable--primaryRowColor'}}  {{background ? background}} {{fontColor ? fontColor}} d-flex align-items-center justify-content-center">
+<section {{inFocus ?: 'data-inviewport="no"' }} class="section {{inFocus ? 'section--focussed'}} pricingTable {{tabColor ? tabColor}} {{fields.full_height ? 'section--fullHeight'}} {{fields.row_color ? fields.row_color : 'pricingTable--primaryRowColor'}}  {{background ? background}} {{fontColor ? fontColor}} d-flex align-items-center justify-content-center">
 
 	<div class="container">
 
@@ -34,7 +35,8 @@
 
 			{% include 'molecules/pricing.twig' with {
 							'type': type,
-							'table': fields
+							'table': fields,
+							'overlay': fields.image_overlay
 			}%}
 
 

@@ -24,6 +24,12 @@
 
 						<div class="pricing__head d-flex position-relative">
 
+							{% if overlay %}
+
+								<div class="pricing__overlay position-absolute w-100 h-100"></div>
+
+							{% endif %}
+
 							<h2 class="pricing__heading position-absolute">{{table.title}}</h2>
 
 							<img src="{{table.image.url}}" alt="{{table.image.alt}}" class="pricing__image pricing__image--tabs w-100 cover" width="1200">
@@ -34,11 +40,16 @@
 
 							<thead>
 
-								<th class="p-3 pt-4" scope="col">Name</th>
+								<th class="p-3 pt-4" scope="col">Item</th>
 
-								<th class="p-3 pt-4" scope="col">Description</th>
 
-								<th class="p-3 pt-4 text-end" scope="col">Price</th>
+								{% if row.description %}
+
+								<th class="p-3 pt-4" scope="col">Omschrijving</th>
+
+								{% endif %}
+
+								<th class="p-3 pt-4 text-end" scope="col">Prijs</th>
 
 							</thead>
 
@@ -46,13 +57,17 @@
 
 								<tr>
 
-									<td class="col-2 px-3">
-										<strong>{{row.item}}</strong>
+									<td class="col-5 px-3">
+										<span>{{row.item}}</strong>
 									</td>
 
-									<td class="col-9 px-3 pricing__description">{{row.description}}</td>
+									{% if row.description %}
 
-									<td class="col-1 px-3 text-end pricing__price">{{row.price}}</td>
+									<td class="col-5 px-3 pricing__description">{{row.description}}</td>
+
+									{% endif %}
+
+									<td class="col-2 px-3 text-end pricing__price">€ {{row.price}}</td>
 
 								</tr>
 
